@@ -1,0 +1,18 @@
+{
+    "tabWidth": 4,
+    "useTabs": false,
+    "overrides": [
+        {
+            "files": ["*.css", "*.scss"],
+            "options": {
+                "tabWidth": 2
+            }
+        },
+        {
+            "files": ["*.jsx", "*.tsx"],
+            "options": {
+                "tabWidth": 4
+            }
+        }
+    ]
+}

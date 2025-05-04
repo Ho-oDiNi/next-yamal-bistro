@@ -1,0 +1,124 @@
+@import "tailwindcss";
+@import "./theme/colors.css";
+@import "./theme/fonts.css";
+
+@layer utilities {
+  .btn {
+    height: 54px;
+    width: 201px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: var(--font-size-18);
+  }
+
+  .btn-primary {
+    color: var(--color-white);
+    background-color: var(--color-brand-100);
+
+    &:hover {
+      background-color: var(--color-brand-200);
+    }
+    &:active {
+      background-color: var(--color-brand-300);
+    }
+  }
+
+  .btn-secondary {
+    color: var(--color-brand-300);
+    background-color: var(--color-white);
+
+    &:hover {
+      background-color: #ebebf2;
+    }
+    &:active {
+      background-color: #6fbfe1;
+    }
+  }
+}
+
+@layer utilities {
+  .bg-header {
+    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    color: var(--color-brand-300);
+  }
+}
+
+img {
+  pointer-events: none;
+}
+
+a {
+  -webkit-user-drag: none;
+}
+
+body {
+  color: var(--color-brand-300);
+  background: var(--color-white);
+  font-family: var(--font-secession), Arial, sans-serif;
+}
+
+.before-icon {
+  position: relative;
+  padding-left: 40px;
+}
+
+.before-icon::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  color: white;
+}
+
+.before-icon-coffee::before {
+  background-image: url(../public/icons/coffee.svg)
+}
+
+.before-icon-star::before {
+  background-image: url(../public/icons/star.svg)
+}
+
+.before-icon-delivery::before {
+  background-image: url(../public/icons/delivery.svg)
+}
+
+/* .swiper-slide {
+  opacity: 0.4;
+  transition: opacity 0.3s ease;
+}
+
+.swiper-slide-active {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.swiper-gradient-mask {
+  position: relative;
+}
+
+.swiper-gradient-mask::before,
+.swiper-gradient-mask::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 25%;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.swiper-gradient-mask::before {
+  left: 0;
+  background: linear-gradient(to right, white, transparent);
+}
+
+.swiper-gradient-mask::after {
+  right: 0;
+  background: linear-gradient(to left, white, transparent);
+} */

@@ -1,0 +1,133 @@
+@import "tailwindcss";
+
+@theme {
+  --font-family-secession: "Secession", sans-serif;
+
+  /* ---------- WEIGHT ---------- */
+  --font-weight-bold: 700;
+  --font-weight-demi: 600;
+  --font-weight-normal: 400;
+  --font-weight-light: 300;
+
+  /* ---------- SIZE ---------- */
+  --font-size-55: 3.4375rem;
+  --font-size-42: 2.625rem;
+  --font-size-40: 2.5rem;
+  --font-size-30: 1.875rem;
+  --font-size-28: 1.75rem;
+  --font-size-26: 1.625rem;
+  --font-size-24: 1.5rem;
+  --font-size-22: 1.375rem;
+  --font-size-18: 1.125rem;
+  --font-size-16: 1rem;
+  --font-size-15: 0.9375rem;
+}
+
+@layer utilities {
+  /* ---------- TITLE ---------- */
+
+  .title-secession-bold-55 {
+    font-family: var(--font-family-secession);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-55);
+    line-height: 1.2;
+  }
+
+  .title-secession-bold-42 {
+    font-family: var(--font-family-secession);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-42);
+    line-height: 1.2;
+  }
+
+  .title-secession-bold-40 {
+    font-family: var(--font-family-secession);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-40);
+    line-height: 1.2;
+  }
+
+  .title-secession-bold-30 {
+    font-family: var(--font-family-secession);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-30);
+    line-height: 1.3;
+  }
+
+  .title-secession-bold-28 {
+    font-family: var(--font-family-secession);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-28);
+    line-height: 1.3;
+  }
+
+  /* ---------- HEADLINE ---------- */
+
+  .headline-secession-bold-24 {
+    font-family: var(--font-family-secession);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-24);
+    line-height: 1.3;
+  }
+
+  .headline-secession-bold-22 {
+    font-family: var(--font-family-secession);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-22);
+    line-height: 1.3;
+  }
+
+  .headline-secession-bold-15 {
+    font-family: var(--font-family-secession);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-15);
+    line-height: 1.3;
+  }
+
+  /* ---------- BODY ---------- */
+
+  .body-secession-regular-22 {
+    font-family: var(--font-family-secession);
+    font-weight: var(--font-weight-normal);
+    font-size: var(--font-size-22);
+    line-height: 1.5;
+  }
+
+  /* ---------- SUBHEAD ---------- */
+
+  .subhead-secession-demi-26 {
+    font-family: var(--font-secession);
+    font-weight: var(--font-weight-demi);
+    font-size: var(--font-size-26);
+    line-height: 1.3;
+  }
+
+  .subhead-secession-demi-22 {
+    font-family: var(--font-secession);
+    font-weight: var(--font-weight-demi);
+    font-size: var(--font-size-22);
+    line-height: 1.3;
+  }
+
+  /* ---------- ACCENT ---------- */
+
+  .accent-secession-demi-15 {
+    font-family: var(--font-secession);
+    font-weight: var(--font-weight-demi);
+    font-size: var(--font-size-15);
+    line-height: 1.3;
+  }
+  .accent-secession-demi-16 {
+    font-family: var(--font-secession);
+    font-weight: var(--font-weight-demi);
+    font-size: var(--font-size-16);
+    line-height: 1.3;
+  }
+
+  .accent-secession-light-16 {
+    font-family: var(--font-secession);
+    font-weight: var(--font-weight-light);
+    font-size: var(--font-size-16);
+    line-height: 1.3;
+  }
+}
