@@ -5,24 +5,22 @@ import { Footer } from "@/components/structure/Footer";
 import { Secession } from "@/components/ui/Fonts";
 
 export const metadata: Metadata = {
-  title: "Ямал Бистро | Кафе открытой кухни | Доставка еды в Салехарде SEO",
-  description: "Описание для SEO",
+    title: "Ямал Бистро | Кафе открытой кухни | Доставка еды в Салехарде SEO",
+    description: "Описание для SEO",
 };
 
 export default function RootLayout({
-  children,
+    children,
 }: Readonly<{
-  children: React.ReactNode;
+    children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en">
-      <body className={`${Secession.variable} antialiased`} >
-        <Header />
-        <main>
-          {children}
-        </main>
-        <Footer />
-      </body>
-    </html>
-  );
+    return (
+        <html lang="ru">
+            <body className={`${Secession.variable} antialiased`}>
+                <Header />
+                <main>{children}</main>
+                <Footer />
+            </body>
+        </html>
+    );
 }

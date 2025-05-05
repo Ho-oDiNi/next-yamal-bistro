@@ -3,10 +3,7 @@ import { ReservationModal } from "@/components/ReservationModal";
 
 export const ReservationPage = () => {
     return (
-        <section
-            id="page_reservation"
-            className="relative bottom-[6px] mx-[1px]"
-        >
+        <section id="page_reservation" className="relative">
             <Image
                 className="w-full"
                 src="/images/reservation.png"

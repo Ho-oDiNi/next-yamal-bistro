@@ -26,14 +26,14 @@ export const SeoPage = () => {
         },
     ];
     return (
-        <section className="relative bottom-[3px] mx-[1px] bg-gradient-to-b from-brand-150 to-brand-200 px-24 p-[30vh] py-[15vh] text-white body-secession-regular-22">
+        <section className="relative bg-gradient-to-b from-brand-150 to-brand-200 px-24 p-[30vh] py-[15vh] text-white body-secession-regular-22 after-image after-image-deer">
             <AdvantageList />
             <h2 className="title-secession-bold-40 mb-10">
                 Попробуй вкус Севера!
             </h2>
             <div className="flex items-center">
-                <div>
-                    <p className="max-w-160 pr-10 mb-4">
+                <div className="max-w-160 pr-10">
+                    <p className="mb-4">
                         Откройте для себя неповторимую атмосферу и богатую
                         палитру вкусов в кафе{" "}
                         <em className="text-blue-950 not-italic">
@@ -44,7 +44,7 @@ export const SeoPage = () => {
                         исключительно свежие и качественные продукты
                         премиального качества.
                     </p>
-                    <p className="max-w-160 pr-10">
+                    <p>
                         Для вашего удобства мы предлагаем услугу доставки
                         вкуснейших блюд прямо к вашему дому или в офис, а также
                         возможность заказа еды и кофе на вынос. Высокий рейтинг
