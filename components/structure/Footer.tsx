@@ -3,13 +3,13 @@ import Image from "next/image";
 
 export const Footer = () => {
     return (
-        <footer className="bg-[#EBEBEB] relative px-24 py-[15vh] body-secession-regular-22">
-            <div className="bg-white rounded-[26px] h-auto px-[100px] py-[50px]">
+        <footer className="bg-[#EBEBEB] relative px-24 py-12 body-secession-regular-22">
+            <div className="bg-white rounded-[26px] h-auto px-24 py-12 mr-auto ml-auto max-w-303">
                 <div className="flex justify-between">
-                    <ul className="max-w-[30%]">
+                    <ul className="max-w-[34%]">
                         <li className="flex mb-[25px]">
-                            <Icons
-                                src="person"
+                            <Image
+                                src="/icons/person.svg"
                                 className="mr-[32px]"
                                 height={28}
                                 width={28}
@@ -53,7 +53,7 @@ export const Footer = () => {
                             </p>
                         </li>
                     </ul>
-                    <ul className="max-w-[20%]">
+                    <ul className="max-w-[22%]">
                         <li className="flex mb-[25px]">
                             <a href="">Обратная связь и служба поддержки</a>
                         </li>
@@ -67,11 +67,11 @@ export const Footer = () => {
                         </li>
                     </ul>
 
-                    <div className="max-w-[30%]">
+                    <div className="max-w-[34%] flex flex-col">
                         <p className="p-2">
                             Скачайте наше мобильное приложение и получите скидку
                         </p>
-                        <div className="flex">
+                        <div className="flex my-auto">
                             <Image
                                 src="/images/mobile_qr_code.png"
                                 height="150"
@@ -80,28 +80,34 @@ export const Footer = () => {
                             />
                             <ul className="flex flex-col mx-auto justify-between py-2">
                                 <li>
-                                    <Image
-                                        src="/icons/mobile_app_store.svg"
-                                        height="40"
-                                        width="120"
-                                        alt="SEO"
-                                    />
+                                    <a href="">
+                                        <Image
+                                            src="/icons/mobile_app_store.svg"
+                                            height="40"
+                                            width="120"
+                                            alt="SEO"
+                                        />
+                                    </a>
                                 </li>
                                 <li>
-                                    <Image
-                                        src="/icons/mobile_google_play.svg"
-                                        height="40"
-                                        width="120"
-                                        alt="SEO"
-                                    />
+                                    <a href="">
+                                        <Image
+                                            src="/icons/mobile_google_play.svg"
+                                            height="40"
+                                            width="120"
+                                            alt="SEO"
+                                        />
+                                    </a>
                                 </li>
                                 <li>
-                                    <Image
-                                        src="/icons/mobile_app_gallery.svg"
-                                        height="40"
-                                        width="120"
-                                        alt="SEO"
-                                    />
+                                    <a href="">
+                                        <Image
+                                            src="/icons/mobile_app_gallery.svg"
+                                            height="40"
+                                            width="120"
+                                            alt="SEO"
+                                        />
+                                    </a>
                                 </li>
                             </ul>
                         </div>

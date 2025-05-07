@@ -1,13 +1,13 @@
 import { WorkTime } from "../WorkTime";
 import { Icons } from "@/components/ui/Icons";
 
-export const ContactPage = () => {
+export const ContactSection = () => {
     return (
         <section
             id="page_contacts"
-            className="relative bg-gradient-to-b from-white-150 to-[#EBEBEB] px-24 py-[15vh]"
+            className="relative px-24 py-12 bg-[#EBEBEB]"
         >
-            <div className="bg-white rounded-[26px] p-[100px] h-auto">
+            <div className="bg-white rounded-[26px] px-24 py-20 h-auto mr-auto ml-auto max-w-303">
                 <h2 className="title-secession-bold-40 mb-10">Наши контакты</h2>
                 <div className="flex not-italic justify-between">
                     <div className="flex-1 max-w-[25%]">

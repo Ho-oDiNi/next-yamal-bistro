@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { ReservationModal } from "@/components/ReservationModal";
 
-export const ReservationPage = () => {
+export const ReservationSection = () => {
     return (
         <section id="page_reservation" className="relative">
             <Image

@@ -113,7 +113,7 @@ body {
 .after-image::before {
   content: "";
   position: absolute;
-  top: 28%;
+  top: 32%;
   left: 78%;
   width: 824px;
   height: 824px;

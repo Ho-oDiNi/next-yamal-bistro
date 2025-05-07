@@ -3,7 +3,7 @@ import { AdvantageElement } from "@/components/AdvantageElement";
 
 export const AdvantageList = () => {
     return (
-        <dl className="flex justify-between mb-30">
+        <dl className="flex justify-between mb-30 relative z-2">
             <AdvantageElement
                 icon="coffee"
                 title="Сытные завтраки"
@@ -14,7 +14,7 @@ export const AdvantageList = () => {
                 title="Вкусно поесть"
                 description={
                     <>
-                        Рейтинг 4.9 баллов в{" "}
+                        Рейтинг 4.8 баллов в{" "}
                         <Link
                             className="text-blue-950 hover:underline"
                             href="https://eda.yandex.ru/r/fudkort_salekhard_vd"

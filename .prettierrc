@@ -9,7 +9,7 @@
             }
         },
         {
-            "files": ["*.jsx", "*.tsx"],
+            "files": ["*.jsx", "*.tsx", "*.ts"],
             "options": {
                 "tabWidth": 4
             }

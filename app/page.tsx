@@ -1,19 +1,19 @@
-import { HomePage } from "@/components/structure/HomePage";
-import { SeoPage } from "@/components/structure/SeoPage";
-// import { KitchenMenuPage } from "@/components/structure/KitchenMenuPage";
-import { ReservationPage } from "@/components/structure/ReservationPage";
-import { FeedbackPage } from "@/components/structure/FeedbackPage";
-import { ContactPage } from "@/components/structure/ContactPage";
+import { HomeSection } from "@/components/structure/HomeSection";
+import { SeoSection } from "@/components/structure/SeoSection";
+import { KitchenMenuSection } from "@/components/structure/KitchenMenuSection";
+import { ReservationSection } from "@/components/structure/ReservationSection";
+import { FeedbackSection } from "@/components/structure/FeedbackSection";
+import { ContactSection } from "@/components/structure/ContactSection";
 
 export default function Home() {
     return (
         <main>
-            <HomePage />
-            <SeoPage />
-            {/* <KitchenMenuPage /> */}
-            <ReservationPage />
-            <FeedbackPage />
-            <ContactPage />
+            <HomeSection />
+            <SeoSection />
+            <KitchenMenuSection />
+            <ReservationSection />
+            <FeedbackSection />
+            <ContactSection />
         </main>
     );
 }
