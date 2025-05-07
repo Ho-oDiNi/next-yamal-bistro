@@ -18,7 +18,7 @@ export default function RootLayout({
         <html lang="ru">
             <body className={`${Secession.variable} antialiased`}>
                 <Header />
-                <main>{children}</main>
+                {children}
                 <Footer />
             </body>
         </html>

@@ -7,13 +7,13 @@ import { ContactPage } from "@/components/structure/ContactPage";
 
 export default function Home() {
     return (
-        <>
+        <main>
             <HomePage />
             <SeoPage />
             {/* <KitchenMenuPage /> */}
             <ReservationPage />
             <FeedbackPage />
             <ContactPage />
-        </>
+        </main>
     );
 }
