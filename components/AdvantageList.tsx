@@ -3,7 +3,7 @@ import { AdvantageElement } from "@/components/AdvantageElement";
 
 export const AdvantageList = () => {
     return (
-        <dl className="flex justify-between mb-30 relative z-2">
+        <dl className="relative z-2 mb-30 flex justify-between">
             <AdvantageElement
                 icon="coffee"
                 title="Сытные завтраки"

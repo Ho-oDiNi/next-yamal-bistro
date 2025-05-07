@@ -3,11 +3,11 @@ import Image from "next/image";
 
 export const Footer = () => {
     return (
-        <footer className="bg-[#EBEBEB] relative px-24 py-12 body-secession-regular-22">
-            <div className="bg-white rounded-[26px] h-auto px-24 py-12 mr-auto ml-auto max-w-303">
+        <footer className="body-secession-regular-22 relative bg-[#EBEBEB] px-24 py-12">
+            <div className="mr-auto ml-auto h-auto max-w-303 rounded-[26px] bg-white px-24 py-12">
                 <div className="flex justify-between">
                     <ul className="max-w-[34%]">
-                        <li className="flex mb-[25px]">
+                        <li className="mb-[25px] flex">
                             <Image
                                 src="/icons/person.svg"
                                 className="mr-[32px]"
@@ -21,7 +21,7 @@ export const Footer = () => {
                             </p>
                         </li>
 
-                        <li className="flex mb-[25px]">
+                        <li className="mb-[25px] flex">
                             <Icons
                                 src="document"
                                 className="mr-[32px]"
@@ -54,10 +54,10 @@ export const Footer = () => {
                         </li>
                     </ul>
                     <ul className="max-w-[22%]">
-                        <li className="flex mb-[25px]">
+                        <li className="mb-[25px] flex">
                             <a href="">Обратная связь и служба поддержки</a>
                         </li>
-                        <li className="flex mb-[25px]">
+                        <li className="mb-[25px] flex">
                             <a href="">Политика конфиденциальности</a>
                         </li>
                         <li>
@@ -67,18 +67,18 @@ export const Footer = () => {
                         </li>
                     </ul>
 
-                    <div className="max-w-[34%] flex flex-col">
+                    <div className="flex max-w-[34%] flex-col">
                         <p className="p-2">
                             Скачайте наше мобильное приложение и получите скидку
                         </p>
-                        <div className="flex my-auto">
+                        <div className="my-auto flex">
                             <Image
                                 src="/images/mobile_qr_code.png"
                                 height="150"
                                 width="150"
                                 alt="SEO"
                             />
-                            <ul className="flex flex-col mx-auto justify-between py-2">
+                            <ul className="mx-auto flex flex-col justify-between py-2">
                                 <li>
                                     <a href="">
                                         <Image
@@ -113,8 +113,8 @@ export const Footer = () => {
                         </div>
                     </div>
                 </div>
-                <hr className="border-[#EBEBEB] border-1 rounded-[26px] my-[25px]" />
-                <div className="flex justify-between items-center">
+                <hr className="my-[25px] rounded-[26px] border-1 border-[#EBEBEB]" />
+                <div className="flex items-center justify-between">
                     <Icons src="logo_full" width={117} height={68} alt="SEO" />
                     <span className="h-[30px]">
                         © 2025 ООО &quot;ХХХХ ХХХХХ&quot;

@@ -3,16 +3,17 @@
     "useTabs": false,
     "overrides": [
         {
-            "files": ["*.css", "*.scss"],
+            "files": ["*.css", "*.scss", "*.mjs"],
             "options": {
                 "tabWidth": 2
             }
         },
         {
-            "files": ["*.jsx", "*.tsx", "*.ts"],
+            "files": ["*.jsx", "*.js", "*.tsx", "*.ts"],
             "options": {
                 "tabWidth": 4
             }
         }
-    ]
+    ],
+    "plugins": ["prettier-plugin-tailwindcss"]
 }

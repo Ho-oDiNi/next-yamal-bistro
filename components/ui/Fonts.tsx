@@ -12,11 +12,6 @@ export const Secession = localFont({
             weight: "600",
             style: "normal",
         },
-        // {
-        //     path: "../../public/fonts/Secession-Normal.ttf",
-        //     weight: "400",
-        //     style: "normal",
-        // },
         {
             path: "../../public/fonts/Secession-Regular.otf",
             weight: "400",

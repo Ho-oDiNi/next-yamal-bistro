@@ -5,12 +5,12 @@ export const ContactSection = () => {
     return (
         <section
             id="page_contacts"
-            className="relative px-24 py-12 bg-[#EBEBEB]"
+            className="relative bg-[#EBEBEB] px-24 py-12"
         >
-            <div className="bg-white rounded-[26px] px-24 py-20 h-auto mr-auto ml-auto max-w-303">
+            <div className="mr-auto ml-auto h-auto max-w-303 rounded-[26px] bg-white px-24 py-20">
                 <h2 className="title-secession-bold-40 mb-10">Наши контакты</h2>
-                <div className="flex not-italic justify-between">
-                    <div className="flex-1 max-w-[25%]">
+                <div className="flex justify-between not-italic">
+                    <div className="max-w-[25%] flex-1">
                         <div>
                             <h3 className="subhead-secession-demi-22 my-5">
                                 Часы работы
@@ -48,7 +48,7 @@ export const ContactSection = () => {
                             </a>
                         </div>
                     </div>
-                    <div className="flex-1 max-w-[25%]">
+                    <div className="max-w-[25%] flex-1">
                         <div>
                             <h3 className="subhead-secession-demi-22 my-5">
                                 Адрес
@@ -71,7 +71,7 @@ export const ContactSection = () => {
                             <h3 className="subhead-secession-demi-22 my-5">
                                 Социальные сети
                             </h3>
-                            <div className="flex gap-4 ml-[26px]">
+                            <div className="ml-[26px] flex gap-4">
                                 <a href="https://t.me/YamalBistro">
                                     <Icons
                                         src="tg"
@@ -94,7 +94,7 @@ export const ContactSection = () => {
                     <iframe
                         sandbox="allow-orientation-lock allow-scripts allow-same-origin allow-popups"
                         src="https://yandex.ru/map-widget/v1/?from=api-maps&ll=66.600484%2C66.526556&mode=search&oid=95926227579&ol=biz&origin=jsapi_2_1_79&z=16.79"
-                        className="rounded-[26px] w-[385px] h-[320px] shadow-md ml-[35px] flex-1"
+                        className="ml-[35px] h-[320px] w-[385px] flex-1 rounded-[26px] shadow-md"
                         title="Ямал Бистро на карте Салехарда"
                     />
                 </div>

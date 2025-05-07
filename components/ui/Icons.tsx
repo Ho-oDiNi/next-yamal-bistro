@@ -1,5 +1,5 @@
-"use server"
-import Image from "next/image"
+"use server";
+import Image from "next/image";
 
 interface IconsProps {
     src: string;
@@ -19,4 +19,4 @@ export const Icons = async (props: IconsProps) => {
             alt={props.alt || ""}
         />
     );
-}
+};

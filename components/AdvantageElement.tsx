@@ -1,3 +1,5 @@
+import React from "react";
+
 interface AdvantageElementProps {
     icon: string;
     title: string;

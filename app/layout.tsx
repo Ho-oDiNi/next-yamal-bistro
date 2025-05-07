@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Header } from "@/components/structure/Header";
 import { Footer } from "@/components/structure/Footer";
 import { Secession } from "@/components/ui/Fonts";
+import React from "react";
 
 export const metadata: Metadata = {
     title: "Ямал Бистро | Кафе открытой кухни | Доставка еды в Салехарде SEO",

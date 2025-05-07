@@ -26,8 +26,8 @@ export const SeoSection = () => {
     //     },
     // ];
     return (
-        <section className="relative bg-gradient-to-b from-brand-150 to-brand-200 px-48 py-12 text-white body-secession-regular-22 after-image after-image-deer">
-            <div className="max-w-256 mr-auto ml-auto">
+        <section className="from-brand-150 to-brand-200 body-secession-regular-22 after-image after-image-deer relative bg-gradient-to-b px-48 py-12 text-white">
+            <div className="mr-auto ml-auto max-w-256">
                 <AdvantageList />
                 <h2 className="title-secession-bold-40 mb-10">
                     Попробуй вкус Севера!

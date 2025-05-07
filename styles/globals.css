@@ -46,19 +46,19 @@
 
 @keyframes rotation {
   from {
-    transform: rotate(0deg)
+    transform: rotate(0deg);
   }
   to {
-    transform: rotate(360deg)
+    transform: rotate(360deg);
   }
 }
 
 @keyframes reverse-rotation {
   from {
-    transform: rotate(360deg)
+    transform: rotate(360deg);
   }
   to {
-    transform: rotate(0deg)
+    transform: rotate(0deg);
   }
 }
 
@@ -94,15 +94,15 @@ body {
 }
 
 .before-icon-coffee::before {
-  background-image: url(../public/icons/coffee.svg)
+  background-image: url(../public/icons/coffee.svg);
 }
 
 .before-icon-star::before {
-  background-image: url(../public/icons/star.svg)
+  background-image: url(../public/icons/star.svg);
 }
 
 .before-icon-delivery::before {
-  background-image: url(../public/icons/delivery.svg)
+  background-image: url(../public/icons/delivery.svg);
 }
 
 .after-image {
@@ -118,7 +118,7 @@ body {
   width: 824px;
   height: 824px;
   background: url(../public/icons/deer_antlers_824.svg);
-  
+
   animation-name: reverse-rotation;
   animation-duration: 120s;
   animation-iteration-count: infinite;
@@ -135,7 +135,7 @@ body {
   width: 1024px;
   height: 1024px;
   background: url(../public/icons/deer_antlers_1024.svg);
-  
+
   animation-name: rotation;
   animation-duration: 100s;
   animation-iteration-count: infinite;

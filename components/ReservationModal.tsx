@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 
 export const ReservationModal = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -28,8 +28,8 @@ export const ReservationModal = () => {
             </button> */}
 
             {isOpen && (
-                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-                    <div className="bg-white rounded-lg p-6 max-w-md w-full relative">
+                <div className="bg-opacity-50 fixed inset-0 z-50 flex items-center justify-center bg-black p-4">
+                    <div className="relative w-full max-w-md rounded-lg bg-white p-6">
                         <button
                             onClick={() => setIsOpen(false)}
                             className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
@@ -37,7 +37,7 @@ export const ReservationModal = () => {
                             Х
                         </button>
 
-                        <h2 className="text-2xl font-bold mb-4">
+                        <h2 className="mb-4 text-2xl font-bold">
                             Забронируйте стол
                         </h2>
                         <p className="mb-6">
@@ -47,7 +47,7 @@ export const ReservationModal = () => {
 
                         <form onSubmit={handleSubmit} className="space-y-4">
                             <div>
-                                <label className="block mb-1">Ваше имя</label>
+                                <label className="mb-1 block">Ваше имя</label>
                                 <input
                                     type="text"
                                     value={formData.name}
@@ -57,13 +57,13 @@ export const ReservationModal = () => {
                                             name: e.target.value,
                                         })
                                     }
-                                    className="w-full p-2 border rounded"
+                                    className="w-full rounded border p-2"
                                     required
                                 />
                             </div>
 
                             <div>
-                                <label className="block mb-1">Телефон</label>
+                                <label className="mb-1 block">Телефон</label>
                                 <input
                                     type="tel"
                                     value={formData.phone}
@@ -73,13 +73,13 @@ export const ReservationModal = () => {
                                             phone: e.target.value,
                                         })
                                     }
-                                    className="w-full p-2 border rounded"
+                                    className="w-full rounded border p-2"
                                     required
                                 />
                             </div>
 
                             <div>
-                                <label className="block mb-1">
+                                <label className="mb-1 block">
                                     Дата и время
                                 </label>
                                 <input
@@ -91,13 +91,13 @@ export const ReservationModal = () => {
                                             date: e.target.value,
                                         })
                                     }
-                                    className="w-full p-2 border rounded"
+                                    className="w-full rounded border p-2"
                                     required
                                 />
                             </div>
 
                             <div>
-                                <label className="block mb-1">
+                                <label className="mb-1 block">
                                     Количество гостей
                                 </label>
                                 <select
@@ -108,7 +108,7 @@ export const ReservationModal = () => {
                                             guests: parseInt(e.target.value),
                                         })
                                     }
-                                    className="w-full p-2 border rounded"
+                                    className="w-full rounded border p-2"
                                 >
                                     {[1, 2, 3, 4, 5, 6].map((num) => (
                                         <option key={num} value={num}>
@@ -121,7 +121,7 @@ export const ReservationModal = () => {
 
                             <button
                                 type="submit"
-                                className="w-full py-3 bg-amber-600 text-white rounded-lg hover:bg-amber-700 transition"
+                                className="w-full rounded-lg bg-amber-600 py-3 text-white transition hover:bg-amber-700"
                             >
                                 Отправить заявку
                             </button>
