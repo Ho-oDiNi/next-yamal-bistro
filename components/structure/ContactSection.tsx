@@ -7,7 +7,7 @@ export const ContactSection = () => {
             id="page_contacts"
             className="relative bg-[#EBEBEB] px-24 py-12"
         >
-            <div className="mr-auto ml-auto h-auto max-w-303 rounded-[26px] bg-white px-24 py-20">
+            <div className="container mx-auto h-auto rounded-[26px] bg-white px-24 py-20">
                 <h2 className="title-secession-bold-40 mb-10">Наши контакты</h2>
                 <div className="flex justify-between not-italic">
                     <div className="max-w-[25%] flex-1">

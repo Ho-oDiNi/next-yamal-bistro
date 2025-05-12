@@ -4,9 +4,9 @@ import Image from "next/image";
 export const Footer = () => {
     return (
         <footer className="body-secession-regular-22 relative bg-[#EBEBEB] px-24 py-12">
-            <div className="mr-auto ml-auto h-auto max-w-303 rounded-[26px] bg-white px-24 py-12">
+            <div className="container mx-auto h-auto rounded-[26px] bg-white px-24 py-12">
                 <div className="flex justify-between">
-                    <ul className="max-w-[34%]">
+                    <ul className="max-w-[30%]">
                         <li className="mb-[25px] flex">
                             <Image
                                 src="/icons/person.svg"
@@ -53,7 +53,7 @@ export const Footer = () => {
                             </p>
                         </li>
                     </ul>
-                    <ul className="max-w-[22%]">
+                    <ul className="flex max-w-[20%] flex-col justify-between">
                         <li className="mb-[25px] flex">
                             <a href="">Обратная связь и служба поддержки</a>
                         </li>
@@ -67,9 +67,10 @@ export const Footer = () => {
                         </li>
                     </ul>
 
-                    <div className="flex max-w-[34%] flex-col">
-                        <p className="p-2">
+                    <div className="flex max-w-[30%] flex-col">
+                        <p className="px-2">
                             Скачайте наше мобильное приложение и получите скидку
+                            на первый заказ
                         </p>
                         <div className="my-auto flex">
                             <Image

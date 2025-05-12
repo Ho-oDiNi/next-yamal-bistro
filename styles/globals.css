@@ -4,43 +4,25 @@
 
 @layer utilities {
   .btn {
-    height: 54px;
-    width: 201px;
-    border-radius: 12px;
-    cursor: pointer;
-    font-size: var(--font-size-18);
+    @apply h-14 w-50 cursor-pointer rounded-xl text-(--font-size-18);
   }
 
   .btn-primary {
-    color: var(--color-white);
-    background-color: var(--color-brand-100);
-
-    &:hover {
-      background-color: var(--color-brand-200);
-    }
-    &:active {
-      background-color: var(--color-brand-300);
-    }
+    @apply bg-(--color-brand-100) text-(--color-white) hover:bg-(--color-brand-200) active:bg-(--color-brand-300);
   }
 
   .btn-secondary {
-    color: var(--color-brand-300);
-    background-color: var(--color-white);
-
-    &:hover {
-      background-color: #ebebf2;
-    }
-    &:active {
-      background-color: #6fbfe1;
-    }
+    @apply bg-(--color-white) text-(--color-brand-300) hover:bg-(--color-brand-50) active:bg-(--color-white-50);
   }
-}
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
 
-@layer utilities {
-  .bg-header {
-    background-color: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(10px);
-    color: var(--color-brand-300);
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
   }
 }
 
@@ -143,56 +125,3 @@ body {
 
   z-index: 1;
 }
-
-/* .back-image {
-  position: relative;
-  padding-left: 40px;
-}
-
-.before-icon::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 24px;
-  height: 24px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  color: white;
-} */
-
-/* .swiper-slide {
-  opacity: 0.4;
-  transition: opacity 0.3s ease;
-}
-
-.swiper-slide-active {
-  opacity: 1;
-  transform: scale(1.05);
-}
-
-.swiper-gradient-mask {
-  position: relative;
-}
-
-.swiper-gradient-mask::before,
-.swiper-gradient-mask::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 25%;
-  z-index: 10;
-  pointer-events: none;
-}
-
-.swiper-gradient-mask::before {
-  left: 0;
-  background: linear-gradient(to right, white, transparent);
-}
-
-.swiper-gradient-mask::after {
-  right: 0;
-  background: linear-gradient(to left, white, transparent);
-} */

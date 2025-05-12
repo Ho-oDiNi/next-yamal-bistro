@@ -1,33 +1,9 @@
 import { AdvantageList } from "@/components/AdvantageList";
-// import { Slider } from "@/components/ui/Slider";
 
 export const SeoSection = () => {
-    // const seoSlides = [
-    //     {
-    //         id: 1,
-    //         image: "/images/slide-1.png",
-    //         width: 213,
-    //         height: 206,
-    //         alt: "SEO",
-    //     },
-    //     {
-    //         id: 2,
-    //         image: "/images/slide-2.png",
-    //         width: 213,
-    //         height: 206,
-    //         alt: "SEO",
-    //     },
-    //     {
-    //         id: 3,
-    //         image: "/images/slide-3.png",
-    //         width: 213,
-    //         height: 206,
-    //         alt: "SEO",
-    //     },
-    // ];
     return (
         <section className="from-brand-150 to-brand-200 body-secession-regular-22 after-image after-image-deer relative bg-gradient-to-b px-48 py-12 text-white">
-            <div className="mr-auto ml-auto max-w-256">
+            <div className="container mx-auto">
                 <AdvantageList />
                 <h2 className="title-secession-bold-40 mb-10">
                     Попробуй вкус Севера!
@@ -54,9 +30,6 @@ export const SeoSection = () => {
                             нашего профессионализма.
                         </p>
                     </div>
-                    {/* <div className="max-w-[350px] max-h-[300px] mx-auto z-2">
-                        <Slider slides={seoSlides} />
-                    </div> */}
                 </div>
             </div>
         </section>

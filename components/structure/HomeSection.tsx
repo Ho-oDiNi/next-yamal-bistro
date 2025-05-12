@@ -1,7 +1,7 @@
 export const HomeSection = () => {
     return (
         <section className="relative h-screen bg-[url(/images/home.png)] bg-cover bg-bottom bg-no-repeat px-48 pt-[25vh]">
-            <div className="mr-auto ml-auto max-w-256">
+            <div className="container mx-auto">
                 <h1 className="title-secession-bold-55 mb-20 max-w-145">
                     Кафе{" "}
                     <em className="text-brand-200 not-italic">открытой </em>

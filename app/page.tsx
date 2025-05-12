@@ -2,7 +2,7 @@ import { HomeSection } from "@/components/structure/HomeSection";
 import { SeoSection } from "@/components/structure/SeoSection";
 import { KitchenMenuSection } from "@/components/structure/KitchenMenuSection";
 import { ReservationSection } from "@/components/structure/ReservationSection";
-import { FeedbackSection } from "@/components/structure/FeedbackSection";
+import { ReviewsSection } from "@/components/structure/ReviewsSection";
 import { ContactSection } from "@/components/structure/ContactSection";
 
 export default function Home() {
@@ -12,7 +12,7 @@ export default function Home() {
             <SeoSection />
             <KitchenMenuSection />
             <ReservationSection />
-            <FeedbackSection />
+            <ReviewsSection />
             <ContactSection />
         </main>
     );
