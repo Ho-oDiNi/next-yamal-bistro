@@ -1,9 +1,8 @@
 import Image from "next/image";
-import { ReservationModal } from "@/components/ReservationModal";
 
 export const ReservationSection = () => {
     return (
-        <section id="page_reservation" className="relative">
+        <section id="section-reservation" className="relative">
             <Image
                 className="w-full"
                 src="/images/reservation.png"
@@ -13,7 +12,6 @@ export const ReservationSection = () => {
                 quality={85}
                 alt="SEO"
             />
-            <ReservationModal />
         </section>
     );
 };

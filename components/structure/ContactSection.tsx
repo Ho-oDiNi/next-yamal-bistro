@@ -4,7 +4,7 @@ import { Icons } from "@/components/ui/Icons";
 export const ContactSection = () => {
     return (
         <section
-            id="page_contacts"
+            id="section-contacts"
             className="relative bg-[#EBEBEB] px-24 py-12"
         >
             <div className="container mx-auto h-auto rounded-[26px] bg-white px-24 py-20">

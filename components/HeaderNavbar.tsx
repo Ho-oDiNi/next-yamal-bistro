@@ -5,16 +5,16 @@ export const HeaderNavbar = () => {
         <nav className="flex flex-auto">
             <ul className="flex flex-auto justify-between px-20">
                 <li>
-                    <Link href="#page_kitchen_menu">Меню</Link>
+                    <Link href="#section-kitchen_menu">Меню</Link>
                 </li>
                 <li>
-                    <Link href="#page_reservation">Резерв</Link>
+                    <Link href="#section-reservation">Резерв</Link>
                 </li>
                 <li>
-                    <Link href="#page_feedback">Отзывы</Link>
+                    <Link href="#section-feedback">Отзывы</Link>
                 </li>
                 <li>
-                    <Link href="#page_contacts">Контакты</Link>
+                    <Link href="#section-contacts">Контакты</Link>
                 </li>
             </ul>
         </nav>

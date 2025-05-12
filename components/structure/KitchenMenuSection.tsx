@@ -1,3 +1,3 @@
 export const KitchenMenuSection = () => {
-    return <section id="page_kitchen_menu"></section>;
+    return <section id="section-kitchen_menu"></section>;
 };

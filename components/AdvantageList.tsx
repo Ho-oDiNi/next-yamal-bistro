@@ -32,7 +32,7 @@ export const AdvantageList = () => {
                         Заказы принимаем{" "}
                         <Link
                             className="text-blue-950 hover:underline"
-                            href="#page_contacts"
+                            href="#section-contacts"
                         >
                             ежедневно
                         </Link>
