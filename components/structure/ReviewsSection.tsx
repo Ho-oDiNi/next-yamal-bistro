@@ -3,7 +3,10 @@ import Image from "next/image";
 
 export const ReviewsSection = async () => {
     return (
-        <section className="from-white-150 bg-gradient-to-b to-[#EBEBEB] px-24 py-12">
+        <section
+            id="section-reviews"
+            className="from-white-150 bg-gradient-to-b to-[#EBEBEB] px-24 py-12"
+        >
             <div className="relative container mx-auto rounded-[26px] bg-white px-24 py-20">
                 <h2 className="title-secession-bold-40 mb-10">Отзывы гостей</h2>
                 <div className="no-scrollbar relative h-120 overflow-y-auto">
@@ -11,7 +14,7 @@ export const ReviewsSection = async () => {
                 </div>
                 <Image
                     className="absolute right-24 bottom-0"
-                    src="/images/chef.svg"
+                    src="/images/chef.png"
                     height={607}
                     width={380}
                     alt=""

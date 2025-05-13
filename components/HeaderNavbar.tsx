@@ -11,7 +11,7 @@ export const HeaderNavbar = () => {
                     <Link href="#section-reservation">Резерв</Link>
                 </li>
                 <li>
-                    <Link href="#section-feedback">Отзывы</Link>
+                    <Link href="#section-reviews">Отзывы</Link>
                 </li>
                 <li>
                     <Link href="#section-contacts">Контакты</Link>

@@ -88,6 +88,13 @@
 
   .body-secession-regular-22 {
     font-family: var(--font-family-secession);
+    font-weight: lighter;
+    font-size: var(--font-size-22);
+    line-height: 1.5;
+  }
+
+  .body-secession-bold-22 {
+    font-family: var(--font-family-secession);
     font-weight: var(--font-weight-normal);
     font-size: var(--font-size-22);
     line-height: 1.5;
@@ -113,7 +120,7 @@
 
   .accent-secession-demi-15 {
     font-family: var(--font-secession);
-    font-weight: var(--font-weight-demi);
+    font-weight: lighter;
     font-size: var(--font-size-15);
     line-height: 1.3;
   }
