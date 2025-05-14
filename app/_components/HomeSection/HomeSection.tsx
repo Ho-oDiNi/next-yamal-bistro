@@ -1,4 +1,4 @@
-export const HomeSection = () => {
+const HomeSection = () => {
     return (
         <section className="relative h-screen bg-[url(/images/home.png)] bg-cover bg-bottom bg-no-repeat px-48 pt-[25vh]">
             <div className="container mx-auto">
@@ -19,3 +19,4 @@ export const HomeSection = () => {
         </section>
     );
 };
+export default HomeSection;

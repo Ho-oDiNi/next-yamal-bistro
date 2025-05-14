@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export const HeaderNavbar = () => {
+const HeaderNavbar = () => {
     return (
         <nav className="flex flex-auto">
             <ul className="flex flex-auto justify-between px-20">
@@ -20,3 +20,5 @@ export const HeaderNavbar = () => {
         </nav>
     );
 };
+
+export default HeaderNavbar;

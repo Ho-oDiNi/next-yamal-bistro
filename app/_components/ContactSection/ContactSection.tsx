@@ -1,8 +1,8 @@
 import Image from "next/image";
 
-import { WorkTime } from "./WorkTime";
+import WorkTime from "./WorkTime";
 
-export const ContactSection = () => {
+const ContactSection = () => {
     return (
         <section
             id="section-contacts"
@@ -103,3 +103,5 @@ export const ContactSection = () => {
         </section>
     );
 };
+
+export default ContactSection;

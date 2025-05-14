@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export const Footer = () => {
+const Footer = () => {
     return (
         <footer className="body-secession-bold-22 relative bg-[#EBEBEB] px-24 py-12">
             <div className="container mx-auto h-auto rounded-[26px] bg-white px-24 py-12">
@@ -129,3 +129,5 @@ export const Footer = () => {
         </footer>
     );
 };
+
+export default Footer;

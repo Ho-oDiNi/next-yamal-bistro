@@ -4,7 +4,7 @@ interface WorkTimeProps {
     timeClose: string;
 }
 
-export const WorkTime = (props: WorkTimeProps) => {
+const WorkTime = (props: WorkTimeProps) => {
     return (
         <p className="my-[7px] mr-[75px] flex justify-between">
             <span>{props.weekDay}: </span>
@@ -14,3 +14,5 @@ export const WorkTime = (props: WorkTimeProps) => {
         </p>
     );
 };
+
+export default WorkTime;

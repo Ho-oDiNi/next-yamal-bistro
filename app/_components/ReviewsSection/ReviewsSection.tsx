@@ -1,7 +1,8 @@
-import { YandexReviews } from "./YandexReviews";
 import Image from "next/image";
 
-export const ReviewsSection = async () => {
+import YandexReviews from "./YandexReviews";
+
+const ReviewsSection = async () => {
     return (
         <section
             id="section-reviews"
@@ -23,3 +24,5 @@ export const ReviewsSection = async () => {
         </section>
     );
 };
+
+export default ReviewsSection;

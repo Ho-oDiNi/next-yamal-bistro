@@ -2,9 +2,9 @@
 
 import Image from "next/image";
 
-import { ReservationForm } from "./ReservationForm";
+import ReservationForm from "./ReservationForm";
 
-export const ReservationSection = () => {
+const ReservationSection = () => {
     return (
         <section
             id="section-reservation"
@@ -35,3 +35,5 @@ export const ReservationSection = () => {
         </section>
     );
 };
+
+export default ReservationSection;

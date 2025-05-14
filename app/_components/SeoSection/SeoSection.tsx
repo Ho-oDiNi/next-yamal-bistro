@@ -1,6 +1,6 @@
-import { AdvantageList } from "./AdvantageList";
+import AdvantageList from "./AdvantageList";
 
-export const SeoSection = () => {
+const SeoSection = () => {
     return (
         <section className="from-brand-150 to-brand-200 body-secession-regular-22 after-image after-image-deer relative bg-gradient-to-b px-48 py-12 text-white">
             <div className="container mx-auto">
@@ -35,3 +35,5 @@ export const SeoSection = () => {
         </section>
     );
 };
+
+export default SeoSection;

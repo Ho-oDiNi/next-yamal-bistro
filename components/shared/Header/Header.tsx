@@ -1,10 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { HeaderContacts } from "./HeaderContacts";
-import { HeaderNavbar } from "./HeaderNavbar";
+import HeaderContacts from "./HeaderContacts";
+import HeaderNavbar from "./HeaderNavbar";
 
-export const Header = () => {
+const Header = () => {
     return (
         <header className="bg-opacity-10 headline-secession-bold-22 sticky -top-[0px] z-99 bg-white/90 px-48 py-5 text-(--color-brand-300) backdrop-blur-md">
             <div className="container mx-auto flex flex-row items-center justify-between">
@@ -23,3 +23,5 @@ export const Header = () => {
         </header>
     );
 };
+
+export default Header;

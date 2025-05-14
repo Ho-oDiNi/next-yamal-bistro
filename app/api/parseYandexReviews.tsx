@@ -15,7 +15,7 @@ interface ReviewData {
     reviews: Review[];
 }
 
-export const parseYandexReviews = async (): Promise<ReviewData> => {
+const parseYandexReviews = async (): Promise<ReviewData> => {
     try {
         // In a real scenario, you would fetch this from the URL
         // For this example, we'll use the provided file content
@@ -79,3 +79,5 @@ export const parseYandexReviews = async (): Promise<ReviewData> => {
         throw new Error("Failed to parse reviews");
     }
 };
+
+export default parseYandexReviews;

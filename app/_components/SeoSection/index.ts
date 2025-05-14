@@ -1,2 +1,1 @@
-import { SeoSection } from "./SeoSection";
-export default SeoSection;
+export { default } from "./SeoSection";

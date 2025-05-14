@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export const HeaderContacts = () => {
+const HeaderContacts = () => {
     return (
         <div className="flex flex-row">
             <div className="mr-[20px] flex flex-col justify-between">
@@ -33,3 +33,5 @@ export const HeaderContacts = () => {
         </div>
     );
 };
+
+export default HeaderContacts;

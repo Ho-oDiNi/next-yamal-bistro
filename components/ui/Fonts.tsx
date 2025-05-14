@@ -1,6 +1,6 @@
-import local from "next/font/local";
+import localFonts from "next/font/local";
 
-export const Secession = local({
+const Secession = localFonts({
     src: [
         {
             path: "../../public/fonts/Secession-Bold.ttf",
@@ -26,3 +26,5 @@ export const Secession = local({
     variable: "--font-secession",
     display: "swap",
 });
+
+export { Secession };

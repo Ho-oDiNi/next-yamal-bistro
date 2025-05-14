@@ -1,7 +1,7 @@
 import Form from "next/form";
 import React from "react";
 
-export function ReservationForm() {
+const ReservationForm = () => {
     return (
         <Form action="/" className="space-y-12">
             <div className="grid grid-cols-3 gap-10">
@@ -37,4 +37,6 @@ export function ReservationForm() {
             </div>
         </Form>
     );
-}
+};
+
+export default ReservationForm;

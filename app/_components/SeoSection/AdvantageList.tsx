@@ -1,7 +1,8 @@
 import Link from "next/link";
-import { AdvantageElement } from "./AdvantageElement";
 
-export const AdvantageList = () => {
+import AdvantageElement from "./AdvantageElement";
+
+const AdvantageList = () => {
     return (
         <dl className="relative z-2 mb-30 flex justify-between">
             <AdvantageElement
@@ -42,3 +43,5 @@ export const AdvantageList = () => {
         </dl>
     );
 };
+
+export default AdvantageList;

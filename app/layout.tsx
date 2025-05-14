@@ -1,9 +1,10 @@
 import "@/styles/globals.css";
 import type { Metadata } from "next";
-import { Header } from "@/components/shared/Header/Header";
-import { Footer } from "@/components/shared/Footer/Footer";
-import { Secession } from "@/components/ui/Fonts";
 import React from "react";
+
+import Footer from "@/components/shared/Footer/Footer";
+import Header from "@/components/shared/Header/Header";
+import { Secession } from "@/components/ui/Fonts";
 
 export const metadata: Metadata = {
     title: "Ямал Бистро | Кафе открытой кухни | Доставка еды в Салехарде SEO",

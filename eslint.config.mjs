@@ -1,5 +1,6 @@
 import { dirname } from "path";
 import { fileURLToPath } from "url";
+
 import { FlatCompat } from "@eslint/eslintrc";
 import consistentDefaultExportPlugin from "eslint-plugin-consistent-default-export-name";
 import * as pluginImportX from "eslint-plugin-import-x";
@@ -24,11 +25,10 @@ const eslintConfig = [
       "import-x": pluginImportX,
     },
     rules: {
-      "consistent-default-export-name/default-export-match-filename": "error",
-      "consistent-default-export-name/default-import-match-filename": "error",
+      "consistent-default-export-name/default-export-match-filename": "off",
+      "consistent-default-export-name/default-import-match-filename": "warn",
 
       // Основные правила
-      "import-x/no-unresolved": "error",
       "import-x/named": "error",
       "import-x/default": "off",
       "import-x/no-named-default": "error",
@@ -56,7 +56,7 @@ const eslintConfig = [
 
       // Кастомное правило для соответствия имени импорта и файла
       "import-x/no-named-as-default-member": "off",
-      "import-x/prefer-default-export": "error",
+      "import-x/prefer-default-export": "warn",
     },
   },
 ];

@@ -6,7 +6,7 @@ interface AdvantageElementProps {
     description: string | React.ReactNode;
 }
 
-export const AdvantageElement = (props: AdvantageElementProps) => {
+const AdvantageElement = (props: AdvantageElementProps) => {
     return (
         <div className={`before-icon before-icon-${props.icon}`}>
             <dt className="subhead-secession-demi-26">{props.title}</dt>
@@ -14,3 +14,5 @@ export const AdvantageElement = (props: AdvantageElementProps) => {
         </div>
     );
 };
+
+export default AdvantageElement;

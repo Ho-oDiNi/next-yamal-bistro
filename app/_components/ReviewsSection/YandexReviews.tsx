@@ -1,7 +1,8 @@
-import { parseYandexReviews } from "@/app/api/YandexReviews";
 import Image from "next/image";
 
-export async function YandexReviews() {
+import parseYandexReviews from "@/app/api/YandexReviews";
+
+const YandexReviews = async () => {
     const reviewData = await parseYandexReviews();
 
     return (
@@ -68,7 +69,7 @@ export async function YandexReviews() {
             </div>
         </>
     );
-}
+};
 
 function StarIcon({
     filled,
@@ -87,3 +88,5 @@ function StarIcon({
         </svg>
     );
 }
+
+export default YandexReviews;
