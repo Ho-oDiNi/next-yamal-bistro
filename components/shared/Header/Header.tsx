@@ -1,7 +1,8 @@
-import Link from "next/link";
-import { HeaderNavbar } from "./HeaderNavbar";
-import { HeaderContacts } from "./HeaderContacts";
 import Image from "next/image";
+import Link from "next/link";
+
+import { HeaderContacts } from "./HeaderContacts";
+import { HeaderNavbar } from "./HeaderNavbar";
 
 export const Header = () => {
     return (

@@ -1,5 +1,6 @@
-import { WorkTime } from "./WorkTime";
 import Image from "next/image";
+
+import { WorkTime } from "./WorkTime";
 
 export const ContactSection = () => {
     return (

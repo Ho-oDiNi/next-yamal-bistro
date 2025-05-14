@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+
 import { ReservationForm } from "./ReservationForm";
 
 export const ReservationSection = () => {
