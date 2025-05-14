@@ -1,5 +1,5 @@
-import { WorkTime } from "../WorkTime";
-import { Icons } from "@/components/ui/Icons";
+import { WorkTime } from "./WorkTime";
+import Image from "next/image";
 
 export const ContactSection = () => {
     return (
@@ -73,16 +73,16 @@ export const ContactSection = () => {
                             </h3>
                             <div className="ml-[26px] flex gap-4">
                                 <a href="https://t.me/YamalBistro">
-                                    <Icons
-                                        src="tg"
+                                    <Image
+                                        src="/icons/tg.svg"
                                         height={40}
                                         width={40}
                                         alt=""
                                     />
                                 </a>
                                 <a href="https://vk.com/bistroyamal">
-                                    <Icons
-                                        src="vk"
+                                    <Image
+                                        src="/icons/vk.svg"
                                         height={40}
                                         width={40}
                                         alt=""

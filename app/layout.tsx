@@ -1,7 +1,7 @@
 import "@/styles/globals.css";
 import type { Metadata } from "next";
-import { Header } from "@/components/structure/Header";
-import { Footer } from "@/components/structure/Footer";
+import { Header } from "@/components/shared/Header/Header";
+import { Footer } from "@/components/shared/Footer/Footer";
 import { Secession } from "@/components/ui/Fonts";
 import React from "react";
 

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { ReservationForm } from "@/components/ReservationForm";
+import { ReservationForm } from "./ReservationForm";
 
 export const ReservationSection = () => {
     return (

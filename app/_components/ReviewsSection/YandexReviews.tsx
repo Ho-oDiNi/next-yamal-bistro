@@ -1,4 +1,4 @@
-import { parseYandexReviews } from "@/api/YandexReviews";
+import { parseYandexReviews } from "@/app/api/YandexReviews";
 import Image from "next/image";
 
 export async function YandexReviews() {

@@ -1,4 +1,4 @@
-import { AdvantageList } from "@/components/AdvantageList";
+import { AdvantageList } from "./AdvantageList";
 
 export const SeoSection = () => {
     return (

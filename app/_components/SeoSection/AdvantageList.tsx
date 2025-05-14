@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { AdvantageElement } from "@/components/AdvantageElement";
+import { AdvantageElement } from "./AdvantageElement";
 
 export const AdvantageList = () => {
     return (

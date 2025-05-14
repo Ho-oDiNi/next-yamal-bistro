@@ -1,4 +1,4 @@
-import { Icons } from "@/components/ui/Icons";
+import Image from "next/image";
 import Link from "next/link";
 
 export const HeaderContacts = () => {
@@ -6,18 +6,16 @@ export const HeaderContacts = () => {
         <div className="flex flex-row">
             <div className="mr-[20px] flex flex-col justify-between">
                 <Link href="https://t.me/YamalBistro">
-                    <Icons
-                        className=""
-                        src="tg_small"
+                    <Image
+                        src="/icons/tg_small.svg"
                         height={20}
                         width={20}
                         alt="SEO"
                     />
                 </Link>
                 <Link href="https://wa.me/+79044755099">
-                    <Icons
-                        className=""
-                        src="wa_small"
+                    <Image
+                        src="/icons/wa_small.svg"
                         height={20}
                         width={20}
                         alt="SEO"

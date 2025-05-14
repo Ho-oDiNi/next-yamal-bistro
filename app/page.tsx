@@ -1,9 +1,9 @@
-import { HomeSection } from "@/components/structure/HomeSection";
-import { SeoSection } from "@/components/structure/SeoSection";
-import { KitchenMenuSection } from "@/components/structure/KitchenMenuSection";
-import { ReservationSection } from "@/components/structure/ReservationSection";
-import { ReviewsSection } from "@/components/structure/ReviewsSection";
-import { ContactSection } from "@/components/structure/ContactSection";
+import { HomeSection } from "@/app/_components/HomeSection/HomeSection";
+import { SeoSection } from "@/app/_components/SeoSection/SeoSection";
+import { KitchenMenuSection } from "@/app/_components/KitchenMenuSection/KitchenMenuSection";
+import { ReservationSection } from "@/app/_components/ReservationSection/ReservationSection";
+import { ReviewsSection } from "@/app/_components/ReviewsSection/ReviewsSection";
+import { ContactSection } from "@/app/_components/ContactSection/ContactSection";
 
 export default function Home() {
     return (

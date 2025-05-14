@@ -1,4 +1,3 @@
-import { Icons } from "../ui/Icons";
 import Image from "next/image";
 
 export const Footer = () => {
@@ -22,8 +21,8 @@ export const Footer = () => {
                         </li>
 
                         <li className="mb-[25px] flex">
-                            <Icons
-                                src="document"
+                            <Image
+                                src="/icons/document.svg"
                                 className="mr-[32px]"
                                 height={28}
                                 width={28}
@@ -36,8 +35,8 @@ export const Footer = () => {
                         </li>
 
                         <li className="flex">
-                            <Icons
-                                src="phone"
+                            <Image
+                                src="/icons/phone.svg"
                                 className="mr-[32px]"
                                 height={28}
                                 width={28}
@@ -116,7 +115,12 @@ export const Footer = () => {
                 </div>
                 <hr className="my-[25px] rounded-[26px] border-1 border-[#EBEBEB]" />
                 <div className="flex items-center justify-between">
-                    <Icons src="logo_full" width={117} height={68} alt="SEO" />
+                    <Image
+                        src="/icons/logo_full.svg"
+                        width={117}
+                        height={68}
+                        alt="SEO"
+                    />
                     <span className="h-[30px]">
                         © 2025 ООО &quot;ХХХХ ХХХХХ&quot;
                     </span>

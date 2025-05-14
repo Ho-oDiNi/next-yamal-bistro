@@ -1,4 +1,4 @@
-import { YandexReviews } from "@/components/YandexReviews";
+import { YandexReviews } from "./YandexReviews";
 import Image from "next/image";
 
 export const ReviewsSection = async () => {
