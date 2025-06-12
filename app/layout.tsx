@@ -1,10 +1,10 @@
-import "@/styles/globals.css";
+import "./globals.css";
 import type { Metadata } from "next";
 import React from "react";
 
-import Footer from "@/components/shared/Footer/Footer";
-import Header from "@/components/shared/Header/Header";
-import { Secession } from "@/components/ui/Fonts";
+import Footer from "@/app/_components/shared/Footer";
+import Header from "@/app/_components/shared/Header";
+import SecessionFont from "@/app/_components/ui/SecessionFont";
 
 export const metadata: Metadata = {
     title: "Ямал Бистро | Кафе открытой кухни | Доставка еды в Салехарде SEO",
@@ -18,7 +18,7 @@ export default function layout({
 }>) {
     return (
         <html lang="ru">
-            <body className={`${Secession.variable} antialiased`}>
+            <body className={`${SecessionFont.variable} antialiased`}>
                 <Header />
                 {children}
                 <Footer />

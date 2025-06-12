@@ -10,7 +10,7 @@ const ReservationSection = () => {
             id="section-reservation"
             className="relative bg-cover bg-bottom bg-no-repeat text-white"
         >
-            <div className="bg-brand-300/60 absolute top-1/2 left-1/2 container -translate-1/2 rounded-[26px] px-24 py-30">
+            <div className="bg-brand-dark/60 absolute top-1/2 left-1/2 container -translate-1/2 rounded-[26px] px-24 py-30">
                 <div className="mb-10 border-b-3 pb-10">
                     <h2 className="title-secession-bold-40 mb-10">
                         Забронируйте стол

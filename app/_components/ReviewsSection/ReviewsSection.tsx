@@ -6,7 +6,7 @@ const ReviewsSection = async () => {
     return (
         <section
             id="section-reviews"
-            className="from-white-150 bg-gradient-to-b to-[#EBEBEB] px-24 py-12"
+            className="bg-gradient-to-b from-[#f7fcfe] to-[#EBEBEB] px-24 py-12"
         >
             <div className="relative container mx-auto rounded-[26px] bg-white px-24 py-20">
                 <h2 className="title-secession-bold-40 mb-10">Отзывы гостей</h2>

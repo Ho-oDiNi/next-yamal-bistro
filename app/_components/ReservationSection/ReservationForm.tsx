@@ -24,7 +24,7 @@ const ReservationForm = () => {
                 <label className="accent-secession-demi-15 flex max-w-1/5 items-center">
                     <input
                         type="checkbox"
-                        className="mr-3 h-10 w-10 border-gray-300"
+                        className="mr-3 h-10 w-10 border-neutral-500"
                         required
                     />
                     Заполняя форму, я даю согласие на обработку персональных

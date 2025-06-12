@@ -2,7 +2,7 @@ import AdvantageList from "./AdvantageList";
 
 const SeoSection = () => {
     return (
-        <section className="from-brand-150 to-brand-200 body-secession-regular-22 after-image after-image-deer relative bg-gradient-to-b px-48 py-12 text-white">
+        <section className="to-brand-primary body-secession-regular-22 after-image after-image-deer relative bg-gradient-to-b from-[#007dc6] px-48 py-12 text-white">
             <div className="container mx-auto">
                 <AdvantageList />
                 <h2 className="title-secession-bold-40 mb-10">

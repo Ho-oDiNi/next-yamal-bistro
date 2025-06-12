@@ -57,6 +57,11 @@ const eslintConfig = [
       // Кастомное правило для соответствия имени импорта и файла
       "import-x/no-named-as-default-member": "off",
       "import-x/prefer-default-export": "warn",
+
+      "func-style": ["error", "expression", { allowArrowFunctions: true }],
+
+      "no-unused-vars": "warn",
+      "@typescript-eslint/no-unused-vars": "warn",
     },
   },
 ];

@@ -1,24 +1,24 @@
 import localFonts from "next/font/local";
 
-const Secession = localFonts({
+const SecessionFont = localFonts({
     src: [
         {
-            path: "../../public/fonts/Secession-Bold.ttf",
+            path: "../../../public/fonts/Secession-Bold.ttf",
             weight: "700",
             style: "normal",
         },
         {
-            path: "../../public/fonts/Secession-Demibold.ttf",
+            path: "../../../public/fonts/Secession-Demibold.ttf",
             weight: "600",
             style: "normal",
         },
         {
-            path: "../../public/fonts/Secession-Regular.otf",
+            path: "../../../public/fonts/Secession-Regular.otf",
             weight: "400",
             style: "normal",
         },
         {
-            path: "../../public/fonts/Secession-Light.ttf",
+            path: "../../../public/fonts/Secession-Light.ttf",
             weight: "300",
             style: "normal",
         },
@@ -27,4 +27,4 @@ const Secession = localFonts({
     display: "swap",
 });
 
-export { Secession };
+export default SecessionFont;

@@ -4,9 +4,12 @@ const HomeSection = () => {
             <div className="container mx-auto">
                 <h1 className="title-secession-bold-55 mb-20 max-w-145">
                     Кафе{" "}
-                    <em className="text-brand-200 not-italic">открытой </em>
+                    <em className="text-brand-primary not-italic">открытой </em>
                     кухни «Ямал Бистро»
-                    <em className="text-brand-200 not-italic"> в Салехарде</em>
+                    <em className="text-brand-primary not-italic">
+                        {" "}
+                        в Салехарде
+                    </em>
                 </h1>
 
                 <button className="btn btn-secondary mr-20" type="button">
