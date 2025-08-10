@@ -12,10 +12,10 @@ const ReservationSection = () => {
         >
             <div className="bg-brand-dark/60 absolute top-1/2 left-1/2 container -translate-1/2 rounded-[26px] px-24 py-30">
                 <div className="mb-10 border-b-3 pb-10">
-                    <h2 className="title-secession-bold-40 mb-10">
+                    <h2 className="mb-10 text-4xl font-bold">
                         Забронируйте стол
                     </h2>
-                    <p className="body-secession-regular-22 max-w-3/12">
+                    <p className="body-secession-regular-22 font-lighter max-w-3/12 text-xl">
                         Оставьте контактные данные и наш менеджер сразу свяжется
                         с Вами
                     </p>

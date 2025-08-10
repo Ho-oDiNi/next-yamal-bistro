@@ -4,7 +4,7 @@ import React from "react";
 
 import Footer from "@/components/shared/Footer";
 import Header from "@/components/shared/Header";
-import SecessionFont from "@/components/ui/SecessionFont";
+import { SecessionFont } from "@/components/ui/SecessionFont";
 
 export const metadata: Metadata = {
     title: "Ямал Бистро | Кафе открытой кухни | Доставка еды в Салехарде SEO",

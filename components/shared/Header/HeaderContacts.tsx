@@ -26,9 +26,7 @@ const HeaderContacts = () => {
                 <a href="tel:+79044755099" aria-label="SEO">
                     +7 (904) 475-50-99
                 </a>
-                <span className="accent-secession-demi-15">
-                    ул. Свердлова, 34А
-                </span>
+                <span className="font-lighter text-sm">ул. Свердлова, 34А</span>
             </div>
         </div>
     );

@@ -1,10 +1,10 @@
 import Image from "next/image";
 
 import ContactSection from "./_components/ContactSection";
-import HomeSection from "./_components/HomeSection/HomeSection";
-import KitchenMenuSection from "./_components/KitchenMenuSection/KitchenMenuSection";
-import ReservationSection from "./_components/ReservationSection/ReservationSection";
-import ReviewsSection from "./_components/ReviewsSection/ReviewsSection";
+import HomeSection from "./_components/HomeSection";
+import KitchenMenuSection from "./_components/KitchenMenuSection";
+import ReservationSection from "./_components/ReservationSection";
+import ReviewsSection from "./_components/ReviewsSection";
 import SeoSection from "./_components/SeoSection";
 
 export default function page() {
@@ -12,7 +12,7 @@ export default function page() {
         <main>
             <HomeSection />
             <div className="relative overflow-hidden">
-                <Image
+                {/* <Image
                     className="animate-spin-slow absolute -right-2/5 z-1"
                     src="/icons/deer_antlers_1024.svg"
                     alt=""
@@ -25,7 +25,7 @@ export default function page() {
                     alt=""
                     height={824}
                     width={824}
-                />
+                /> */}
                 <SeoSection />
                 <KitchenMenuSection />
             </div>

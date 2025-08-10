@@ -9,8 +9,8 @@ interface AdvantageElementProps {
 const AdvantageElement = (props: AdvantageElementProps) => {
     return (
         <div className={`before-icon before-icon-${props.icon}`}>
-            <dt className="subhead-secession-demi-26">{props.title}</dt>
-            <dd className="accent-secession-light-16">{props.description}</dd>
+            <dt className="font-demi text-2xl">{props.title}</dt>
+            <dd className="text-base font-light">{props.description}</dd>
         </div>
     );
 };
