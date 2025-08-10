@@ -13,7 +13,7 @@ const ContactSection = () => {
                 <div className="flex justify-between not-italic">
                     <div className="max-w-[25%] flex-1">
                         <div>
-                            <h3 className="font-demi my-5 text-2xl">
+                            <h3 className="my-5 text-2xl font-semibold">
                                 Часы работы
                             </h3>
                             <WorkTime
@@ -38,7 +38,9 @@ const ContactSection = () => {
                             />
                         </div>
                         <div className="flex flex-col">
-                            <h3 className="font-demi my-3 text-2xl">Телефон</h3>
+                            <h3 className="my-3 text-2xl font-semibold">
+                                Телефон
+                            </h3>
                             <a href="tel:+79044755099" className="my-[7px]">
                                 +7 (904) 475-50-99
                             </a>
@@ -49,21 +51,25 @@ const ContactSection = () => {
                     </div>
                     <div className="max-w-[25%] flex-1">
                         <div>
-                            <h3 className="font-demi my-5 text-2xl">Адрес</h3>
+                            <h3 className="my-5 text-2xl font-semibold">
+                                Адрес
+                            </h3>
                             <span>г. Салехард, </span>
                             <span>ул. Свердлова, </span>
                             <span>д. 34А</span>
                         </div>
 
                         <div>
-                            <h3 className="font-demi my-5 text-2xl">Почта</h3>
+                            <h3 className="my-5 text-2xl font-semibold">
+                                Почта
+                            </h3>
                             <a href="mailto:yamdstone@mail.ru">
                                 yamdstone@mail.ru
                             </a>
                         </div>
 
                         <div>
-                            <h3 className="font-demi my-5 text-2xl">
+                            <h3 className="my-5 text-2xl font-semibold">
                                 Социальные сети
                             </h3>
                             <div className="ml-[26px] flex gap-4">
