@@ -23,7 +23,7 @@
 
 @layer utilities {
   .btn {
-    @apply h-14 w-50 cursor-pointer rounded-xl text-(--font-size-18);
+    @apply h-15 w-75 cursor-pointer rounded-xl text-(--font-size-18);
   }
   .btn-primary {
     @apply bg-(--color-brand-secondary) text-(--color-white) hover:bg-(--color-brand-primary) active:bg-(--color-brand-dark);
@@ -43,6 +43,10 @@
   a {
     @apply drag-none;
   }
+
+  h2 {
+    @apply mb-14 text-5xl font-bold;
+  }
 }
 
 @theme {
@@ -58,4 +62,9 @@
   /* ------ ANIMATION ------ */
   --animate-spin-slow: spin 60s linear infinite;
   --animate-reverse-spin: reverse-spin 60s linear infinite;
+
+  /* ------ SPACES ------ */
+  --space-between-sections: calc(var(--spacing) * 12);
+  --space-edge-screen: calc(var(--spacing) * 15);
+  --space-container: var(--space-between-sections) var(--space-edge-screen);
 }

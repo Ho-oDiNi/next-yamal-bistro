@@ -4,7 +4,7 @@ import React from "react";
 const ReservationForm = () => {
     return (
         <Form action="/" className="space-y-12">
-            <div className="grid grid-cols-3 gap-10">
+            <div className="grid grid-cols-3 gap-8">
                 <input
                     type="number"
                     placeholder="Количество человек"
@@ -15,7 +15,7 @@ const ReservationForm = () => {
                 <input type="time" placeholder="Время" required />
             </div>
 
-            <div className="grid grid-cols-2 gap-10">
+            <div className="grid grid-cols-2 gap-8">
                 <input type="text" placeholder="Ваше имя" required />
                 <input type="tel" placeholder="Ваш телефон" required />
             </div>

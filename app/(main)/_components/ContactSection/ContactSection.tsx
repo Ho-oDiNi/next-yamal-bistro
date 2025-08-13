@@ -6,10 +6,10 @@ const ContactSection = () => {
     return (
         <section
             id="section-contacts"
-            className="relative bg-[#EBEBEB] px-24 py-12"
+            className="relative bg-[#EBEBEB] p-(--space-container)"
         >
             <div className="container mx-auto h-auto rounded-[26px] bg-white px-24 py-20">
-                <h2 className="mb-10 text-4xl font-bold">Наши контакты</h2>
+                <h2>Наши контакты</h2>
                 <div className="flex justify-between not-italic">
                     <div className="max-w-[25%] flex-1">
                         <div>
