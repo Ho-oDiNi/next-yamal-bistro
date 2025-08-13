@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const HeaderContacts = () => {
     return (
-        <div className="flex flex-row">
+        <div className="hidden flex-row lg:flex">
             <div className="mr-[20px] flex flex-col justify-between">
                 <Link href="https://t.me/YamalBistro">
                     <Image

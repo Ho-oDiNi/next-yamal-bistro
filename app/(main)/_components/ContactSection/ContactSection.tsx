@@ -6,7 +6,7 @@ const ContactSection = () => {
     return (
         <section
             id="section-contacts"
-            className="relative bg-[#EBEBEB] p-(--space-container)"
+            className="relative bg-[#EBEBEB] p-(--space-outside-container)"
         >
             <div className="container mx-auto h-auto rounded-[26px] bg-white px-24 py-20">
                 <h2>Наши контакты</h2>

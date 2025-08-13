@@ -23,7 +23,7 @@
 
 @layer utilities {
   .btn {
-    @apply h-15 w-75 cursor-pointer rounded-xl text-(--font-size-18);
+    @apply h-15 w-full cursor-pointer rounded-xl text-(--font-size-18) md:w-75;
   }
   .btn-primary {
     @apply bg-(--color-brand-secondary) text-(--color-white) hover:bg-(--color-brand-primary) active:bg-(--color-brand-dark);
@@ -33,7 +33,7 @@
   }
 
   input {
-    @apply text-brand-dark w-full rounded-md border border-neutral-400 bg-white px-3 py-5 text-base font-light placeholder:text-neutral-500 focus:ring-2 focus:outline-none;
+    @apply text-brand-dark w-full rounded-md border-neutral-400 bg-white px-3 py-5 text-base font-light placeholder:text-neutral-500 focus:ring-2 focus:outline-none;
   }
 
   img {
@@ -42,6 +42,10 @@
 
   a {
     @apply drag-none;
+  }
+
+  h1 {
+    @apply mb-20 max-w-4xl text-4xl/tight font-bold md:text-5xl/tight lg:text-6xl/tight;
   }
 
   h2 {
@@ -66,5 +70,10 @@
   /* ------ SPACES ------ */
   --space-between-sections: calc(var(--spacing) * 12);
   --space-edge-screen: calc(var(--spacing) * 15);
-  --space-container: var(--space-between-sections) var(--space-edge-screen);
+  --space-outside-container: var(--space-between-sections)
+    var(--space-edge-screen);
+
+  --space-inside-x: calc(var(--spacing) * 24);
+  --space-inside-y: calc(var(--spacing) * 20);
+  --space-intside-container: var(--space-inside-y) var(--space-inside-x);
 }

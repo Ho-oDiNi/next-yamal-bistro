@@ -2,7 +2,7 @@ import AdvantageList from "./AdvantageList";
 
 const SeoSection = () => {
     return (
-        <section className="to-brand-primary font-lighter relative bg-gradient-to-b from-[#007dc6] p-(--space-container) text-xl text-white">
+        <section className="to-brand-primary font-lighter relative bg-gradient-to-b from-[#007dc6] p-(--space-outside-container) text-xl text-white">
             <div className="container mx-auto">
                 <AdvantageList />
                 <h2>Попробуй вкус Севера!</h2>

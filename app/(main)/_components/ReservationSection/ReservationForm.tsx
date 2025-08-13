@@ -21,7 +21,7 @@ const ReservationForm = () => {
             </div>
 
             <div className="flex justify-between">
-                <label className="font-lighter flex max-w-1/5 items-center text-sm">
+                <label className="font-lighter flex max-w-xs items-center text-sm">
                     <input
                         type="checkbox"
                         className="mr-3 h-10 w-10 border-neutral-500"
