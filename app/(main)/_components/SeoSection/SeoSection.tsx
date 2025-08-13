@@ -2,7 +2,7 @@ import AdvantageList from "./AdvantageList";
 
 const SeoSection = () => {
     return (
-        <section className="to-brand-primary body-secession-regular-22 font-lighter relative bg-gradient-to-b from-[#007dc6] px-48 py-12 text-xl text-white">
+        <section className="to-brand-primary font-lighter relative bg-gradient-to-b from-[#007dc6] py-12 text-xl text-white">
             <div className="container mx-auto">
                 <AdvantageList />
                 <h2 className="mb-10 text-4xl font-bold">
@@ -12,11 +12,8 @@ const SeoSection = () => {
                     <div className="max-w-160 pr-10">
                         <p className="mb-4">
                             Откройте для себя неповторимую атмосферу и богатую
-                            палитру вкусов в кафе{" "}
-                            <em className="text-blue-950 not-italic">
-                                &quot;Ямал-Бистро&quot;
-                            </em>
-                            , где каждый может насладиться сочетанием северных
+                            палитру вкусов в кафе &quot;Ямал-Бистро&quot;, где
+                            каждый может насладиться сочетанием северных
                             традиций и современных кулинарных трендов. Мы
                             используем исключительно свежие и качественные
                             продукты премиального качества.

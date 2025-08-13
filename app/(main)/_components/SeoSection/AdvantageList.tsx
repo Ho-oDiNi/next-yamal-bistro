@@ -16,10 +16,7 @@ const AdvantageList = () => {
                 description={
                     <>
                         Рейтинг 4.8 баллов в{" "}
-                        <Link
-                            className="text-blue-950 hover:underline"
-                            href="https://eda.yandex.ru/r/fudkort_salekhard_vd"
-                        >
+                        <Link href="https://eda.yandex.ru/r/fudkort_salekhard_vd">
                             Яндекс.Еде
                         </Link>
                     </>
@@ -31,12 +28,7 @@ const AdvantageList = () => {
                 description={
                     <>
                         Заказы принимаем{" "}
-                        <Link
-                            className="text-blue-950 hover:underline"
-                            href="#section-contacts"
-                        >
-                            ежедневно
-                        </Link>
+                        <Link href="#section-contacts">ежедневно</Link>
                     </>
                 }
             />

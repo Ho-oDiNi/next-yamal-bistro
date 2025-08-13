@@ -4,7 +4,6 @@ import React from "react";
 
 import Footer from "@/components/shared/Footer";
 import Header from "@/components/shared/Header";
-import { SecessionFont } from "@/components/ui/SecessionFont";
 
 export const metadata: Metadata = {
     title: "Ямал Бистро | Кафе открытой кухни | Доставка еды в Салехарде SEO",
@@ -18,7 +17,9 @@ export default function layout({
 }>) {
     return (
         <html lang="ru">
-            <body className={`${SecessionFont.variable} antialiased`}>
+            <body
+                className={`font-family-secession text-brand-dark bg-white antialiased`}
+            >
                 <Header />
                 {children}
                 <Footer />
