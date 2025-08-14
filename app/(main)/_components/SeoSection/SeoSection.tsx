@@ -7,7 +7,7 @@ const SeoSection = () => {
                 <AdvantageList />
                 <h2>Попробуй вкус Севера!</h2>
                 <div className="flex items-center">
-                    <div className="max-w-2xl text-2xl">
+                    <div className="max-w-2xl text-lg md:text-xl lg:text-2xl">
                         <p className="mb-12">
                             Откройте для себя неповторимую атмосферу и богатую
                             палитру вкусов в кафе &quot;Ямал-Бистро&quot;, где

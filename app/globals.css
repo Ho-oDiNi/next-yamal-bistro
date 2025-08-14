@@ -15,6 +15,25 @@
   }
 }
 
+@utility container-accent {
+  width: 100%;
+  @media (width >= 40rem) {
+    max-width: calc(40rem + 2 * var(--space-inside-x));
+  }
+  @media (width >= 48rem) {
+    max-width: calc(48rem + 2 * var(--space-inside-x));
+  }
+  @media (width >= 64rem) {
+    max-width: calc(64rem + 2 * var(--space-inside-x));
+  }
+  @media (width >= 80rem) {
+    max-width: calc(80rem + 2 * var(--space-inside-x));
+  }
+  @media (width >= 96rem) {
+    max-width: calc(96rem + 2 * var(--space-inside-x));
+  }
+}
+
 @keyframes reverse-spin {
   from {
     transform: rotate(360deg);
@@ -49,7 +68,7 @@
   }
 
   h2 {
-    @apply mb-14 text-5xl font-bold;
+    @apply mb-14 text-3xl font-bold md:text-4xl lg:text-5xl;
   }
 }
 
@@ -69,11 +88,14 @@
 
   /* ------ SPACES ------ */
   --space-between-sections: calc(var(--spacing) * 12);
-  --space-edge-screen: calc(var(--spacing) * 15);
+  --space-edge-screen: calc(var(--spacing) * 16);
   --space-outside-container: var(--space-between-sections)
     var(--space-edge-screen);
 
-  --space-inside-x: calc(var(--spacing) * 24);
+  --space-outside-container-accent: var(--space-between-sections)
+    calc(var(--space-edge-screen) / 2);
+
+  --space-inside-x: calc(var(--space-edge-screen) / 2);
   --space-inside-y: calc(var(--spacing) * 20);
   --space-intside-container: var(--space-inside-y) var(--space-inside-x);
 }

@@ -12,9 +12,9 @@ const AdvantageElement = (props: AdvantageElementProps) => {
         <div className="flex">
             <Image
                 src={`/icons/${props.icon}.svg`}
-                className="mr-4"
-                height={20}
-                width={20}
+                className="mr-8"
+                height={24}
+                width={24}
                 alt=""
             />
             <div>

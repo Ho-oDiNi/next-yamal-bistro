@@ -6,7 +6,7 @@ const YandexReviews = async () => {
     const reviewData = await parseYandexReviews();
 
     return (
-        <>
+        <div className="no-scrollbar relative h-150 flex-1 overflow-y-auto">
             <div className="mb-6 flex items-center">
                 <span className="mr-2 text-3xl font-bold">
                     {reviewData.averageRating}
@@ -34,7 +34,7 @@ const YandexReviews = async () => {
                 </span>
             </div>
 
-            <div className="max-w-160 space-y-6">
+            <div className="space-y-6">
                 {reviewData.reviews.map((review, index) => (
                     <div key={index} className="border-b pb-6">
                         <div className="mb-2 flex items-center">
@@ -67,7 +67,7 @@ const YandexReviews = async () => {
                     </div>
                 ))}
             </div>
-        </>
+        </div>
     );
 };
 
