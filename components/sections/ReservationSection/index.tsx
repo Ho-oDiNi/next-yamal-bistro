@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 
-import ReservationForm from "./ReservationForm";
+import ReservationForm from "../../ui/ReservationForm";
 
 const ReservationSection = () => {
     return (

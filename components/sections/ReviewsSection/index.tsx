@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import YandexReviews from "./YandexReviews";
+import YandexReviews from "../../../lib/YandexReviews";
 
 const ReviewsSection = async () => {
     return (

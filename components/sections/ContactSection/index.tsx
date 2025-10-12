@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import WorkTime from "./WorkTime";
+import WorkTime from "../../ui/WorkTime";
 
 const ContactSection = () => {
     return (

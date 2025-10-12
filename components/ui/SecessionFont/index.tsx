@@ -26,4 +26,4 @@ const SecessionFont = localFonts({
     display: "swap",
 });
 
-export { SecessionFont };
+export default SecessionFont;

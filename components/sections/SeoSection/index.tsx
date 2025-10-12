@@ -1,4 +1,4 @@
-import AdvantageList from "./AdvantageList";
+import AdvantageList from "../../ui/AdvantageList";
 
 const SeoSection = () => {
     return (

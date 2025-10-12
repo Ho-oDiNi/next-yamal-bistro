@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import parseYandexReviews from "@/app/api/parseYandexReviews";
+import parseYandexReviews from "@/lib/YandexReviews/parseYandexReviews";
 
 const YandexReviews = async () => {
     const reviewData = await parseYandexReviews();
