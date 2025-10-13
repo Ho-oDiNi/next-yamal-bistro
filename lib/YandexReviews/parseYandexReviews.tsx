@@ -1,7 +1,7 @@
 "use server";
-import { parse } from "node-html-parser";
+import { parse, type HTMLElement } from "node-html-parser";
 
-interface Review {
+export interface Review {
     author: string;
     date: string;
     rating: number;
@@ -9,75 +9,91 @@ interface Review {
     photoUrl?: string;
 }
 
-interface ReviewData {
+export interface ReviewData {
     averageRating: string;
     totalReviews: string;
     reviews: Review[];
 }
 
+const selectText = (root: HTMLElement, selector: string): string => {
+    const el = root.querySelector(selector) as HTMLElement | null;
+    return el?.text.trim() ?? "";
+};
+
+const selectAttr = (
+    root: HTMLElement,
+    selector: string,
+    attr: string,
+): string => {
+    const el = root.querySelector(selector) as HTMLElement | null;
+    const val = el?.getAttribute(attr);
+    return val ?? "";
+};
+
+const STAR_SELECTOR = ".stars-list__star:not(._empty):not(._half)";
+const COMMENT_SELECTOR = ".comment";
+
+const cleanReviewText = (text: string): string =>
+    text.replace(/\.\.\..*ещё$/i, "").trim();
+
 const parseYandexReviews = async (): Promise<ReviewData> => {
-    try {
-        // In a real scenario, you would fetch this from the URL
-        // For this example, we'll use the provided file content
-        const apiUrl =
-            "https://yandex.ru/maps-reviews-widget/95926227579?comments";
-        const response = await fetch(apiUrl);
-        if (!response.ok) {
-            throw new Error(
-                `API request failed with status ${response.status}`,
-            );
-        }
+    const apiUrl = "https://yandex.ru/maps-reviews-widget/95926227579?comments";
+    const response = await fetch(apiUrl, { cache: "no-store" });
+    if (!response.ok) {
+        throw new Error(`API request failed with status ${response.status}`);
+    }
 
-        const root = parse(await response.text());
+    const html = await response.text();
+    const root = parse(html) as HTMLElement;
 
-        // Extract establishment information
-        const averageRating =
-            root.querySelector(".mini-badge__stars-count")?.text.trim() || "";
-        const totalReviews =
-            root.querySelector(".mini-badge__rating")?.text.trim() || "";
+    const averageRating =
+        selectText(root, ".mini-badge__stars-count") ||
+        selectText(root, ".business-rating-badge-view__rating-text") ||
+        "";
 
-        // Extract all reviews
-        const reviews: Review[] = [];
-        const reviewElements = root.querySelectorAll(".comment");
+    const totalReviews =
+        selectText(root, ".mini-badge__rating") ||
+        selectText(root, ".business-rating-badge-view__review-count") ||
+        "";
 
-        reviewElements.forEach((reviewElement) => {
-            const author =
-                reviewElement.querySelector(".comment__name")?.text.trim() ||
-                "";
-            const date =
-                reviewElement.querySelector(".comment__date")?.text.trim() ||
-                "";
-            const text =
-                reviewElement.querySelector(".comment__text")?.text.trim() ||
-                "";
-            const photoUrl =
-                reviewElement
-                    .querySelector(".comment__photo")
-                    ?.getAttribute("src") || "";
+    const reviewElements = root.querySelectorAll(
+        COMMENT_SELECTOR,
+    ) as HTMLElement[];
 
-            // Count the number of stars to determine rating (assuming all are filled based on the HTML)
-            const stars = reviewElement.querySelectorAll(
-                ".stars-list__star:not(._empty):not(._half)",
-            ).length;
+    const reviews: Review[] = reviewElements.map((el) => {
+        const author =
+            selectText(el, ".comment__name") ||
+            selectText(el, ".comment__author") ||
+            "";
 
-            reviews.push({
-                author,
-                date,
-                rating: stars,
-                text: text.replace(/\.\.\..*ещё$/, "").trim(), // Remove "read more" text if present
-                photoUrl,
-            });
-        });
+        const date =
+            selectText(el, ".comment__date") ||
+            selectText(el, ".comment__time") ||
+            "";
+
+        const text =
+            selectText(el, ".comment__text") ||
+            selectText(el, ".comment__description") ||
+            "";
+
+        const photoUrl =
+            selectAttr(el, ".comment__photo", "src") ||
+            selectAttr(el, ".comment__avatar img", "src") ||
+            "";
+
+        const rating = (el.querySelectorAll(STAR_SELECTOR) as HTMLElement[])
+            .length;
 
         return {
-            averageRating,
-            totalReviews,
-            reviews,
+            author,
+            date,
+            rating,
+            text: cleanReviewText(text),
+            photoUrl: photoUrl || undefined,
         };
-    } catch (error: unknown) {
-        console.error("Parsing Error:", error);
-        throw new Error("Failed to parse reviews");
-    }
+    });
+
+    return { averageRating, totalReviews, reviews };
 };
 
 export default parseYandexReviews;

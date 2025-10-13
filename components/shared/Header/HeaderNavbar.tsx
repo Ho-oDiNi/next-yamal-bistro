@@ -1,24 +1,22 @@
 import Link from "next/link";
 
-const HeaderNavbar = () => {
+const NAV_LINKS = [
+    { href: "#section-kitchen_menu", label: "Меню" },
+    { href: "#section-reservation", label: "Резерв" },
+    { href: "#section-reviews", label: "Отзывы" },
+    { href: "#section-contacts", label: "Контакты" },
+];
+
+export default function HeaderNavbar() {
     return (
-        <nav className="flex flex-auto">
-            <ul className="flex flex-auto justify-between px-20">
-                <li>
-                    <Link href="#section-kitchen_menu">Меню</Link>
-                </li>
-                <li>
-                    <Link href="#section-reservation">Резерв</Link>
-                </li>
-                <li>
-                    <Link href="#section-reviews">Отзывы</Link>
-                </li>
-                <li>
-                    <Link href="#section-contacts">Контакты</Link>
-                </li>
+        <nav className="flex flex-auto" aria-label="Основная навигация">
+            <ul className="flex flex-auto items-center justify-between gap-8 px-20">
+                {NAV_LINKS.map(({ href, label }) => (
+                    <li key={href}>
+                        <Link href={href}>{label}</Link>
+                    </li>
+                ))}
             </ul>
         </nav>
     );
-};
-
-export default HeaderNavbar;
+}

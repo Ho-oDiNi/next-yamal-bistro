@@ -7,22 +7,30 @@ interface AdvantageElementProps {
     description: string | React.ReactNode;
 }
 
-const AdvantageElement = (props: AdvantageElementProps) => {
+const AdvantageElement = ({
+    icon,
+    title,
+    description,
+}: AdvantageElementProps) => {
     return (
-        <div className="flex">
-            <Image
-                src={`/icons/${props.icon}.svg`}
-                className="mr-4"
-                height={20}
-                width={20}
-                alt=""
-            />
-            <div>
-                <dt className="text-2xl font-semibold">{props.title}</dt>
-                <dd className="text-base font-light">{props.description}</dd>
-            </div>
-        </div>
+        <>
+            <dt className="text-2xl font-semibold">
+                <span className="flex items-start">
+                    <Image
+                        src={`/icons/${icon}.svg`}
+                        className="mt-1 mr-4"
+                        height={20}
+                        width={20}
+                        alt=""
+                        aria-hidden="true"
+                    />
+                    <span>{title}</span>
+                </span>
+            </dt>
+            <dd className="text-base font-light">{description}</dd>
+        </>
     );
 };
 
 export default AdvantageElement;
+export type { AdvantageElementProps };

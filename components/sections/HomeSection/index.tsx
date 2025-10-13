@@ -1,25 +1,18 @@
-const HomeSection = () => {
-    return (
-        <section className="relative h-screen bg-[url(/images/home.png)] bg-cover bg-bottom bg-no-repeat pt-[25vh]">
-            <div className="container mx-auto max-w-5xl">
-                <h1 className="mb-20 max-w-125 text-5xl/tight font-bold">
-                    Кафе{" "}
-                    <em className="text-brand-primary not-italic">открытой </em>
-                    кухни «Ямал Бистро»
-                    <em className="text-brand-primary not-italic">
-                        {" "}
-                        в Салехарде
-                    </em>
-                </h1>
+import HeroActions from "./HeroActions";
+import HeroSectionContainer from "./HeroSectionContainer";
+import HeroTitle from "./HeroTitle";
+import { HERO_BG_URL, HERO_CTAS } from "./home.data";
 
-                <button className="btn btn-secondary mr-20" type="button">
-                    Заказать доставку
-                </button>
-                <button className="btn btn-primary" type="button">
-                    Забронировать стол
-                </button>
-            </div>
-        </section>
+const HeroSection = () => {
+    return (
+        <HeroSectionContainer backgroundUrl={HERO_BG_URL}>
+            <HeroTitle />
+            <HeroActions
+                delivery={HERO_CTAS.delivery}
+                reserve={HERO_CTAS.reserve}
+            />
+        </HeroSectionContainer>
     );
 };
-export default HomeSection;
+
+export default HeroSection;

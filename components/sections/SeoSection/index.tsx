@@ -1,15 +1,20 @@
-import AdvantageList from "../../ui/AdvantageList";
+import SeoContainer from "./SeoContainer";
+import SeoContent from "./SeoContent";
+import SeoHeader from "./SeoHeader";
+import SeoTextColumn from "./SeoTextColumn";
 
-const SeoSection = () => {
+import AdvantageList from "@/components/ui/AdvantageList";
+
+export default function Seo() {
     return (
-        <section className="to-brand-primary font-lighter relative bg-gradient-to-b from-[#007dc6] py-12 text-xl text-white">
+        <SeoContainer>
             <div className="container mx-auto">
                 <AdvantageList />
-                <h2 className="mb-10 text-4xl font-bold">
-                    Попробуй вкус Севера!
-                </h2>
-                <div className="flex items-center">
-                    <div className="max-w-160 pr-10">
+
+                <SeoHeader>Попробуй вкус Севера!</SeoHeader>
+
+                <SeoContent>
+                    <SeoTextColumn>
                         <p className="mb-4">
                             Откройте для себя неповторимую атмосферу и богатую
                             палитру вкусов в кафе &quot;Ямал-Бистро&quot;, где
@@ -26,11 +31,9 @@ const SeoSection = () => {
                             клиентов – лучшая рекомендация и доказательство
                             нашего профессионализма.
                         </p>
-                    </div>
-                </div>
+                    </SeoTextColumn>
+                </SeoContent>
             </div>
-        </section>
+        </SeoContainer>
     );
-};
-
-export default SeoSection;
+}
