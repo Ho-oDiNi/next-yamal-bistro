@@ -1,0 +1,26 @@
+@keyframes reverse-spin {
+  from {
+    transform: rotate(360deg);
+  }
+}
+
+@layer components {
+  .btn {
+    @apply h-14 w-50 cursor-pointer rounded-xl text-(--font-size-18);
+  }
+  .btn-primary {
+    @apply bg-(--color-brand-secondary) text-(--color-white) hover:bg-(--color-brand-primary) active:bg-(--color-brand-dark);
+  }
+  .btn-secondary {
+    @apply bg-(--color-white) text-(--color-brand-dark) hover:bg-(--color-brand-light) active:bg-(--color-slate-200);
+  }
+
+  input {
+    @apply text-brand-dark w-full rounded-md border border-neutral-400 bg-white px-3 py-5 text-base font-light placeholder:text-neutral-500 focus:ring-2 focus:outline-none;
+  }
+
+  img,
+  a {
+    @apply drag-none;
+  }
+}

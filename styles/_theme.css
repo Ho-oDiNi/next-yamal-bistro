@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@theme {
+  /* ------ COLORS ------ */
+  --color-brand-light: #6fbfe1;
+  --color-brand-secondary: #009cde;
+  --color-brand-primary: #007cc5;
+  --color-brand-dark: #0d1e46;
+
+  /* ------ FONT ------ */
+  --font-family-secession: "Secession", Arial, sans-serif;
+
+  /* ------ ANIMATION ------ */
+  --animate-spin-slow: spin 60s linear infinite;
+  --animate-reverse-spin: reverse-spin 60s linear infinite;
+
+  /* --breakpoint-xs: 26.5625rem;
+  --breakpoint-2xs: 23.4375rem; */
+}

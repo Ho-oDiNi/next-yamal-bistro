@@ -1,19 +1,27 @@
 {
-    "tabWidth": 4,
-    "useTabs": false,
-    "overrides": [
-        {
-            "files": ["*.css", "*.scss", "*.mjs"],
-            "options": {
-                "tabWidth": 2
-            }
-        },
-        {
-            "files": ["*.jsx", "*.js", "*.tsx", "*.ts"],
-            "options": {
-                "tabWidth": 4
-            }
-        }
-    ],
-    "plugins": ["prettier-plugin-tailwindcss"]
+  "tabWidth": 4,
+  "useTabs": false,
+  "overrides": [
+    {
+      "files": [
+        "*.css",
+        "*.scss",
+        "*.mjs",
+        "*.json",
+        "*.yaml",
+        "*.yml",
+        "./.prettierrc"
+      ],
+      "options": {
+        "tabWidth": 2
+      }
+    },
+    {
+      "files": ["*.jsx", "*.js", "*.tsx", "*.ts"],
+      "options": {
+        "tabWidth": 4
+      }
+    }
+  ],
+  "plugins": ["prettier-plugin-tailwindcss"]
 }

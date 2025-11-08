@@ -1,0 +1,18 @@
+{
+  # Глобальные настройки
+  email director@yamal-bistro.ru         # для Let's Encrypt
+  # auto_https включён по умолчанию; http->https редирект тоже
+  # лог можно включить тут, если нужно: debug
+}
+
+# Основной домен (и редирект с www)
+yamal-bistro.ru, www.yamal-bistro.ru {
+  encode gzip
+
+  @health {
+    path /healthz
+  }
+  respond @health "ok" 200
+
+  reverse_proxy web:3000
+}

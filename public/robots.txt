@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /_not-found
+Disallow: /api
+
+Host: yamal-bistro.ru
+Sitemap: https://yamal-bistro.ru/sitemap.xml
+Clean-Param: utm_source|utm_medium|utm_campaign|_ym_debug /

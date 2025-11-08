@@ -1,0 +1,20 @@
+# Игнорируем артефакты сборки и локальные файлы
+node_modules
+.next
+out
+build
+dist
+.pnpm-store
+
+# Конфигурации и окружение, которые не нужны внутри образа
+.env*
+!.env.example
+Dockerfile
+.dockerignore
+
+# Прочие временные файлы
+*.log
+.git
+.gitignore
+.vscode
+.idea
