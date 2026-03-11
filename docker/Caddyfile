@@ -5,8 +5,11 @@
   # лог можно включить тут, если нужно: debug
 }
 
-# Основной домен (и редирект с www)
-yamal-bistro.ru, www.yamal-bistro.ru {
+www.yamal.ru {
+  redir https://yamal-bistro.ru{uri} temporary
+}
+
+yamal-bistro.ru {
   encode gzip
 
   @health {

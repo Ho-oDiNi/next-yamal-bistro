@@ -1,21 +1,22 @@
-name: yamal-bistro-production
+name: yamal-production
 
 services:
   web:
-    image: docker.io/hooodini/yamal-bistro-image:latest
+    image: docker.io/hooodini/next-yamal-image:latest
     entrypoint: ["/app/docker/entrypoint.sh"]
     command: ["node", "server.js"]
 
     # Значения переменных попадут ВНУТРЬ контейнера web
     env_file:
-      - ${HOME}/env/yamal-bistro-site/.env.production
-      - ${HOME}/env/yamal-bistro-site/.env.local
+      - ${HOME}/env/next-yamal-site/.env.production
+      - ${HOME}/env/next-yamal-site/.env.local
 
     environment:
       # Подключение к БД по внутреннему имени сервиса
       PG_HOST: db
       PG_PORT: 5432
       DATABASE_URL: "postgresql://${PG_USER}:${PG_PASSWORD}@${PG_HOST}:${PG_PORT}/${PG_DB}?schema=public"
+      CATEGORY_IMAGES_DIR: /app/storage/category-images
 
     expose:
       - "3000"
@@ -32,12 +33,15 @@ services:
 
     restart: unless-stopped
 
+    volumes:
+      - category-images:/app/storage/category-images
+
   db:
     # если базовый файл уже задаёт image/volumes — можно оставить тут только overrides
     image: postgres:18
     env_file:
-      - ${HOME}/env/yamal-bistro-site/.env.production
-      - ${HOME}/env/yamal-bistro-site/.env.local
+      - ${HOME}/env/next-yamal-site/.env.production
+      - ${HOME}/env/next-yamal-site/.env.local
 
     # наружу БД обычно не открываем; если нужно — закомментируй
     ports:
@@ -74,7 +78,7 @@ services:
       - caddy-config:/config
 
     env_file:
-      - ${HOME}/env/yamal-bistro-site/.env.production
+      - ${HOME}/env/next-yamal-site/.env.production
 
     depends_on:
       web:
@@ -92,3 +96,4 @@ volumes:
   postgres-data:
   caddy-data:
   caddy-config:
+  category-images:

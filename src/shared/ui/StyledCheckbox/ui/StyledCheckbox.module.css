@@ -1,0 +1,15 @@
+@reference "tailwindcss";
+@reference "#styles/_theme.css";
+@reference "#styles/_utility.css";
+
+.base {
+  @apply border-brand-dark h-8 w-8 cursor-pointer rounded-md border bg-white;
+}
+
+.reset {
+  @apply checked:bg-brand-primary appearance-none checked:after:text-white checked:after:content-['✓'];
+}
+
+.position {
+  @apply checked:after:absolute-center relative;
+}

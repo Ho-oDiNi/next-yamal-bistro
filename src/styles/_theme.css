@@ -1,0 +1,16 @@
+@theme {
+  --space-inside-x: calc(var(--spacing) * 4);
+  --space-inside-y: calc(var(--spacing) * 16);
+
+  --breakpoint-xs: 26.5625rem; /* 425 px */
+  --breakpoint-2xs: 23.4375rem; /* 375 px */
+
+  --color-brand-light: #6fbfe1;
+  --color-brand-secondary: #009cde;
+  --color-brand-primary: #007cc5;
+  --color-brand-dark: #0d1e46;
+
+  /* ------ ANIMATION ------ */
+  --animate-spin-slow: spin 60s linear infinite;
+  --animate-reverse-spin: reverse-spin 60s linear infinite;
+}

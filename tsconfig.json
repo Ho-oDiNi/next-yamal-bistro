@@ -19,17 +19,16 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"],
-      "@shared/*": ["./components/shared/*"],
-      "@ui/*": ["./components/ui/*"],
-      "@sections/*": ["./components/sections/*"],
-      "@layout/*": ["./components/layout/*"],
+      "@/*": ["./src/*"],
+      "@shared/*": ["./src/components/shared/*"],
+      "@ui/*": ["./src/components/ui/*"],
+      "@sections/*": ["./src/sections/*"],
+      "@layout/*": ["./src/components/layout/*"],
       "@icons/*": ["./public/icons/*"],
       "@images/*": ["./public/images/*"],
       "@documents/*": ["./public/documents/*"],
-      "@api/*": ["./app/api/*"],
-      "@types": ["./types/*"],
-      "@constants": ["./constants/index.ts"]
+      "@api/*": ["./src/app/api/*"],
+      "@types": ["./types/*"]
     }
   },
   "include": [
@@ -38,7 +37,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     ".next\\dev/types/**/*.ts",
-    "types/*.d.ts"
+    "types/*.d.ts",
+    ".next/dev/types/**/*.ts"
   ],
   "exclude": ["node_modules"]
 }

@@ -1,0 +1,27 @@
+@reference "tailwindcss";
+@reference "#styles/_theme.css";
+@reference "#styles/_utility.css";
+
+.base {
+  @apply flex-center cursor-pointer text-sm;
+}
+
+/* .size-sm {
+  @apply inline-block! rounded-lg px-4 py-2 text-center;
+} */
+.size-lg {
+  @apply h-13 w-full rounded-xl text-lg md:w-60;
+}
+/* .size-lg {
+  @apply 2xs:text-base h-15 w-full max-w-70 rounded-xl lg:text-lg xl:text-xl;
+}
+.size-max {
+  @apply 2xs:text-base h-15 w-full rounded-xl lg:text-lg xl:text-xl;
+} */
+
+.variant-primary {
+  @apply bg-brand-secondary hover:bg-brand-primary focus:border-brand-dark active:bg-brand-dark font-bold text-white;
+}
+.variant-secondary {
+  @apply active:bg-brand-light focus:border-brand-dark text-brand-dark bg-white font-bold hover:bg-slate-200;
+}

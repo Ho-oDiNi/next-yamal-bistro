@@ -1,4 +1,6 @@
-@import "../styles/_base.css";
-@import "../styles/_theme.css";
-@import "../styles/_utility.css";
-@import "../styles/_components.css";
+@import "tailwindcss";
+
+@import "../src/styles/_base.css";
+@import "../src/styles/_theme.css";
+@import "../src/styles/_utility.css";
+@import "../src/styles/_components.css";

@@ -1,0 +1,25 @@
+@layer components {
+  .text-main {
+    @apply text-base lg:text-2xl;
+  }
+
+  .text-content {
+    @apply 2xs:text-base text-sm;
+  }
+
+  .text-h1 {
+    @apply xs:text-3xl mb-8 text-2xl font-bold md:text-4xl lg:text-5xl;
+  }
+
+  .text-h2 {
+    @apply xs:text-2xl mb-6 text-xl font-bold md:text-3xl lg:text-4xl;
+  }
+
+  .text-h3 {
+    @apply 2xs:text-lg xs:text-xl mb-2 text-base font-bold;
+  }
+
+  .text-h3__desc {
+    @apply 2xs:text-base text-sm;
+  }
+}

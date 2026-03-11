@@ -1,7 +1,38 @@
+User-agent: Yandex
+Disallow: /documents
+Disallow: /_not-found
+Disallow: /api
+Allow: /*.css
+Allow: /*.js
+Allow: /*.png
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.gif
+Allow: /*.svg
+Allow: /*.webp
+Allow: /*.ico
+
+Clean-Param: _ym_debug&etext&ybaip /
+Clean-Param: utm_source&utm_medium&utm_campaign&utm_term&utm_content /
+Clean-Param: gclid&fbclid&yclid&ysclid /
+
+User-agent: Googlebot
+Disallow: /documents
+Disallow: /_not-found
+Disallow: /api
+Allow: /*.css
+Allow: /*.js
+Allow: /*.png
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.gif
+Allow: /*.svg
+Allow: /*.webp
+Allow: /*.ico
+
 User-agent: *
+Disallow: /documents
 Disallow: /_not-found
 Disallow: /api
 
-Host: yamal-bistro.ru
 Sitemap: https://yamal-bistro.ru/sitemap.xml
-Clean-Param: utm_source|utm_medium|utm_campaign|_ym_debug /

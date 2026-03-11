@@ -3,7 +3,7 @@ services:
     image: postgres:18
     env_file: []
     environment:
-      POSTGRES_DB: ${PG_DB:-alpforce}
+      POSTGRES_DB: ${PG_DB:-yamal}
       POSTGRES_USER: ${PG_USER:-postgres}
       POSTGRES_PASSWORD: ${PG_PASSWORD:-postgres}
     volumes:

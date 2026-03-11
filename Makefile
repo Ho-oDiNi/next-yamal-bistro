@@ -22,7 +22,7 @@ COMPOSE_DEV  := $(COMPOSE_DIR)/docker-compose.dev.yml
 COMPOSE_PROD := $(COMPOSE_DIR)/docker-compose.prod.yml
 
 ENV_DEV   := config/.env.development
-ENV_PROD  := $(HOME_DIR)/env/yamal-bistro-site/.env.production
+ENV_PROD  := $(HOME_DIR)/env/next-yamal-site/.env.production
 
 # docker compose команды с нужным --env-file
 DC      := docker compose
