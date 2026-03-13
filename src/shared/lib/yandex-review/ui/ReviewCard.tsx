@@ -35,7 +35,9 @@ export const ReviewCard = ({ review }: ReviewCardProps) => {
                 <StarRating value={review.rating} size="sm" />
             </div>
 
-            <p className="whitespace-pre-line text-gray-800">{review.text}</p>
+            <p className="font-roboto text-sm whitespace-pre-line text-gray-800">
+                {review.text}
+            </p>
         </article>
     );
 };

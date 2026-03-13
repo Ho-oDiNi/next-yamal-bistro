@@ -22,7 +22,7 @@ export const ConsentField = () => {
                     {...register("consent")}
                 />
 
-                <span className="text-sm">
+                <span className="font-roboto text-xs">
                     Заполняя форму, я даю согласие <br />
                     на{" "}
                     <Link href="" className="text-zinc-300 hover:opacity-70">

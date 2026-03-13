@@ -20,8 +20,8 @@
 } */
 
 .variant-primary {
-  @apply bg-brand-secondary hover:bg-brand-primary focus:border-brand-dark active:bg-brand-dark font-bold text-white;
+  @apply bg-brand-secondary hover:bg-brand-primary focus:border-brand-dark active:bg-brand-dark font-semibold text-white;
 }
 .variant-secondary {
-  @apply active:bg-brand-light focus:border-brand-dark text-brand-dark bg-white font-bold hover:bg-slate-200;
+  @apply active:bg-brand-light focus:border-brand-dark text-brand-dark bg-white font-medium hover:bg-slate-200;
 }

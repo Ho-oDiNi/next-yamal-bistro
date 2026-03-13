@@ -24,7 +24,7 @@ export const MenuNav = ({
                         type="button"
                         onClick={() => onChange(null)}
                         className={cn(
-                            "text-lg text-white transition",
+                            "text-accent text-white transition",
                             activeCategory === null
                                 ? "font-semibold"
                                 : "hover:opacity-70",
@@ -43,7 +43,7 @@ export const MenuNav = ({
                                 type="button"
                                 onClick={() => onChange(category.id)}
                                 className={cn(
-                                    "text-lg text-white transition",
+                                    "text-accent text-white transition",
                                     isActive
                                         ? "font-semibold"
                                         : "hover:opacity-70",

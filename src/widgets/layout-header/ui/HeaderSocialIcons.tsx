@@ -11,7 +11,7 @@ export const HeaderSocialIcons = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Открыть Telegram"
-                className="block"
+                className="block hover:opacity-70"
             >
                 <Image className="h-6 w-6" src={telegramIcon} alt="Telegram" />
             </a>
@@ -21,7 +21,7 @@ export const HeaderSocialIcons = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Открыть WhatsApp"
-                className="block"
+                className="block hover:opacity-70"
             >
                 <Image className="h-6 w-6" src={whatsappIcon} alt="WhatsApp" />
             </a>

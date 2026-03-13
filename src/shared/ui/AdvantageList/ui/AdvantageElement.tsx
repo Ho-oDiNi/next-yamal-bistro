@@ -14,8 +14,10 @@ export const AdvantageElement = ({
             <Image src={icon} alt="" />
 
             <Link href={href} className="hover:opacity-70">
-                <p className="text-h3">{title}</p>
-                <p className="text-h3__desc">{description}</p>
+                <p className="text-contrast">{title}</p>
+                <p className="font-roboto text-base font-extralight">
+                    {description}
+                </p>
             </Link>
         </div>
     );

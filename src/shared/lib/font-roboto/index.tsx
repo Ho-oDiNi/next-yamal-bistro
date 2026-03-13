@@ -1,6 +1,6 @@
-import { Roboto_Condensed as RobotoCondensed } from "next/font/google";
+import { Roboto } from "next/font/google";
 
-export const FontRoboto = RobotoCondensed({
+export const FontRoboto = Roboto({
     variable: "--font-roboto",
     subsets: ["cyrillic"],
 });

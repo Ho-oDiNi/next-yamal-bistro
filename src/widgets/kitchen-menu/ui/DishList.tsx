@@ -38,7 +38,7 @@ export const DishList = ({
 
     return (
         <div className="space-y-6">
-            <h3 className="text-2xl font-bold text-white">
+            <h3 className="text-h3 text-white">
                 {activeCategoryData?.name || "Все блюда кухни"}
             </h3>
 

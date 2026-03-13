@@ -1,4 +1,12 @@
 @layer components {
+  .text-accent {
+    @apply text-xl font-light;
+  }
+
+  .text-contrast {
+    @apply text-[1.625rem]/tight font-semibold;
+  }
+
   .text-main {
     @apply text-base lg:text-2xl;
   }
@@ -8,18 +16,18 @@
   }
 
   .text-h1 {
-    @apply xs:text-3xl mb-8 text-2xl font-bold md:text-4xl lg:text-5xl;
+    @apply text-4xl font-bold md:text-5xl/tight;
   }
 
   .text-h2 {
-    @apply xs:text-2xl mb-6 text-xl font-bold md:text-3xl lg:text-4xl;
+    @apply mb-12.5 text-3xl font-semibold md:text-4xl;
   }
 
   .text-h3 {
-    @apply 2xs:text-lg xs:text-xl mb-2 text-base font-bold;
+    @apply mb-10 text-2xl font-semibold md:text-3xl;
   }
 
-  .text-h3__desc {
-    @apply 2xs:text-base text-sm;
+  .text-h4 {
+    @apply text-[1.375rem]/tight font-semibold;
   }
 }

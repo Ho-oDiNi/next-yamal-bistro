@@ -6,8 +6,6 @@ export const MENU_CATEGORIES: ICategory[] = [
     { id: 1, name: "Завтраки", slug: "zavtraki" },
     { id: 5, name: "Супы", slug: "supy" },
     { id: 6, name: "Салаты", slug: "salaty" },
-    { id: 7, name: "Закуски", slug: "zakuski" },
-    { id: 9, name: "Соусы", slug: "sousy" },
 
     { id: 10, name: "Шашлык", slug: "shashlyk" },
     { id: 11, name: "Овощи гриль", slug: "ovoshchi-gril" },
@@ -19,6 +17,9 @@ export const MENU_CATEGORIES: ICategory[] = [
 
     { id: 16, name: "Wok", slug: "wok" },
     { id: 17, name: "Роллы", slug: "rolly" },
+
+    { id: 7, name: "Закуски", slug: "zakuski" },
+    { id: 9, name: "Соусы", slug: "sousy" },
 
     { id: 18, name: "Горячие напитки", slug: "goryachie-napitki" },
     { id: 19, name: "Холодные напитки", slug: "holodnye-napitki" },

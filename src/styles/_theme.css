@@ -15,4 +15,7 @@
   /* ------ ANIMATION ------ */
   --animate-spin-slow: spin 60s linear infinite;
   --animate-reverse-spin: reverse-spin 60s linear infinite;
+
+  --font-secession: var(--font-secession);
+  --font-roboto: var(--font-roboto);
 }

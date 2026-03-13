@@ -15,8 +15,10 @@ export const InfoGroup = ({
 }: InfoGroupProps) => {
     return (
         <div>
-            <h3 className={cn("text-h3", titleClassName)}>{title}</h3>
-            {children}
+            <h3 className={cn("text-contrast mb-6", titleClassName)}>
+                {title}
+            </h3>
+            <div className="text-accent font-roboto">{children}</div>
         </div>
     );
 };
