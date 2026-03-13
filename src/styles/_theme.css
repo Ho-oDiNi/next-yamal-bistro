@@ -10,6 +10,8 @@
   --color-brand-primary: #007cc5;
   --color-brand-dark: #0d1e46;
 
+  --color-brand-bg: #007dc6;
+
   /* ------ ANIMATION ------ */
   --animate-spin-slow: spin 60s linear infinite;
   --animate-reverse-spin: reverse-spin 60s linear infinite;

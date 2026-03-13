@@ -8,7 +8,7 @@ type AboutContainerProps = {
 
 export const AboutContainer = ({ children }: AboutContainerProps) => {
     return (
-        <section className="relative overflow-hidden bg-[#007dc6]">
+        <section className="bg-brand-bg relative overflow-hidden">
             <div className="container mx-auto flex flex-col gap-30 p-4 py-16 text-white">
                 {children}
             </div>

@@ -6,7 +6,7 @@ type ReviewsContainerProps = {
 
 export const ReviewsContainer = ({ children }: ReviewsContainerProps) => {
     return (
-        <section id="section-reviews" className="p-2">
+        <section id="section-reviews" className="px-2 py-16">
             <div className="relative container mx-auto rounded-3xl bg-white p-8">
                 {children}
             </div>

@@ -6,7 +6,7 @@ type ContactsContainerProps = {
 
 export const ContactsContainer = ({ children }: ContactsContainerProps) => {
     return (
-        <section id="section-contacts" className="relative p-2">
+        <section id="section-contacts" className="relative px-2 py-16">
             <div className="container mx-auto rounded-3xl bg-white p-8">
                 {children}
             </div>
