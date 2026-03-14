@@ -1,12 +1,10 @@
 // features/admin-redactor/ui/view/ContentView.tsx
 "use client";
 
-import { BaseViewProps } from "@/features/admin-redactor/model/adminRedactor.types";
-
+import { BaseViewProps } from "../model/adminRedactor.types";
 import BackButton from "../ui-test/BackButton";
 import InputField from "../ui-test/InputField";
 import TextareaField from "../ui-test/TextareaField";
-import BackButton from "../ui-test/BackButton";
 
 const ContentView = ({ formData, onChange, onBack }: BaseViewProps) => {
     return (

@@ -2,16 +2,17 @@
 
 import { Prisma } from "@prisma/client";
 
-import { logger } from "@/shared/lib/logger";
-import { prisma } from "@/shared/lib/prisma";
-import { Category } from "@/entities/category/model";
 import { isAdminServerSide } from "@/app/auth";
+import { ICategory } from "@/entities/category/model";
 import {
     CATEGORY_IMAGE_MAX_SIZE_BYTES,
     CATEGORY_IMAGE_MAX_SIZE_LABEL,
-    saveCategoryImage,
     removePublicFile,
+    saveCategoryImage,
 } from "@/shared/lib/file-storage";
+import { logger } from "@/shared/lib/logger";
+import { prisma } from "@/shared/lib/prisma";
+
 import {
     mapCategoryWithDishSlugs,
     normalizeCategoryImageFile,
@@ -29,7 +30,7 @@ export interface CreateDishCategoryInput {
 export interface CreateDishCategoryResult {
     success: boolean;
     message: string;
-    category?: Category;
+    category?: ICategory;
 }
 
 export const createDishCategory = async (

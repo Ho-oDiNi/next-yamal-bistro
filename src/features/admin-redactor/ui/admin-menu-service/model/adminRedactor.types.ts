@@ -7,6 +7,8 @@ import { IDish } from "@/entities/dish/model";
 import { AdminRedactorFormValues } from "./adminRedactor.schema";
 import { CategoryFormValues } from "./categoryForm.schema";
 
+import type { Dispatch, SetStateAction } from "react";
+
 export type AdminRedactorMode = "create" | "edit" | "delete";
 export type AdminRedactorView =
     | "menu"
@@ -99,18 +101,18 @@ export interface UseAdminRedactorStateReturn {
     dishSlug?: string;
     initialFormData: AdminRedactorFormValues;
     currentView: AdminRedactorView;
-    setCurrentView: React.Dispatch<React.SetStateAction<AdminRedactorView>>;
+    setCurrentView: Dispatch<SetStateAction<AdminRedactorView>>;
     isSubmitting: boolean;
-    setIsSubmitting: React.Dispatch<React.SetStateAction<boolean>>;
+    setIsSubmitting: Dispatch<SetStateAction<boolean>>;
     submitStatus: SubmitStatus | null;
-    setSubmitStatus: React.Dispatch<React.SetStateAction<SubmitStatus | null>>;
+    setSubmitStatus: Dispatch<SetStateAction<SubmitStatus | null>>;
     isDishLoading: boolean;
     categories: ICategory[];
-    setCategories: React.Dispatch<React.SetStateAction<ICategory[]>>;
+    setCategories: Dispatch<SetStateAction<ICategory[]>>;
     isCategoriesLoading: boolean;
-    setIsCategoriesLoading: React.Dispatch<React.SetStateAction<boolean>>;
+    setIsCategoriesLoading: Dispatch<SetStateAction<boolean>>;
     categoriesError: string | null;
-    setCategoriesError: React.Dispatch<React.SetStateAction<string | null>>;
+    setCategoriesError: Dispatch<SetStateAction<string | null>>;
     deleteState: SubmitStatus | null;
     deleteAction: () => Promise<void>;
 }

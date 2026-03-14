@@ -2,23 +2,33 @@
 
 import { Prisma } from "@prisma/client";
 
-import { logger } from "@/shared/lib/logger";
-import { prisma } from "@/shared/lib/prisma";
-import {
-    CategoryUpdatePayload,
-    CategoryUpdateResult,
-} from "../model/adminRedactor.types";
 import { isAdminServerSide } from "@/app/auth";
+import { ICategory } from "@/entities/category/model";
+import { CategoryFormValues } from "@/features/admin-redactor/ui/admin-menu-service/model/categoryForm.schema";
 import {
     CATEGORY_IMAGE_MAX_SIZE_BYTES,
     CATEGORY_IMAGE_MAX_SIZE_LABEL,
-    saveCategoryImage,
     removePublicFile,
+    saveCategoryImage,
 } from "@/shared/lib/file-storage";
+import { logger } from "@/shared/lib/logger";
+import { prisma } from "@/shared/lib/prisma";
+
 import {
     mapCategoryWithDishSlugs,
     normalizeCategoryImageFile,
 } from "./category.utils";
+
+interface CategoryUpdatePayload extends CategoryFormValues {
+    id: number;
+}
+
+interface CategoryUpdateResult {
+    success: boolean;
+    message: string;
+    category?: ICategory;
+}
+
 
 export const updateDishCategory = async (
     payload: CategoryUpdatePayload,

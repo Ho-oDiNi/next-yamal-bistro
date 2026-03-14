@@ -8,7 +8,7 @@ import { useForm } from "react-hook-form";
 import { addNewDish } from "@/features/admin-redactor/api/addNewDish";
 import { insertIntoDish } from "@/features/admin-redactor/api/insertIntoDish";
 
-import { adminRedactorSchema } from "../model/adminRedactor.schema";
+import { AdminRedactorFormValues, adminRedactorSchema } from "../model/adminRedactor.schema";
 import {
     UseAdminRedactorFormHandlersParams,
     UseAdminRedactorFormHandlersReturn,
@@ -20,15 +20,14 @@ export const useAdminRedactorForm = ({
     setIsSubmitting,
     setSubmitStatus,
 }: UseAdminRedactorFormHandlersParams): UseAdminRedactorFormHandlersReturn => {
-    const form = useForm({
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        resolver: zodResolver(adminRedactorSchema as any),
+    const form = useForm<AdminRedactorFormValues>({
+        resolver: zodResolver(adminRedactorSchema),
         defaultValues: initialFormData,
     });
 
     const formData = form.watch();
 
-    const handleChange = useCallback(
+    const handleChange = useCallback<UseAdminRedactorFormHandlersReturn["handleChange"]>(
         (field, value) => {
             form.setValue(field, value, {
                 shouldDirty: true,
