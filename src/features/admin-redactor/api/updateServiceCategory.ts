@@ -9,29 +9,16 @@ import {
     CategoryUpdateResult,
 } from "../model/adminRedactor.types";
 import { isAdminServerSide } from "@/core/auth";
-import { Category } from "@/entities/category";
 import {
     CATEGORY_IMAGE_MAX_SIZE_BYTES,
     CATEGORY_IMAGE_MAX_SIZE_LABEL,
     saveCategoryImage,
     removePublicFile,
 } from "@/shared/lib/file-storage";
-
-const mapCategory = (category: {
-    id: number;
-    slug: string;
-    name: string;
-    imageUrl: string | null;
-    position: number;
-    services: Array<{ slug: string }>;
-}): Category => ({
-    id: category.id,
-    slug: category.slug,
-    name: category.name,
-    imageUrl: category.imageUrl ?? undefined,
-    position: category.position ?? undefined,
-    serviceSlugs: category.services.map((service) => service.slug),
-});
+import {
+    mapCategoryWithServiceSlugs,
+    normalizeCategoryImageFile,
+} from "./category.utils";
 
 export const updateServiceCategory = async (
     payload: CategoryUpdatePayload,
@@ -54,10 +41,7 @@ export const updateServiceCategory = async (
         const hasPosition =
             typeof payload.position === "number" &&
             Number.isFinite(payload.position);
-        const imageFile =
-            typeof File !== "undefined" && payload.imageFile instanceof File
-                ? payload.imageFile
-                : null;
+        const imageFile = normalizeCategoryImageFile(payload.imageFile);
 
         if (!name) {
             throw new Error("Название категории обязательно");
@@ -120,7 +104,7 @@ export const updateServiceCategory = async (
             await removePublicFile(existingCategory.imageUrl);
         }
 
-        const category = mapCategory(updatedCategory);
+        const category = mapCategoryWithServiceSlugs(updatedCategory);
 
         return {
             success: true,

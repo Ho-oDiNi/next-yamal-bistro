@@ -7,7 +7,7 @@ import BackButton from "../ui/BackButton";
 import {
     CategoryViewComponentProps,
     CategoryUpdatePayload,
-} from "@/widgets/admin-redactor/model/adminRedactor.types";
+} from "@/features/admin-redactor/model/adminRedactor.types";
 import Image from "next/image";
 import {
     CATEGORY_IMAGE_MAX_SIZE_BYTES,

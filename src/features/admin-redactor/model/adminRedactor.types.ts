@@ -16,13 +16,13 @@ export type DeleteActionState = {
     message: string;
 } | null;
 
+export type ServiceFieldValue = Service[keyof Service];
+
 export interface ViewRendererProps {
     currentView: ViewMode;
     formData: Service;
     onViewChange: (view: ViewMode) => void;
-
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    onChange: (field: keyof Service, value: any) => void;
+    onChange: (field: keyof Service, value: ServiceFieldValue) => void;
     onArrayChange: (
         field: "whatIncluded" | "materials",
         index: number,
@@ -44,8 +44,7 @@ export interface ViewRendererProps {
 
 export interface BaseViewProps {
     formData: Service;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    onChange: (field: keyof Service, value: any) => void;
+    onChange: (field: keyof Service, value: ServiceFieldValue) => void;
     onBack: () => void;
 }
 

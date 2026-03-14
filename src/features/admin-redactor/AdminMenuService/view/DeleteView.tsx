@@ -2,7 +2,7 @@
 
 import { useFormStatus } from "react-dom";
 import StatusMessage from "@/shared/ui/StatusMessage";
-import { DeleteViewProps } from "@/widgets/admin-redactor/model/adminRedactor.types";
+import { DeleteViewProps } from "@/features/admin-redactor/model/adminRedactor.types";
 
 const DeleteView = ({
     serviceTitle,

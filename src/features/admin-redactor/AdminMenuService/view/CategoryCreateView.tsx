@@ -7,7 +7,7 @@ import BackButton from "../ui/BackButton";
 import {
     CategoryCreateViewComponentProps,
     CategoryCreateResult,
-} from "@/widgets/admin-redactor/model/adminRedactor.types";
+} from "@/features/admin-redactor/model/adminRedactor.types";
 import {
     CATEGORY_IMAGE_MAX_SIZE_BYTES,
     CATEGORY_IMAGE_MAX_SIZE_LABEL,

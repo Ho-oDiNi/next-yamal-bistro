@@ -1,47 +1,42 @@
 "use client";
 
 import Form from "next/form";
-import { deleteService } from "@/widgets/admin-redactor/api/deleteService";
-import { useParams } from "next/navigation";
-import { useActionState, useEffect, useState } from "react";
-import ViewRenderer from "./ui/ViewRenderer";
+import { useEffect } from "react";
+
+import { Service } from "@/entities/service";
 import StatusMessage from "@/shared/ui/StatusMessage";
-import {
-    createEmptyService,
-    fetchServiceBySlug,
-    getServiceTitle,
-} from "@/widgets/admin-redactor/admin.utils";
-import { useAdminRedactorFormHandlers } from "./useFormHandlers";
-import { useCategoryHandlers } from "./useCategoryHandlers";
+import { getServiceTitle } from "@/features/admin-redactor/admin.utils";
 import {
     AdminRedactorFormProps,
-    ViewMode,
-    DeleteActionState,
-} from "@/widgets/admin-redactor/model/adminRedactor.types";
-import { Category } from "@/entities/category";
-import { Service } from "@/entities/service";
+    ServiceFieldValue,
+} from "@/features/admin-redactor/model/adminRedactor.types";
+
+import ViewRenderer from "./ui/ViewRenderer";
+import { useAdminRedactorState } from "./useAdminRedactorState";
+import { useCategoryHandlers } from "./useCategoryHandlers";
+import { useAdminRedactorFormHandlers } from "./useFormHandlers";
 
 const AdminRedactorForm = ({ mode, onClose }: AdminRedactorFormProps) => {
-    const params = useParams();
-    const serviceSlug = params.service as string | undefined;
-
-    const [formData, setFormData] = useState<Service>(createEmptyService());
-    const [currentView, setCurrentView] = useState<ViewMode>(() =>
-        mode === "delete" ? "delete" : "menu",
-    );
-    const [isSubmitting, setIsSubmitting] = useState(false);
-    const [submitStatus, setSubmitStatus] = useState<{
-        success: boolean;
-        message: string;
-    } | null>(null);
-    const [isServiceLoading, setIsServiceLoading] = useState(false);
-    const [categories, setCategories] = useState<Category[]>([]);
-    const [isCategoriesLoading, setIsCategoriesLoading] = useState(false);
-    const [categoriesError, setCategoriesError] = useState<string | null>(null);
-    const [deleteState, deleteAction] = useActionState<
-        DeleteActionState,
-        FormData
-    >(deleteService, null);
+    const {
+        serviceSlug,
+        formData,
+        setFormData,
+        currentView,
+        setCurrentView,
+        isSubmitting,
+        setIsSubmitting,
+        submitStatus,
+        setSubmitStatus,
+        isServiceLoading,
+        categories,
+        setCategories,
+        isCategoriesLoading,
+        setIsCategoriesLoading,
+        categoriesError,
+        setCategoriesError,
+        deleteState,
+        deleteAction,
+    } = useAdminRedactorState(mode);
 
     const {
         loadCategories,
@@ -55,47 +50,6 @@ const AdminRedactorForm = ({ mode, onClose }: AdminRedactorFormProps) => {
         setFormData,
         setCurrentView,
     });
-
-    useEffect(() => {
-        let isActive = true;
-
-        const resetState = () => {
-            if (!isActive) return;
-            setCurrentView(mode === "delete" ? "delete" : "menu");
-            setSubmitStatus(null);
-            setIsSubmitting(false);
-        };
-
-        const loadService = async () => {
-            resetState();
-
-            if (mode !== "edit" && mode !== "delete") {
-                setFormData(createEmptyService());
-                setIsServiceLoading(false);
-                return;
-            }
-
-            if (!serviceSlug) {
-                setFormData(createEmptyService());
-                setIsServiceLoading(false);
-                return;
-            }
-
-            setIsServiceLoading(true);
-            const serviceData = await fetchServiceBySlug(serviceSlug);
-
-            if (isActive) {
-                setFormData(serviceData ?? createEmptyService());
-                setIsServiceLoading(false);
-            }
-        };
-
-        loadService();
-
-        return () => {
-            isActive = false;
-        };
-    }, [mode, serviceSlug]);
 
     useEffect(() => {
         loadCategories();
@@ -135,7 +89,10 @@ const AdminRedactorForm = ({ mode, onClose }: AdminRedactorFormProps) => {
                     formData={formData}
                     onViewChange={setCurrentView}
                     onChange={(field, value) =>
-                        handleChange(field as keyof Service, value)
+                        handleChange(
+                            field as keyof Service,
+                            value as ServiceFieldValue,
+                        )
                     }
                     onArrayChange={handleArrayChange}
                     onFaqChange={handleFaqChange}
@@ -157,7 +114,10 @@ const AdminRedactorForm = ({ mode, onClose }: AdminRedactorFormProps) => {
                     categoryViewProps={{
                         formData,
                         onChange: (field, value) =>
-                            handleChange(field as keyof Service, value),
+                            handleChange(
+                                field as keyof Service,
+                                value as ServiceFieldValue,
+                            ),
                         categories,
                         isLoading: isCategoriesLoading,
                         error: categoriesError,

@@ -1,4 +1,4 @@
-import { ArrayViewProps } from "@/widgets/admin-redactor/model/adminRedactor.types";
+import { ArrayViewProps } from "@/features/admin-redactor/model/adminRedactor.types";
 import WhatIncludedField from "../fields/WhatIncludedField";
 import BackButton from "../ui/BackButton";
 
