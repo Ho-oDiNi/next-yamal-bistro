@@ -17,8 +17,8 @@ export const MenuNav = ({
     onChange,
 }: MenuNavProps) => {
     return (
-        <nav className="flex-between mb-8 gap-6 border-b-2 border-white">
-            <ul className="flex-start w-max flex-wrap gap-x-6 pb-4">
+        <nav className="flex-between font-roboto mb-8 gap-12 border-b-2 border-white">
+            <ul className="xs:grid-rows-6 grid w-full grid-flow-col grid-rows-9 gap-x-6 gap-y-2 pb-4 sm:grid-rows-4 md:grid-rows-3 lg:grid-rows-2">
                 <li>
                     <button
                         type="button"
@@ -43,7 +43,7 @@ export const MenuNav = ({
                                 type="button"
                                 onClick={() => onChange(category.id)}
                                 className={cn(
-                                    "text-accent text-white transition",
+                                    "text-accent text-nowrap text-white transition",
                                     isActive
                                         ? "font-semibold"
                                         : "hover:opacity-70",

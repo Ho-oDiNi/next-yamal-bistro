@@ -19,10 +19,10 @@ export const MENU_CATEGORIES: ICategory[] = [
     { id: 17, name: "Роллы", slug: "rolly" },
 
     { id: 7, name: "Закуски", slug: "zakuski" },
-    { id: 9, name: "Соусы", slug: "sousy" },
 
     { id: 18, name: "Горячие напитки", slug: "goryachie-napitki" },
     { id: 19, name: "Холодные напитки", slug: "holodnye-napitki" },
+    { id: 9, name: "Соусы", slug: "sousy" },
 ];
 
 export const dishes: IDish[] = [

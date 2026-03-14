@@ -10,9 +10,9 @@ export const CompanyReview = async () => {
     return (
         <ReviewsContainer>
             <h2 className="text-h2">Отзывы гостей</h2>
-            <div className="no-scrollbar relative h-120 w-full overflow-y-auto xl:max-w-1/2">
-                <YandexReviews />
-            </div>
+
+            <YandexReviews />
+
             <Image
                 className="absolute right-24 bottom-0 hidden xl:block"
                 src={chefImage}
