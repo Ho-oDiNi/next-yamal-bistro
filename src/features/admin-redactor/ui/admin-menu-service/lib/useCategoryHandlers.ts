@@ -1,16 +1,20 @@
 // features/admin-redactor/hooks/useCategoryHandlers.ts
 "use client";
 
-import { useCallback } from "react";
+import { Dispatch, SetStateAction, useCallback } from "react";
 
 import { fetchCategories } from "@/entities/category/api/fetchCategories";
+import { ICategory } from "@/entities/category/model";
+import { createDishCategory } from "@/features/admin-redactor/api/createDishCategory";
+import { deleteDishCategory } from "@/features/admin-redactor/api/deleteDishCategory";
+import { updateDishCategory } from "@/features/admin-redactor/api/updateDishCategory";
 
 import { CategoryFormValues } from "../model/categoryForm.schema";
 
 interface UseCategoryHandlersParams {
     setIsCategoriesLoading: (value: boolean) => void;
     setCategoriesError: (value: string | null) => void;
-    setCategories: (updater: any) => void;
+    setCategories: Dispatch<SetStateAction<ICategory[]>>;
     setCurrentView: (view: "category" | "menu" | "categoryCreate") => void;
     updateSelectedCategory: (categoryId?: number) => void;
     getSelectedCategoryId: () => number | undefined;
@@ -44,7 +48,7 @@ export const useCategoryHandlers = ({
 
     const handleCreateCategory = useCallback(
         async (values: CategoryFormValues) => {
-            const result = await createCategory(values);
+            const result = await createDishCategory(values);
 
             if (result.success) {
                 await loadCategories();
@@ -58,7 +62,7 @@ export const useCategoryHandlers = ({
 
     const handleUpdateCategory = useCallback(
         async (categoryId: number, values: CategoryFormValues) => {
-            const result = await updateCategory(categoryId, values);
+            const result = await updateDishCategory({ id: categoryId, ...values });
 
             if (result.success) {
                 await loadCategories();
@@ -71,7 +75,7 @@ export const useCategoryHandlers = ({
 
     const handleDeleteCategory = useCallback(
         async (categoryId: number) => {
-            const result = await deleteCategory(categoryId);
+            const result = await deleteDishCategory(categoryId);
 
             if (result.success) {
                 await loadCategories();

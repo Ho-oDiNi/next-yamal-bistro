@@ -2,11 +2,16 @@
 
 import { Prisma } from "@prisma/client";
 
-import { logger } from "@/shared/lib/logger";
-import { prisma } from "@/shared/lib/prisma";
-import { CategoryDeleteResult } from "../model/adminRedactor.types";
 import { isAdminServerSide } from "@/app/auth";
 import { removePublicFile } from "@/shared/lib/file-storage";
+import { logger } from "@/shared/lib/logger";
+import { prisma } from "@/shared/lib/prisma";
+
+interface CategoryDeleteResult {
+    success: boolean;
+    message: string;
+    categoryId?: number;
+}
 
 export const deleteDishCategory = async (
     categoryId: number,

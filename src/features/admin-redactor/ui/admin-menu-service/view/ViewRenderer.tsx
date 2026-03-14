@@ -4,6 +4,7 @@
 import CategoryCreateView from "./CategoryCreateView";
 import CategoryView from "./CategoryView";
 import ContentView from "./ContentView";
+import DeleteView from "./DeleteView";
 import MenuView from "./MenuView";
 import { ViewRendererProps } from "../model/adminRedactor.types";
 

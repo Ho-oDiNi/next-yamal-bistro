@@ -4,6 +4,7 @@
 import { useState } from "react";
 
 import CategoryForm from "./CategoryForm";
+import StatusMessage from "./StatusMessage";
 import { CategoryCreateViewComponentProps } from "../model/adminRedactor.types";
 import BackButton from "../ui-test/BackButton";
 

@@ -1,19 +1,20 @@
 "use server";
 
+import { isAdminServerSide } from "@/app/auth";
 import { logger } from "@/shared/lib/logger";
 import { prisma } from "@/shared/lib/prisma";
+
 import { revalidateDishPaths } from "../../../entities/dish/lib/dishRevalidate";
-import { isAdminServerSide } from "@/app/auth";
 
 interface DeleteDishState {
     success: boolean;
     message: string;
-}
+};
 
-export async function deleteDish(
+export const deleteDish = async (
     prevState: DeleteDishState | null,
     formData: FormData,
-): Promise<DeleteDishState> {
+): Promise<DeleteDishState> => {
     const dishSlug = formData.get("dishSlug");
     try {
         const isAdmin = await isAdminServerSide();
@@ -48,7 +49,7 @@ export async function deleteDish(
         await revalidateDishPaths([
             {
                 categorySlug: dish.category.slug,
-                slug: dish.slug,
+                dishSlug: dish.slug,
             },
         ]);
 
