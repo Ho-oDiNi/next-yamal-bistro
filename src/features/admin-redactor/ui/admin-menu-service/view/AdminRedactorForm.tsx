@@ -1,20 +1,13 @@
+// features/admin-redactor/ui/AdminRedactorForm.tsx
 "use client";
 
 import Form from "next/form";
 import { useEffect } from "react";
 
-import { Dish } from "@/entities/dish/model";
-import { getDishTitle } from "@/features/admin-redactor/admin.utils";
-import {
-    AdminRedactorFormProps,
-    DishFieldValue,
-} from "@/features/admin-redactor/model/adminRedactor.types";
-import StatusMessage from "@/shared/ui/StatusMessage";
-
-import ViewRenderer from "./ui/ViewRenderer";
-import { useAdminRedactorState } from "./useAdminRedactorState";
-import { useCategoryHandlers } from "./useCategoryHandlers";
-import { useAdminRedactorFormHandlers } from "./useFormHandlers";
+import ViewRenderer from "./ViewRenderer";
+import { useAdminRedactorForm } from "../lib/useAdminRedactorForm";
+import { useCategoryHandlers } from "../lib/useCategoryHandlers";
+import { AdminRedactorFormProps } from "../model/adminRedactor.types";
 
 const AdminRedactorForm = ({ mode, onClose }: AdminRedactorFormProps) => {
     const {
@@ -37,73 +30,56 @@ const AdminRedactorForm = ({ mode, onClose }: AdminRedactorFormProps) => {
         deleteAction,
     } = useAdminRedactorState(mode);
 
-    const {
-        form,
-        formData,
-        handleChange,
-        handleArrayChange,
-        handleFaqChange,
-        addArrayItem,
-        removeArrayItem,
-        addFaqItem,
-        removeFaqItem,
-        handleSubmit,
-    } = useAdminRedactorFormHandlers({
-        mode,
-        initialFormData,
-        setIsSubmitting,
-        setSubmitStatus,
-    });
+    const { form, formData, handleChange, handleSubmit } = useAdminRedactorForm(
+        {
+            mode,
+            initialFormData,
+            setIsSubmitting,
+            setSubmitStatus,
+        },
+    );
 
     useEffect(() => {
         form.reset(initialFormData);
     }, [form, initialFormData]);
 
-    const { loadCategories, handleCreateCategory, handleUpdateCategory, handleDeleteCategory } =
-        useCategoryHandlers({
-            setIsCategoriesLoading,
-            setCategoriesError,
-            setCategories,
-            setCurrentView,
-            updateSelectedCategory: (categoryId, categorySlug) => {
-                handleChange("categoryId", categoryId);
-                handleChange("categorySlug", categorySlug);
-            },
-            getSelectedCategoryId: () => form.getValues("categoryId"),
-        });
+    const {
+        loadCategories,
+        handleCreateCategory,
+        handleUpdateCategory,
+        handleDeleteCategory,
+    } = useCategoryHandlers({
+        setIsCategoriesLoading,
+        setCategoriesError,
+        setCategories,
+        setCurrentView,
+        updateSelectedCategory: (categoryId) => {
+            handleChange("categoryId", categoryId);
+        },
+        getSelectedCategoryId: () => form.getValues("categoryId"),
+    });
 
     useEffect(() => {
-        loadCategories();
+        void loadCategories();
     }, [loadCategories]);
 
-    const dishTitle = getDishTitle(formData, dishSlug);
+    const dishTitle = formData.name?.trim() || "это блюдо";
 
     return (
         <div className="space-y-6 p-8">
-            {mode !== "delete" && (
+            {mode !== "delete" ? (
                 <StatusMessage
                     message={submitStatus?.message}
                     success={submitStatus?.success}
                 />
-            )}
+            ) : null}
 
             <Form action={mode === "delete" ? deleteAction : handleSubmit}>
                 <ViewRenderer
                     currentView={currentView}
                     formData={formData}
                     onViewChange={setCurrentView}
-                    onChange={(field, value) =>
-                        handleChange(
-                            field as keyof Dish,
-                            value as DishFieldValue,
-                        )
-                    }
-                    onArrayChange={handleArrayChange}
-                    onFaqChange={handleFaqChange}
-                    onAddArrayItem={addArrayItem}
-                    onRemoveArrayItem={removeArrayItem}
-                    onAddFaqItem={addFaqItem}
-                    onRemoveFaqItem={removeFaqItem}
+                    onChange={handleChange}
                     isPending={isSubmitting || isDishLoading}
                     deleteProps={
                         mode === "delete"
@@ -116,18 +92,15 @@ const AdminRedactorForm = ({ mode, onClose }: AdminRedactorFormProps) => {
                             : undefined
                     }
                     categoryViewProps={{
-                        formData,
-                        onChange: (field, value) =>
-                            handleChange(
-                                field as keyof Dish,
-                                value as DishFieldValue,
-                            ),
+                        selectedCategoryId: formData.categoryId,
                         categories,
                         isLoading: isCategoriesLoading,
                         error: categoriesError,
                         onRefresh: loadCategories,
                         onCreateCategory: () =>
                             setCurrentView("categoryCreate"),
+                        onSelectCategory: (categoryId) =>
+                            handleChange("categoryId", categoryId),
                         onEditCategory: handleUpdateCategory,
                         onDeleteCategory: handleDeleteCategory,
                     }}

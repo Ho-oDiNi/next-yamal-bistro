@@ -2,7 +2,7 @@
 
 import { logger } from "@/shared/lib/logger";
 import { prisma } from "@/shared/lib/prisma";
-import { revalidateDishPaths } from "../dishRevalidate.utils";
+import { revalidateDishPaths } from "../../../entities/dish/lib/dishRevalidate";
 import { isAdminServerSide } from "@/app/auth";
 
 interface DeleteDishState {

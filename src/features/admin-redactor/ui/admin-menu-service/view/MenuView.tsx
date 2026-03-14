@@ -1,48 +1,31 @@
-import { ViewMode } from "@/features/admin-redactor/model/adminRedactor.types";
-import NavigationButton from "../ui/NavigationButton";
+// features/admin-redactor/ui/view/MenuView.tsx
+"use client";
+
+import { AdminRedactorView } from "../model/adminRedactor.types";
 
 interface MenuViewProps {
-    onViewChange: (view: ViewMode) => void;
+    onViewChange: (view: AdminRedactorView) => void;
     isPending: boolean;
 }
 
 const MenuView = ({ onViewChange, isPending }: MenuViewProps) => (
-    <div className="space-y-4">
-        <h2 className="text-xl font-bold">Редактор блюда</h2>
-        <p className="text-main text-gray-600">
-            Выберите раздел для редактирования:
-        </p>
-
-        <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-            <NavigationButton
-                title="Категория"
-                onClick={() => onViewChange("category")}
-                icon="📂"
-            />
-
-            <NavigationButton
-                title="Мета-данные"
-                onClick={() => onViewChange("meta")}
-                icon="⚙️"
-            />
-
-            <NavigationButton
-                title="Основной контент"
+    <div className="space-y-6">
+        <div className="grid gap-3">
+            <button
+                type="button"
                 onClick={() => onViewChange("content")}
-                icon="📝"
-            />
+                className="rounded border border-gray-300 p-4 text-left hover:bg-gray-50"
+            >
+                Основные данные блюда
+            </button>
 
-            <NavigationButton
-                title="Состав блюда"
-                onClick={() => onViewChange("whatIncluded")}
-                icon="✅"
-            />
-
-            <NavigationButton
-                title="FAQ"
-                onClick={() => onViewChange("faq")}
-                icon="❓"
-            />
+            <button
+                type="button"
+                onClick={() => onViewChange("category")}
+                className="rounded border border-gray-300 p-4 text-left hover:bg-gray-50"
+            >
+                Категории
+            </button>
         </div>
 
         <div className="pt-3">

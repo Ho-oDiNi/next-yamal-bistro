@@ -6,11 +6,8 @@ import { Dish } from "@/entities/dish/model";
 import { logger } from "@/shared/lib/logger";
 import { prisma } from "@/shared/lib/prisma";
 
-import {
-    normalizeDishPayload,
-    DishActionInput,
-} from "../dishPayload.utils";
-import { revalidateDishPaths } from "../dishRevalidate.utils";
+import { normalizeDishPayload, DishActionInput } from "../dishPayload.utils";
+import { revalidateDishPaths } from "../../../entities/dish/lib/dishRevalidate";
 import { isAdminServerSide } from "@/app/auth";
 
 export async function addNewDish(dishData: Dish): Promise<{
