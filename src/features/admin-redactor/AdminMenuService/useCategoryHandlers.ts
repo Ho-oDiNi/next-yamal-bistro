@@ -1,8 +1,8 @@
 import { Dispatch, SetStateAction, useCallback } from "react";
-import { createServiceCategory } from "@/widgets/admin-redactor/api/createServiceCategory";
-import { deleteServiceCategory } from "@/widgets/admin-redactor/api/deleteServiceCategory";
-import { updateServiceCategory } from "@/widgets/admin-redactor/api/updateServiceCategory";
-import { fetchServiceCategories } from "@/widgets/admin-redactor/admin.utils";
+import { createServiceCategory } from "@/features/admin-redactor/api/createServiceCategory";
+import { deleteServiceCategory } from "@/features/admin-redactor/api/deleteServiceCategory";
+import { updateServiceCategory } from "@/features/admin-redactor/api/updateServiceCategory";
+import { fetchServiceCategories } from "@/features/admin-redactor/admin.utils";
 import {
     ViewMode,
     CategoryCreatePayload,
@@ -10,7 +10,7 @@ import {
     CategoryUpdatePayload,
     CategoryUpdateResult,
     CategoryDeleteResult,
-} from "@/widgets/admin-redactor/model/adminRedactor.types";
+} from "@/features/admin-redactor/model/adminRedactor.types";
 import { Category } from "@/entities/category";
 import { Service } from "@/entities/service";
 

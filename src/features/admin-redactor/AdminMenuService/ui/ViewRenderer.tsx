@@ -1,4 +1,4 @@
-import { ViewRendererProps } from "@/widgets/admin-redactor/model/adminRedactor.types";
+import { ViewRendererProps } from "@/features/admin-redactor/model/adminRedactor.types";
 
 import CategoryCreateView from "../view/CategoryCreateView";
 import CategoryView from "../view/CategoryView";

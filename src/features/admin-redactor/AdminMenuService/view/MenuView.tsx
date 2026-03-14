@@ -1,4 +1,4 @@
-import { ViewMode } from "@/widgets/admin-redactor/model/adminRedactor.types";
+import { ViewMode } from "@/features/admin-redactor/model/adminRedactor.types";
 import NavigationButton from "../ui/NavigationButton";
 
 interface MenuViewProps {

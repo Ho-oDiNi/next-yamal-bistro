@@ -1,6 +1,6 @@
 import BackButton from "../ui/BackButton";
 import ContentDataField from "../fields/ContentDataField";
-import { BaseViewProps } from "@/widgets/admin-redactor/model/adminRedactor.types";
+import { BaseViewProps } from "@/features/admin-redactor/model/adminRedactor.types";
 
 const ContentView = ({ formData, onChange, onBack }: BaseViewProps) => (
     <div>

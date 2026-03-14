@@ -1,10 +1,10 @@
 import { useCallback } from "react";
 import type { Dispatch, SetStateAction } from "react";
 
-import { addNewService } from "@/widgets/admin-redactor/api/addNewService";
-import { insertIntoService } from "@/widgets/admin-redactor/api/insertIntoService";
+import { addNewService } from "@/features/admin-redactor/api/addNewService";
+import { insertIntoService } from "@/features/admin-redactor/api/insertIntoService";
 import { Service } from "@/entities/service";
-import { AdminRedactorFormProps } from "@/widgets/admin-redactor/model/adminRedactor.types";
+import { AdminRedactorFormProps } from "@/features/admin-redactor/model/adminRedactor.types";
 
 type SubmitStatus = {
     success: boolean;

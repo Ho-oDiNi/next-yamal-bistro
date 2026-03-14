@@ -1,4 +1,4 @@
-import { FaqViewProps } from "@/widgets/admin-redactor/model/adminRedactor.types";
+import { FaqViewProps } from "@/features/admin-redactor/model/adminRedactor.types";
 import FaqItemsField from "../fields/FaqItemsField";
 import BackButton from "../ui/BackButton";
 

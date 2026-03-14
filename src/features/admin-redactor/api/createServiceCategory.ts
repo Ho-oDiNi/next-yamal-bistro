@@ -12,6 +12,11 @@ import {
     saveCategoryImage,
     removePublicFile,
 } from "@/shared/lib/file-storage";
+import {
+    mapCategoryWithServiceSlugs,
+    normalizeCategoryImageFile,
+    normalizeCategoryPosition,
+} from "./category.utils";
 
 export interface CreateServiceCategoryInput {
     name: string;
@@ -40,15 +45,8 @@ export const createServiceCategory = async (
         const name = payload.name?.trim();
         const slug = payload.slug?.trim();
 
-        const imageFile =
-            typeof File !== "undefined" && payload.imageFile instanceof File
-                ? payload.imageFile
-                : null;
-        const position =
-            typeof payload.position === "number" &&
-            Number.isFinite(payload.position)
-                ? payload.position
-                : undefined;
+        const imageFile = normalizeCategoryImageFile(payload.imageFile);
+        const position = normalizeCategoryPosition(payload.position);
 
         if (!name) {
             throw new Error("Название категории обязательно");
@@ -99,15 +97,7 @@ export const createServiceCategory = async (
             throw error;
         }
 
-        const category: Category = {
-            id: createdCategory.id,
-            slug: createdCategory.slug,
-            name: createdCategory.name,
-            serviceSlugs: createdCategory.services.map(
-                (service) => service.slug,
-            ),
-            position: createdCategory.position ?? undefined,
-        };
+        const category = mapCategoryWithServiceSlugs(createdCategory);
 
         return {
             success: true,

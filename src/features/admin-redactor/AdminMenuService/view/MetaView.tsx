@@ -1,6 +1,6 @@
 import BackButton from "../ui/BackButton";
 import MetaDataField from "../fields/MetaDataField";
-import { BaseViewProps } from "@/widgets/admin-redactor/model/adminRedactor.types";
+import { BaseViewProps } from "@/features/admin-redactor/model/adminRedactor.types";
 
 const MetaView = ({ formData, onChange, onBack }: BaseViewProps) => (
     <div>
