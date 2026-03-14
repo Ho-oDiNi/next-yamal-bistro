@@ -1,24 +1,24 @@
-import { useActionState, useEffect, useState } from "react";
-import type { Dispatch, SetStateAction } from "react";
 import { useParams } from "next/navigation";
+import { useActionState, useEffect, useState } from "react";
 
 import { Category } from "@/entities/category";
-import { Service } from "@/entities/service";
-import { deleteService } from "@/features/admin-redactor/api/deleteService";
 import {
     createEmptyService,
     fetchServiceBySlug,
 } from "@/features/admin-redactor/admin.utils";
+import { deleteService } from "@/features/admin-redactor/api/deleteService";
+import { AdminRedactorFormValues } from "@/features/admin-redactor/model/adminRedactor.schema";
 import {
     AdminRedactorFormProps,
     DeleteActionState,
     ViewMode,
 } from "@/features/admin-redactor/model/adminRedactor.types";
 
+import type { Dispatch, SetStateAction } from "react";
+
 interface UseAdminRedactorStateResult {
     serviceSlug?: string;
-    formData: Service;
-    setFormData: Dispatch<SetStateAction<Service>>;
+    initialFormData: AdminRedactorFormValues;
     currentView: ViewMode;
     setCurrentView: Dispatch<SetStateAction<ViewMode>>;
     isSubmitting: boolean;
@@ -44,7 +44,8 @@ export const useAdminRedactorState = (
     const params = useParams();
     const serviceSlug = params.service as string | undefined;
 
-    const [formData, setFormData] = useState<Service>(createEmptyService());
+    const [initialFormData, setInitialFormData] =
+        useState<AdminRedactorFormValues>(createEmptyService());
     const [currentView, setCurrentView] = useState<ViewMode>(() =>
         mode === "delete" ? "delete" : "menu",
     );
@@ -79,13 +80,13 @@ export const useAdminRedactorState = (
             resetTransientState();
 
             if (mode !== "edit" && mode !== "delete") {
-                setFormData(createEmptyService());
+                setInitialFormData(createEmptyService());
                 setIsServiceLoading(false);
                 return;
             }
 
             if (!serviceSlug) {
-                setFormData(createEmptyService());
+                setInitialFormData(createEmptyService());
                 setIsServiceLoading(false);
                 return;
             }
@@ -94,7 +95,7 @@ export const useAdminRedactorState = (
             const loadedService = await fetchServiceBySlug(serviceSlug);
 
             if (isActualState) {
-                setFormData(loadedService ?? createEmptyService());
+                setInitialFormData(loadedService ?? createEmptyService());
                 setIsServiceLoading(false);
             }
         };
@@ -108,8 +109,7 @@ export const useAdminRedactorState = (
 
     return {
         serviceSlug,
-        formData,
-        setFormData,
+        initialFormData,
         currentView,
         setCurrentView,
         isSubmitting,

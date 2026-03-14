@@ -3,7 +3,7 @@
 import closeIcon from "@icons/close-blue-dark.svg";
 import Image from "next/image";
 
-import AdminActionForm from "../../AdminMenuService";
+import AdminActionForm from "../../admin-menu-service";
 import { AdminAction } from "../model";
 
 interface ActionSidebarProps {

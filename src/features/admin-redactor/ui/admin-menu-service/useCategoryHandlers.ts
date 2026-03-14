@@ -1,35 +1,35 @@
 import { Dispatch, SetStateAction, useCallback } from "react";
+
+import { Category } from "@/entities/category";
+import { fetchServiceCategories } from "@/features/admin-redactor/admin.utils";
 import { createServiceCategory } from "@/features/admin-redactor/api/createServiceCategory";
 import { deleteServiceCategory } from "@/features/admin-redactor/api/deleteServiceCategory";
 import { updateServiceCategory } from "@/features/admin-redactor/api/updateServiceCategory";
-import { fetchServiceCategories } from "@/features/admin-redactor/admin.utils";
 import {
-    ViewMode,
     CategoryCreatePayload,
     CategoryCreateResult,
+    CategoryDeleteResult,
     CategoryUpdatePayload,
     CategoryUpdateResult,
-    CategoryDeleteResult,
+    ViewMode,
 } from "@/features/admin-redactor/model/adminRedactor.types";
-import { Category } from "@/entities/category";
-import { Service } from "@/entities/service";
-
-// Error
 
 interface UseCategoryHandlersParams {
     setIsCategoriesLoading: Dispatch<SetStateAction<boolean>>;
     setCategoriesError: Dispatch<SetStateAction<string | null>>;
     setCategories: Dispatch<SetStateAction<Category[]>>;
-    setFormData: Dispatch<SetStateAction<Service>>;
     setCurrentView: Dispatch<SetStateAction<ViewMode>>;
+    updateSelectedCategory: (categoryId?: number, categorySlug?: string) => void;
+    getSelectedCategoryId: () => number | undefined;
 }
 
 export const useCategoryHandlers = ({
     setIsCategoriesLoading,
     setCategoriesError,
     setCategories,
-    setFormData,
     setCurrentView,
+    updateSelectedCategory,
+    getSelectedCategoryId,
 }: UseCategoryHandlersParams) => {
     const loadCategories = useCallback(async () => {
         setIsCategoriesLoading(true);
@@ -90,13 +90,7 @@ export const useCategoryHandlers = ({
                     });
 
                     setCategoriesError(null);
-
-                    setFormData((prev) => ({
-                        ...prev,
-                        categoryId: category.id,
-                        categorySlug: category.slug,
-                    }));
-
+                    updateSelectedCategory(category.id, category.slug);
                     setCurrentView("category");
                 }
 
@@ -114,9 +108,9 @@ export const useCategoryHandlers = ({
         [
             setCategories,
             setCategoriesError,
-            setFormData,
             setCurrentView,
             sortCategories,
+            updateSelectedCategory,
         ],
     );
 
@@ -140,16 +134,9 @@ export const useCategoryHandlers = ({
 
                     setCategoriesError(null);
 
-                    setFormData((prev) => {
-                        if (prev.categoryId !== category.id) {
-                            return prev;
-                        }
-
-                        return {
-                            ...prev,
-                            categorySlug: category.slug,
-                        };
-                    });
+                    if (getSelectedCategoryId() === category.id) {
+                        updateSelectedCategory(category.id, category.slug);
+                    }
                 }
 
                 return result;
@@ -163,7 +150,13 @@ export const useCategoryHandlers = ({
                 } satisfies CategoryUpdateResult;
             }
         },
-        [setCategories, setCategoriesError, setFormData, sortCategories],
+        [
+            getSelectedCategoryId,
+            setCategories,
+            setCategoriesError,
+            sortCategories,
+            updateSelectedCategory,
+        ],
     );
 
     const handleDeleteCategory = useCallback(
@@ -180,17 +173,9 @@ export const useCategoryHandlers = ({
 
                     setCategoriesError(null);
 
-                    setFormData((prev) => {
-                        if (prev.categoryId !== result.categoryId) {
-                            return prev;
-                        }
-
-                        return {
-                            ...prev,
-                            categoryId: undefined,
-                            categorySlug: undefined,
-                        };
-                    });
+                    if (getSelectedCategoryId() === result.categoryId) {
+                        updateSelectedCategory(undefined, undefined);
+                    }
                 }
 
                 return result;
@@ -204,7 +189,12 @@ export const useCategoryHandlers = ({
                 } satisfies CategoryDeleteResult;
             }
         },
-        [setCategories, setCategoriesError, setFormData],
+        [
+            getSelectedCategoryId,
+            setCategories,
+            setCategoriesError,
+            updateSelectedCategory,
+        ],
     );
 
     return {

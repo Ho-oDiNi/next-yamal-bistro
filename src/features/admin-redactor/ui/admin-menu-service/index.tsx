@@ -4,12 +4,12 @@ import Form from "next/form";
 import { useEffect } from "react";
 
 import { Service } from "@/entities/service";
-import StatusMessage from "@/shared/ui/StatusMessage";
 import { getServiceTitle } from "@/features/admin-redactor/admin.utils";
 import {
     AdminRedactorFormProps,
     ServiceFieldValue,
 } from "@/features/admin-redactor/model/adminRedactor.types";
+import StatusMessage from "@/shared/ui/StatusMessage";
 
 import ViewRenderer from "./ui/ViewRenderer";
 import { useAdminRedactorState } from "./useAdminRedactorState";
@@ -19,8 +19,7 @@ import { useAdminRedactorFormHandlers } from "./useFormHandlers";
 const AdminRedactorForm = ({ mode, onClose }: AdminRedactorFormProps) => {
     const {
         serviceSlug,
-        formData,
-        setFormData,
+        initialFormData,
         currentView,
         setCurrentView,
         isSubmitting,
@@ -39,23 +38,8 @@ const AdminRedactorForm = ({ mode, onClose }: AdminRedactorFormProps) => {
     } = useAdminRedactorState(mode);
 
     const {
-        loadCategories,
-        handleCreateCategory,
-        handleUpdateCategory,
-        handleDeleteCategory,
-    } = useCategoryHandlers({
-        setIsCategoriesLoading,
-        setCategoriesError,
-        setCategories,
-        setFormData,
-        setCurrentView,
-    });
-
-    useEffect(() => {
-        loadCategories();
-    }, [loadCategories]);
-
-    const {
+        form,
+        formData,
         handleChange,
         handleArrayChange,
         handleFaqChange,
@@ -66,11 +50,31 @@ const AdminRedactorForm = ({ mode, onClose }: AdminRedactorFormProps) => {
         handleSubmit,
     } = useAdminRedactorFormHandlers({
         mode,
-        formData,
-        setFormData,
+        initialFormData,
         setIsSubmitting,
         setSubmitStatus,
     });
+
+    useEffect(() => {
+        form.reset(initialFormData);
+    }, [form, initialFormData]);
+
+    const { loadCategories, handleCreateCategory, handleUpdateCategory, handleDeleteCategory } =
+        useCategoryHandlers({
+            setIsCategoriesLoading,
+            setCategoriesError,
+            setCategories,
+            setCurrentView,
+            updateSelectedCategory: (categoryId, categorySlug) => {
+                handleChange("categoryId", categoryId);
+                handleChange("categorySlug", categorySlug);
+            },
+            getSelectedCategoryId: () => form.getValues("categoryId"),
+        });
+
+    useEffect(() => {
+        loadCategories();
+    }, [loadCategories]);
 
     const serviceTitle = getServiceTitle(formData, serviceSlug);
 
