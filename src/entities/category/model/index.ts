@@ -1,6 +1,12 @@
 export interface ICategory {
-    id: number;
+    id: number | string;
     name: string;
     slug: string;
-    parentId?: number;
+    parentId?: number | string;
+    description?: string;
+    position?: number;
+    imageUrl?: string;
+    dishSlugs?: string[];
 }
+
+export type Category = ICategory;

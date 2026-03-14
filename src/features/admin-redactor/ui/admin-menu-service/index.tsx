@@ -3,11 +3,11 @@
 import Form from "next/form";
 import { useEffect } from "react";
 
-import { Service } from "@/entities/service";
-import { getServiceTitle } from "@/features/admin-redactor/admin.utils";
+import { Dish } from "@/entities/dish/model";
+import { getDishTitle } from "@/features/admin-redactor/admin.utils";
 import {
     AdminRedactorFormProps,
-    ServiceFieldValue,
+    DishFieldValue,
 } from "@/features/admin-redactor/model/adminRedactor.types";
 import StatusMessage from "@/shared/ui/StatusMessage";
 
@@ -18,7 +18,7 @@ import { useAdminRedactorFormHandlers } from "./useFormHandlers";
 
 const AdminRedactorForm = ({ mode, onClose }: AdminRedactorFormProps) => {
     const {
-        serviceSlug,
+        dishSlug,
         initialFormData,
         currentView,
         setCurrentView,
@@ -26,7 +26,7 @@ const AdminRedactorForm = ({ mode, onClose }: AdminRedactorFormProps) => {
         setIsSubmitting,
         submitStatus,
         setSubmitStatus,
-        isServiceLoading,
+        isDishLoading,
         categories,
         setCategories,
         isCategoriesLoading,
@@ -76,7 +76,7 @@ const AdminRedactorForm = ({ mode, onClose }: AdminRedactorFormProps) => {
         loadCategories();
     }, [loadCategories]);
 
-    const serviceTitle = getServiceTitle(formData, serviceSlug);
+    const dishTitle = getDishTitle(formData, dishSlug);
 
     return (
         <div className="space-y-6 p-8">
@@ -94,8 +94,8 @@ const AdminRedactorForm = ({ mode, onClose }: AdminRedactorFormProps) => {
                     onViewChange={setCurrentView}
                     onChange={(field, value) =>
                         handleChange(
-                            field as keyof Service,
-                            value as ServiceFieldValue,
+                            field as keyof Dish,
+                            value as DishFieldValue,
                         )
                     }
                     onArrayChange={handleArrayChange}
@@ -104,14 +104,14 @@ const AdminRedactorForm = ({ mode, onClose }: AdminRedactorFormProps) => {
                     onRemoveArrayItem={removeArrayItem}
                     onAddFaqItem={addFaqItem}
                     onRemoveFaqItem={removeFaqItem}
-                    isPending={isSubmitting || isServiceLoading}
+                    isPending={isSubmitting || isDishLoading}
                     deleteProps={
                         mode === "delete"
                             ? {
-                                  serviceTitle,
+                                  dishTitle,
                                   onCancel: onClose,
                                   deleteState,
-                                  serviceSlug: serviceSlug ?? "",
+                                  dishSlug: dishSlug ?? "",
                               }
                             : undefined
                     }
@@ -119,8 +119,8 @@ const AdminRedactorForm = ({ mode, onClose }: AdminRedactorFormProps) => {
                         formData,
                         onChange: (field, value) =>
                             handleChange(
-                                field as keyof Service,
-                                value as ServiceFieldValue,
+                                field as keyof Dish,
+                                value as DishFieldValue,
                             ),
                         categories,
                         isLoading: isCategoriesLoading,

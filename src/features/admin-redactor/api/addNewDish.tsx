@@ -2,18 +2,18 @@
 
 import { Prisma } from "@prisma/client";
 
-import { Service } from "@/entities/service";
+import { Dish } from "@/entities/dish/model";
 import { logger } from "@/shared/lib/logger";
-import prisma from "@/shared/lib/prisma";
+import { prisma } from "@/shared/lib/prisma";
 
 import {
-    normalizeServicePayload,
-    ServiceActionInput,
-} from "../servicePayload.utils";
-import { revalidateServicePaths } from "../serviceRevalidate.utils";
-import { isAdminServerSide } from "@/core/auth";
+    normalizeDishPayload,
+    DishActionInput,
+} from "../dishPayload.utils";
+import { revalidateDishPaths } from "../dishRevalidate.utils";
+import { isAdminServerSide } from "@/app/auth";
 
-export async function addNewService(serviceData: Service): Promise<{
+export async function addNewDish(dishData: Dish): Promise<{
     success: boolean;
     message: string;
 }> {
@@ -24,9 +24,9 @@ export async function addNewService(serviceData: Service): Promise<{
             throw new Error("Ошибка авторизации");
         }
 
-        const extendedPayload = serviceData as ServiceActionInput;
+        const extendedPayload = dishData as DishActionInput;
         const { data, children, comparison } =
-            normalizeServicePayload(extendedPayload);
+            normalizeDishPayload(extendedPayload);
 
         let categoryId = extendedPayload.categoryId ?? null;
 
@@ -43,8 +43,8 @@ export async function addNewService(serviceData: Service): Promise<{
             throw new Error("Категория обязательна");
         }
 
-        const createdService = await prisma.$transaction(async (tx) => {
-            const created = await tx.service.create({
+        const createdDish = await prisma.$transaction(async (tx) => {
+            const created = await tx.dish.create({
                 data: {
                     ...data,
                     categoryId,
@@ -59,9 +59,9 @@ export async function addNewService(serviceData: Service): Promise<{
             });
 
             if (children.whatIncluded.length > 0) {
-                await tx.serviceChecklistItem.createMany({
+                await tx.dishChecklistItem.createMany({
                     data: children.whatIncluded.map(({ text, position }) => ({
-                        serviceId: created.id,
+                        dishId: created.id,
                         text,
                         position,
                     })),
@@ -69,9 +69,9 @@ export async function addNewService(serviceData: Service): Promise<{
             }
 
             if (children.materials.length > 0) {
-                await tx.serviceMaterial.createMany({
+                await tx.dishMaterial.createMany({
                     data: children.materials.map(({ text, position }) => ({
-                        serviceId: created.id,
+                        dishId: created.id,
                         text,
                         position,
                     })),
@@ -79,10 +79,10 @@ export async function addNewService(serviceData: Service): Promise<{
             }
 
             if (children.faqs.length > 0) {
-                await tx.serviceFaq.createMany({
+                await tx.dishFaq.createMany({
                     data: children.faqs.map(
                         ({ question, answer, position }) => ({
-                            serviceId: created.id,
+                            dishId: created.id,
                             question,
                             answer,
                             position,
@@ -98,10 +98,10 @@ export async function addNewService(serviceData: Service): Promise<{
                     afterImageAlt: comparison.afterImageAlt ?? "",
                 };
 
-                await tx.serviceComparison.upsert({
-                    where: { serviceId: created.id },
+                await tx.dishComparison.upsert({
+                    where: { dishId: created.id },
                     create: {
-                        serviceId: created.id,
+                        dishId: created.id,
                         ...normalizedComparison,
                     },
                     update: normalizedComparison,
@@ -111,21 +111,21 @@ export async function addNewService(serviceData: Service): Promise<{
             return created;
         });
 
-        await revalidateServicePaths([
+        await revalidateDishPaths([
             {
-                categorySlug: createdService.category?.slug,
-                slug: createdService.slug,
+                categorySlug: createdDish.category?.slug,
+                slug: createdDish.slug,
             },
         ]);
 
         return {
             success: true,
-            message: "Услуга успешно создана",
+            message: "Блюдо успешно создано",
         };
     } catch (error) {
-        logger.error("Ошибка при добавлении услуги", {
+        logger.error("Ошибка при добавлении блюда", {
             error,
-            serviceData,
+            dishData,
         });
 
         if (
@@ -134,7 +134,7 @@ export async function addNewService(serviceData: Service): Promise<{
         ) {
             return {
                 success: false,
-                message: "Услуга с таким slug уже существует",
+                message: "Блюдо с таким slug уже существует",
             };
         }
 

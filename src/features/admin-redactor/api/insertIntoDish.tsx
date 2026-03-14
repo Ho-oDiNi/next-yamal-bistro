@@ -2,18 +2,18 @@
 
 import { Prisma } from "@prisma/client";
 
-import { Service } from "@/entities/service";
+import { Dish } from "@/entities/dish/model";
 import { logger } from "@/shared/lib/logger";
-import prisma from "@/shared/lib/prisma";
+import { prisma } from "@/shared/lib/prisma";
 
 import {
-    normalizeServicePayload,
-    ServiceActionInput,
-} from "../servicePayload.utils";
-import { revalidateServicePaths } from "../serviceRevalidate.utils";
-import { isAdminServerSide } from "@/core/auth";
+    normalizeDishPayload,
+    DishActionInput,
+} from "../dishPayload.utils";
+import { revalidateDishPaths } from "../dishRevalidate.utils";
+import { isAdminServerSide } from "@/app/auth";
 
-export async function insertIntoService(serviceData: Service): Promise<{
+export async function insertIntoDish(dishData: Dish): Promise<{
     success: boolean;
     message: string;
 }> {
@@ -21,16 +21,16 @@ export async function insertIntoService(serviceData: Service): Promise<{
         const isAdmin = await isAdminServerSide();
         if (!isAdmin) throw new Error("Ошибка авторизации");
 
-        if (!Number.isInteger(serviceData.id) || serviceData.id <= 0) {
-            throw new Error("Идентификатор услуги обязателен");
+        if (!Number.isInteger(dishData.id) || dishData.id <= 0) {
+            throw new Error("Идентификатор блюда обязателен");
         }
 
-        const extendedPayload = serviceData as ServiceActionInput;
+        const extendedPayload = dishData as DishActionInput;
         const { data, children, comparison } =
-            normalizeServicePayload(extendedPayload);
+            normalizeDishPayload(extendedPayload);
 
-        const existingService = await prisma.service.findUnique({
-            where: { id: serviceData.id },
+        const existingDish = await prisma.dish.findUnique({
+            where: { id: dishData.id },
             include: {
                 category: {
                     select: {
@@ -40,12 +40,12 @@ export async function insertIntoService(serviceData: Service): Promise<{
             },
         });
 
-        if (!existingService) {
-            throw new Error("Услуга не найдена");
+        if (!existingDish) {
+            throw new Error("Блюдо не найдено");
         }
 
         let nextCategoryId: number | null =
-            extendedPayload.categoryId ?? existingService.categoryId;
+            extendedPayload.categoryId ?? existingDish.categoryId;
 
         if (!nextCategoryId && extendedPayload.categorySlug) {
             const category = await prisma.category.findUnique({
@@ -60,11 +60,11 @@ export async function insertIntoService(serviceData: Service): Promise<{
             throw new Error("Категория обязательна");
         }
 
-        const serviceId = existingService.id;
+        const dishId = existingDish.id;
 
-        const updatedService = await prisma.$transaction(async (tx) => {
-            const updated = await tx.service.update({
-                where: { id: serviceId },
+        const updatedDish = await prisma.$transaction(async (tx) => {
+            const updated = await tx.dish.update({
+                where: { id: dishId },
                 data: {
                     ...data,
                     categoryId: nextCategoryId,
@@ -78,22 +78,22 @@ export async function insertIntoService(serviceData: Service): Promise<{
                 },
             });
 
-            await tx.serviceChecklistItem.deleteMany({
-                where: { serviceId },
+            await tx.dishChecklistItem.deleteMany({
+                where: { dishId },
             });
 
-            await tx.serviceMaterial.deleteMany({
-                where: { serviceId },
+            await tx.dishMaterial.deleteMany({
+                where: { dishId },
             });
 
-            await tx.serviceFaq.deleteMany({
-                where: { serviceId },
+            await tx.dishFaq.deleteMany({
+                where: { dishId },
             });
 
             if (children.whatIncluded.length > 0) {
-                await tx.serviceChecklistItem.createMany({
+                await tx.dishChecklistItem.createMany({
                     data: children.whatIncluded.map(({ text, position }) => ({
-                        serviceId,
+                        dishId,
                         text,
                         position,
                     })),
@@ -101,9 +101,9 @@ export async function insertIntoService(serviceData: Service): Promise<{
             }
 
             if (children.materials.length > 0) {
-                await tx.serviceMaterial.createMany({
+                await tx.dishMaterial.createMany({
                     data: children.materials.map(({ text, position }) => ({
-                        serviceId,
+                        dishId,
                         text,
                         position,
                     })),
@@ -111,10 +111,10 @@ export async function insertIntoService(serviceData: Service): Promise<{
             }
 
             if (children.faqs.length > 0) {
-                await tx.serviceFaq.createMany({
+                await tx.dishFaq.createMany({
                     data: children.faqs.map(
                         ({ question, answer, position }) => ({
-                            serviceId,
+                            dishId,
                             question,
                             answer,
                             position,
@@ -130,31 +130,31 @@ export async function insertIntoService(serviceData: Service): Promise<{
                     afterImageAlt: comparison.afterImageAlt ?? "",
                 };
 
-                await tx.serviceComparison.upsert({
-                    where: { serviceId },
+                await tx.dishComparison.upsert({
+                    where: { dishId },
                     create: {
-                        serviceId,
+                        dishId,
                         ...normalizedComparison,
                     },
                     update: normalizedComparison,
                 });
             } else {
-                await tx.serviceComparison.deleteMany({
-                    where: { serviceId },
+                await tx.dishComparison.deleteMany({
+                    where: { dishId },
                 });
             }
 
             return updated;
         });
 
-        await revalidateServicePaths([
+        await revalidateDishPaths([
             {
-                categorySlug: existingService.category?.slug,
-                slug: existingService.slug,
+                categorySlug: existingDish.category?.slug,
+                slug: existingDish.slug,
             },
             {
-                categorySlug: updatedService.category?.slug,
-                slug: updatedService.slug,
+                categorySlug: updatedDish.category?.slug,
+                slug: updatedDish.slug,
             },
         ]);
 
@@ -163,9 +163,9 @@ export async function insertIntoService(serviceData: Service): Promise<{
             message: "Данные успешно сохранены",
         };
     } catch (error) {
-        logger.error("Ошибка при сохранении услуги", {
+        logger.error("Ошибка при сохранении блюда", {
             error,
-            serviceData,
+            dishData,
         });
 
         if (
@@ -174,7 +174,7 @@ export async function insertIntoService(serviceData: Service): Promise<{
         ) {
             return {
                 success: false,
-                message: "Услуга с таким slug уже существует",
+                message: "Блюдо с таким slug уже существует",
             };
         }
 

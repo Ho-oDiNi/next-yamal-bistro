@@ -116,17 +116,17 @@ const CategoryView = ({
         }));
     };
 
-    const formatServicesLabel = useMemo(() => {
-        return (serviceCount: number) => {
-            if (serviceCount === 1) {
-                return "услуга";
+    const formatDishesLabel = useMemo(() => {
+        return (dishCount: number) => {
+            if (dishCount === 1) {
+                return "блюдо";
             }
 
-            if (serviceCount >= 2 && serviceCount <= 4) {
-                return "услуги";
+            if (dishCount >= 2 && dishCount <= 4) {
+                return "блюда";
             }
 
-            return "услуг";
+            return "блюд";
         };
     }, []);
 
@@ -216,9 +216,9 @@ const CategoryView = ({
         }
 
         const confirmDelete = window.confirm(
-            category.serviceSlugs.length
-                ? `Удалить категорию "${category.name}"? Также будут удалены ${category.serviceSlugs.length} ${formatServicesLabel(
-                      category.serviceSlugs.length,
+            category.dishSlugs.length
+                ? `Удалить категорию "${category.name}"? Также будут удалены ${category.dishSlugs.length} ${formatDishesLabel(
+                      category.dishSlugs.length,
                   )}.`
                 : `Удалить категорию "${category.name}"?`,
         );
@@ -247,9 +247,9 @@ const CategoryView = ({
 
             <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
                 <div>
-                    <h2 className="text-xl font-semibold">Категория услуги</h2>
+                    <h2 className="text-xl font-semibold">Категория блюда</h2>
                     <p className="text-sm text-gray-600">
-                        Выберите категорию, к которой относится услуга. Здесь же
+                        Выберите категорию, к которой относится блюдо. Здесь же
                         можно отредактировать или удалить категорию.
                     </p>
                 </div>
@@ -310,7 +310,7 @@ const CategoryView = ({
                                             <label className="flex flex-1 cursor-pointer items-start gap-3">
                                                 <input
                                                     type="radio"
-                                                    name="service-category"
+                                                    name="dish-category"
                                                     value={category.id}
                                                     checked={isSelected}
                                                     onChange={() =>
@@ -389,9 +389,9 @@ const CategoryView = ({
 
                                         <div className="flex items-center justify-between text-xs text-gray-500">
                                             <span>
-                                                {category.serviceSlugs.length}{" "}
-                                                {formatServicesLabel(
-                                                    category.serviceSlugs
+                                                {category.dishSlugs.length}{" "}
+                                                {formatDishesLabel(
+                                                    category.dishSlugs
                                                         .length,
                                                 )}
                                             </span>
@@ -547,7 +547,7 @@ const CategoryView = ({
                 ) : (
                     <div className="rounded border border-dashed border-gray-300 p-4 text-sm text-gray-500">
                         Категории не найдены. Создайте новую категорию, чтобы
-                        связать её с услугой.
+                        связать её с блюдом.
                     </div>
                 )
             ) : null}

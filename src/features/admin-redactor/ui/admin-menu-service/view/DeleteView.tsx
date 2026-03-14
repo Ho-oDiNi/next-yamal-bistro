@@ -5,16 +5,16 @@ import StatusMessage from "@/shared/ui/StatusMessage";
 import { DeleteViewProps } from "@/features/admin-redactor/model/adminRedactor.types";
 
 const DeleteView = ({
-    serviceTitle,
+    dishTitle,
     onCancel,
     deleteState,
-    serviceSlug,
+    dishSlug,
 }: DeleteViewProps) => {
     const { pending } = useFormStatus();
 
     return (
         <div className="space-y-6">
-            <input type="hidden" name="serviceSlug" value={serviceSlug} />
+            <input type="hidden" name="dishSlug" value={dishSlug} />
 
             <StatusMessage
                 message={deleteState?.message}
@@ -23,7 +23,7 @@ const DeleteView = ({
 
             <p className="text-main">
                 Вы точно хотите удалить{" "}
-                <span className="font-semibold italic">{serviceTitle}</span>?
+                <span className="font-semibold italic">{dishTitle}</span>?
                 Данное действие невозможно будет отменить
             </p>
 

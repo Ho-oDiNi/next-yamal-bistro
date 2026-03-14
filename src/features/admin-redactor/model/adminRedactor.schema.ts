@@ -8,7 +8,7 @@ export const adminRedactorSchema = z.object({
     shortName: z.string(),
     metaTitle: z.string().min(1, "Meta Title обязателен"),
     metaDescription: z.string().min(1, "Meta Description обязателен"),
-    title: z.string().min(1, "Название услуги обязательно"),
+    title: z.string().min(1, "Название блюда обязательно"),
     description: z.string().min(1, "Описание обязательно"),
     contentTitle: z.string(),
     contentDescription: z.string(),

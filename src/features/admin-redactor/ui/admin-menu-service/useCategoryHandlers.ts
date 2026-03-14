@@ -1,10 +1,10 @@
 import { Dispatch, SetStateAction, useCallback } from "react";
 
-import { Category } from "@/entities/category";
-import { fetchServiceCategories } from "@/features/admin-redactor/admin.utils";
-import { createServiceCategory } from "@/features/admin-redactor/api/createServiceCategory";
-import { deleteServiceCategory } from "@/features/admin-redactor/api/deleteServiceCategory";
-import { updateServiceCategory } from "@/features/admin-redactor/api/updateServiceCategory";
+import { Category } from "@/entities/category/model";
+import { fetchDishCategories } from "@/features/admin-redactor/admin.utils";
+import { createDishCategory } from "@/features/admin-redactor/api/createDishCategory";
+import { deleteDishCategory } from "@/features/admin-redactor/api/deleteDishCategory";
+import { updateDishCategory } from "@/features/admin-redactor/api/updateDishCategory";
 import {
     CategoryCreatePayload,
     CategoryCreateResult,
@@ -36,7 +36,7 @@ export const useCategoryHandlers = ({
         setCategoriesError(null);
 
         try {
-            const data = await fetchServiceCategories();
+            const data = await fetchDishCategories();
             setCategories(data);
         } catch (error) {
             setCategoriesError(
@@ -69,7 +69,7 @@ export const useCategoryHandlers = ({
             payload: CategoryCreatePayload,
         ): Promise<CategoryCreateResult> => {
             try {
-                const result = await createServiceCategory(payload);
+                const result = await createDishCategory(payload);
 
                 if (result.success && result.category) {
                     const category = result.category;
@@ -119,7 +119,7 @@ export const useCategoryHandlers = ({
             payload: CategoryUpdatePayload,
         ): Promise<CategoryUpdateResult> => {
             try {
-                const result = await updateServiceCategory(payload);
+                const result = await updateDishCategory(payload);
 
                 if (result.success && result.category) {
                     const category = result.category;
@@ -162,7 +162,7 @@ export const useCategoryHandlers = ({
     const handleDeleteCategory = useCallback(
         async (categoryId: number): Promise<CategoryDeleteResult> => {
             try {
-                const result = await deleteServiceCategory(categoryId);
+                const result = await deleteDishCategory(categoryId);
 
                 if (result.success && result.categoryId) {
                     setCategories((prev) =>

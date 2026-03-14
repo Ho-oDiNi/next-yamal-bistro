@@ -1,23 +1,23 @@
-import { Category } from "@/entities/category";
+import { Category } from "@/entities/category/model";
 
-interface CategoryWithServiceSlugs {
+interface CategoryWithDishSlugs {
     id: number;
     slug: string;
     name: string;
     imageUrl: string | null;
     position: number | null;
-    services: Array<{ slug: string }>;
+    dishes: Array<{ slug: string }>;
 }
 
-export const mapCategoryWithServiceSlugs = (
-    category: CategoryWithServiceSlugs,
+export const mapCategoryWithDishSlugs = (
+    category: CategoryWithDishSlugs,
 ): Category => ({
     id: category.id,
     slug: category.slug,
     name: category.name,
     imageUrl: category.imageUrl ?? undefined,
     position: category.position ?? undefined,
-    serviceSlugs: category.services.map((service) => service.slug),
+    dishSlugs: category.dishes.map((dish) => dish.slug),
 });
 
 export const normalizeCategoryPosition = (

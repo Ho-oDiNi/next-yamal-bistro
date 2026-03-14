@@ -3,12 +3,12 @@
 import { Prisma } from "@prisma/client";
 
 import { logger } from "@/shared/lib/logger";
-import prisma from "@/shared/lib/prisma";
+import { prisma } from "@/shared/lib/prisma";
 import {
     CategoryUpdatePayload,
     CategoryUpdateResult,
 } from "../model/adminRedactor.types";
-import { isAdminServerSide } from "@/core/auth";
+import { isAdminServerSide } from "@/app/auth";
 import {
     CATEGORY_IMAGE_MAX_SIZE_BYTES,
     CATEGORY_IMAGE_MAX_SIZE_LABEL,
@@ -16,11 +16,11 @@ import {
     removePublicFile,
 } from "@/shared/lib/file-storage";
 import {
-    mapCategoryWithServiceSlugs,
+    mapCategoryWithDishSlugs,
     normalizeCategoryImageFile,
 } from "./category.utils";
 
-export const updateServiceCategory = async (
+export const updateDishCategory = async (
     payload: CategoryUpdatePayload,
 ): Promise<CategoryUpdateResult> => {
     try {
@@ -86,7 +86,7 @@ export const updateServiceCategory = async (
                     imageUrl: newImageUrl ?? existingCategory.imageUrl,
                 },
                 include: {
-                    services: {
+                    dishes: {
                         select: { slug: true },
                         orderBy: { id: "asc" },
                     },
@@ -104,7 +104,7 @@ export const updateServiceCategory = async (
             await removePublicFile(existingCategory.imageUrl);
         }
 
-        const category = mapCategoryWithServiceSlugs(updatedCategory);
+        const category = mapCategoryWithDishSlugs(updatedCategory);
 
         return {
             success: true,
@@ -112,7 +112,7 @@ export const updateServiceCategory = async (
             category,
         } satisfies CategoryUpdateResult;
     } catch (error) {
-        logger.error("Ошибка при обновлении категории услуги", {
+        logger.error("Ошибка при обновлении категории блюда", {
             error,
             payload,
         });

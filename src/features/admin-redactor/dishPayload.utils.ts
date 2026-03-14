@@ -1,6 +1,6 @@
-import { Service } from "@/entities/service";
+import { Dish } from "@/entities/dish/model";
 
-export type ServiceActionInput = Service & {
+export type DishActionInput = Dish & {
     categoryId?: number | null;
     categorySlug?: string | null;
 };
@@ -82,7 +82,7 @@ const resolveImageUrl = (value: unknown, kind: "before" | "after"): string => {
     );
 };
 
-export interface NormalizedServicePayload {
+export interface NormalizedDishPayload {
     data: {
         slug: string;
         shortName: string | null;
@@ -113,9 +113,9 @@ export interface NormalizedServicePayload {
     } | null;
 }
 
-export const normalizeServicePayload = (
-    payload: ServiceActionInput,
-): NormalizedServicePayload => {
+export const normalizeDishPayload = (
+    payload: DishActionInput,
+): NormalizedDishPayload => {
     const whatIncluded = sanitizeList(payload.whatIncluded ?? []);
     const materials = sanitizeList(payload.materials ?? []);
     const faqItems = sanitizeFaqItems(payload.faqItems ?? []);

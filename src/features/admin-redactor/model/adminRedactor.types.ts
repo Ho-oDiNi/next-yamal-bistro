@@ -1,5 +1,5 @@
-import { Category } from "@/entities/category";
-import { Service } from "@/entities/service";
+import { Category } from "@/entities/category/model";
+import { Dish } from "@/entities/dish/model";
 
 export type ViewMode =
     | "menu"
@@ -16,13 +16,13 @@ export type DeleteActionState = {
     message: string;
 } | null;
 
-export type ServiceFieldValue = Service[keyof Service];
+export type DishFieldValue = Dish[keyof Dish];
 
 export interface ViewRendererProps {
     currentView: ViewMode;
-    formData: Service;
+    formData: Dish;
     onViewChange: (view: ViewMode) => void;
-    onChange: (field: keyof Service, value: ServiceFieldValue) => void;
+    onChange: (field: keyof Dish, value: DishFieldValue) => void;
     onArrayChange: (
         field: "whatIncluded" | "materials",
         index: number,
@@ -43,8 +43,8 @@ export interface ViewRendererProps {
 }
 
 export interface BaseViewProps {
-    formData: Service;
-    onChange: (field: keyof Service, value: ServiceFieldValue) => void;
+    formData: Dish;
+    onChange: (field: keyof Dish, value: DishFieldValue) => void;
     onBack: () => void;
 }
 
@@ -68,10 +68,10 @@ export interface FaqViewProps extends BaseViewProps {
 }
 
 export interface DeleteViewProps {
-    serviceTitle: string;
+    dishTitle: string;
     onCancel: () => void;
     deleteState: DeleteActionState;
-    serviceSlug: string;
+    dishSlug: string;
 }
 
 export interface CategoryViewComponentProps extends BaseViewProps {

@@ -3,9 +3,9 @@
 import { Prisma } from "@prisma/client";
 
 import { logger } from "@/shared/lib/logger";
-import prisma from "@/shared/lib/prisma";
-import { Category } from "@/entities/category";
-import { isAdminServerSide } from "@/core/auth";
+import { prisma } from "@/shared/lib/prisma";
+import { Category } from "@/entities/category/model";
+import { isAdminServerSide } from "@/app/auth";
 import {
     CATEGORY_IMAGE_MAX_SIZE_BYTES,
     CATEGORY_IMAGE_MAX_SIZE_LABEL,
@@ -13,12 +13,12 @@ import {
     removePublicFile,
 } from "@/shared/lib/file-storage";
 import {
-    mapCategoryWithServiceSlugs,
+    mapCategoryWithDishSlugs,
     normalizeCategoryImageFile,
     normalizeCategoryPosition,
 } from "./category.utils";
 
-export interface CreateServiceCategoryInput {
+export interface CreateDishCategoryInput {
     name: string;
     slug: string;
     description?: string;
@@ -26,15 +26,15 @@ export interface CreateServiceCategoryInput {
     imageFile?: File | null;
 }
 
-export interface CreateServiceCategoryResult {
+export interface CreateDishCategoryResult {
     success: boolean;
     message: string;
     category?: Category;
 }
 
-export const createServiceCategory = async (
-    payload: CreateServiceCategoryInput,
-): Promise<CreateServiceCategoryResult> => {
+export const createDishCategory = async (
+    payload: CreateDishCategoryInput,
+): Promise<CreateDishCategoryResult> => {
     try {
         const isAdmin = await isAdminServerSide();
 
@@ -79,7 +79,7 @@ export const createServiceCategory = async (
                     imageUrl,
                 },
                 include: {
-                    services: {
+                    dishes: {
                         select: {
                             slug: true,
                         },
@@ -97,7 +97,7 @@ export const createServiceCategory = async (
             throw error;
         }
 
-        const category = mapCategoryWithServiceSlugs(createdCategory);
+        const category = mapCategoryWithDishSlugs(createdCategory);
 
         return {
             success: true,
@@ -105,7 +105,7 @@ export const createServiceCategory = async (
             category,
         };
     } catch (error) {
-        logger.error("Ошибка при создании категории услуги", {
+        logger.error("Ошибка при создании категории блюда", {
             error,
             payload,
         });
