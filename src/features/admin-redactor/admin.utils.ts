@@ -1,7 +1,7 @@
-import { Category } from "@/entities/category";
-import { Service } from "@/entities/service";
+import { Category } from "@/entities/category/model";
+import { Dish } from "@/entities/dish/model";
 
-export const createEmptyService = (): Service => ({
+export const createEmptyDish = (): Dish => ({
     id: 0,
     slug: "",
     shortName: "",
@@ -26,30 +26,30 @@ export const createEmptyService = (): Service => ({
     categorySlug: undefined,
 });
 
-export const fetchServiceBySlug = async (
-    serviceSlug: string,
-): Promise<Service | null> => {
-    if (!serviceSlug) {
+export const fetchDishBySlug = async (
+    dishSlug: string,
+): Promise<Dish | null> => {
+    if (!dishSlug) {
         return null;
     }
 
     try {
-        const response = await fetch(`/api/services/${serviceSlug}`);
+        const response = await fetch(`/api/dishes/${dishSlug}`);
         if (!response.ok) {
             return null;
         }
 
-        const data = (await response.json()) as Service;
+        const data = (await response.json()) as Dish;
         return data;
     } catch (error) {
-        console.error("Не удалось загрузить данные услуги", error);
+        console.error("Не удалось загрузить данные блюда", error);
         return null;
     }
 };
 
-export const fetchServiceCategories = async (): Promise<Category[]> => {
+export const fetchDishCategories = async (): Promise<Category[]> => {
     try {
-        const response = await fetch("/api/service-categories");
+        const response = await fetch("/api/dish-categories");
 
         if (!response.ok) {
             throw new Error("Не удалось загрузить категории");
@@ -65,14 +65,14 @@ export const fetchServiceCategories = async (): Promise<Category[]> => {
     }
 };
 
-export const getServiceTitle = (
-    formData: Service,
-    serviceSlug: string | undefined,
+export const getDishTitle = (
+    formData: Dish,
+    dishSlug: string | undefined,
 ): string => {
     return (
         formData.title?.trim() ||
         formData.shortName?.trim() ||
-        serviceSlug?.trim() ||
-        "эту услугу"
+        dishSlug?.trim() ||
+        "это блюдо"
     );
 };

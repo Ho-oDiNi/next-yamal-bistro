@@ -1,12 +1,12 @@
 import { useParams } from "next/navigation";
 import { useActionState, useEffect, useState } from "react";
 
-import { Category } from "@/entities/category";
+import { Category } from "@/entities/category/model";
 import {
-    createEmptyService,
-    fetchServiceBySlug,
+    createEmptyDish,
+    fetchDishBySlug,
 } from "@/features/admin-redactor/admin.utils";
-import { deleteService } from "@/features/admin-redactor/api/deleteService";
+import { deleteDish } from "@/features/admin-redactor/api/deleteDish";
 import { AdminRedactorFormValues } from "@/features/admin-redactor/model/adminRedactor.schema";
 import {
     AdminRedactorFormProps,
@@ -17,7 +17,7 @@ import {
 import type { Dispatch, SetStateAction } from "react";
 
 interface UseAdminRedactorStateResult {
-    serviceSlug?: string;
+    dishSlug?: string;
     initialFormData: AdminRedactorFormValues;
     currentView: ViewMode;
     setCurrentView: Dispatch<SetStateAction<ViewMode>>;
@@ -27,7 +27,7 @@ interface UseAdminRedactorStateResult {
     setSubmitStatus: Dispatch<
         SetStateAction<{ success: boolean; message: string } | null>
     >;
-    isServiceLoading: boolean;
+    isDishLoading: boolean;
     categories: Category[];
     setCategories: Dispatch<SetStateAction<Category[]>>;
     isCategoriesLoading: boolean;
@@ -42,10 +42,10 @@ export const useAdminRedactorState = (
     mode: AdminRedactorFormProps["mode"],
 ): UseAdminRedactorStateResult => {
     const params = useParams();
-    const serviceSlug = params.service as string | undefined;
+    const dishSlug = params.dish as string | undefined;
 
     const [initialFormData, setInitialFormData] =
-        useState<AdminRedactorFormValues>(createEmptyService());
+        useState<AdminRedactorFormValues>(createEmptyDish());
     const [currentView, setCurrentView] = useState<ViewMode>(() =>
         mode === "delete" ? "delete" : "menu",
     );
@@ -54,14 +54,14 @@ export const useAdminRedactorState = (
         success: boolean;
         message: string;
     } | null>(null);
-    const [isServiceLoading, setIsServiceLoading] = useState(false);
+    const [isDishLoading, setIsDishLoading] = useState(false);
     const [categories, setCategories] = useState<Category[]>([]);
     const [isCategoriesLoading, setIsCategoriesLoading] = useState(false);
     const [categoriesError, setCategoriesError] = useState<string | null>(null);
     const [deleteState, deleteAction] = useActionState<
         DeleteActionState,
         FormData
-    >(deleteService, null);
+    >(deleteDish, null);
 
     useEffect(() => {
         let isActualState = true;
@@ -76,39 +76,39 @@ export const useAdminRedactorState = (
             setIsSubmitting(false);
         };
 
-        const loadCurrentService = async () => {
+        const loadCurrentDish = async () => {
             resetTransientState();
 
             if (mode !== "edit" && mode !== "delete") {
-                setInitialFormData(createEmptyService());
-                setIsServiceLoading(false);
+                setInitialFormData(createEmptyDish());
+                setIsDishLoading(false);
                 return;
             }
 
-            if (!serviceSlug) {
-                setInitialFormData(createEmptyService());
-                setIsServiceLoading(false);
+            if (!dishSlug) {
+                setInitialFormData(createEmptyDish());
+                setIsDishLoading(false);
                 return;
             }
 
-            setIsServiceLoading(true);
-            const loadedService = await fetchServiceBySlug(serviceSlug);
+            setIsDishLoading(true);
+            const loadedDish = await fetchDishBySlug(dishSlug);
 
             if (isActualState) {
-                setInitialFormData(loadedService ?? createEmptyService());
-                setIsServiceLoading(false);
+                setInitialFormData(loadedDish ?? createEmptyDish());
+                setIsDishLoading(false);
             }
         };
 
-        loadCurrentService();
+        loadCurrentDish();
 
         return () => {
             isActualState = false;
         };
-    }, [mode, serviceSlug]);
+    }, [mode, dishSlug]);
 
     return {
-        serviceSlug,
+        dishSlug,
         initialFormData,
         currentView,
         setCurrentView,
@@ -116,7 +116,7 @@ export const useAdminRedactorState = (
         setIsSubmitting,
         submitStatus,
         setSubmitStatus,
-        isServiceLoading,
+        isDishLoading,
         categories,
         setCategories,
         isCategoriesLoading,

@@ -1,6 +1,6 @@
 import InputField from "../ui/InputField";
 import TextareaField from "../ui/TextareaField";
-import { Service } from "@/entities/service";
+import { Dish } from "@/entities/dish/model";
 
 interface MetaDataFieldProps {
     formData: {
@@ -8,7 +8,7 @@ interface MetaDataFieldProps {
         metaTitle: string;
         metaDescription: string;
     };
-    onChange: (field: keyof Service, value: Service[keyof Service]) => void;
+    onChange: (field: keyof Dish, value: Dish[keyof Dish]) => void;
 }
 
 const MetaDataField = ({ formData, onChange }: MetaDataFieldProps) => {

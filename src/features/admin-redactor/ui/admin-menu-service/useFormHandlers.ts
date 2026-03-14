@@ -2,8 +2,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useCallback } from "react";
 import { useForm } from "react-hook-form";
 
-import { addNewService } from "@/features/admin-redactor/api/addNewService";
-import { insertIntoService } from "@/features/admin-redactor/api/insertIntoService";
+import { addNewDish } from "@/features/admin-redactor/api/addNewDish";
+import { insertIntoDish } from "@/features/admin-redactor/api/insertIntoDish";
 import {
     AdminRedactorFormValues,
     adminRedactorSchema,
@@ -114,7 +114,7 @@ export const useAdminRedactorFormHandlers = ({
         setSubmitStatus(null);
 
         try {
-            const action = mode === "create" ? addNewService : insertIntoService;
+            const action = mode === "create" ? addNewDish : insertIntoDish;
             const result = await action(validatedData);
             setSubmitStatus(result);
         } catch (error) {

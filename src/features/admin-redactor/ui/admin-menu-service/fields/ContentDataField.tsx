@@ -1,6 +1,6 @@
 import QuillEditor from "@/shared/lib/react-quill";
 import InputField from "../ui/InputField";
-import { Service } from "@/entities/service";
+import { Dish } from "@/entities/dish/model";
 import TextareaField from "../ui/TextareaField";
 import PriceAbbreviationField from "./PriceAbbreviationField";
 
@@ -18,7 +18,7 @@ interface ContentDataFieldProps {
         guarantee: string;
         duration: string;
     };
-    onChange: (field: keyof Service, value: Service[keyof Service]) => void;
+    onChange: (field: keyof Dish, value: Dish[keyof Dish]) => void;
 }
 
 const ContentDataField = ({ formData, onChange }: ContentDataFieldProps) => {
@@ -33,7 +33,7 @@ const ContentDataField = ({ formData, onChange }: ContentDataFieldProps) => {
                     required
                 />
                 <InputField
-                    label="Кнопка услуги"
+                    label="Кнопка блюда"
                     type="text"
                     value={formData.shortName || ""}
                     placeholder={formData.title}

@@ -87,10 +87,10 @@ const ViewRenderer = ({
             case "delete":
                 return deleteProps ? (
                     <DeleteView
-                        serviceTitle={deleteProps.serviceTitle}
+                        dishTitle={deleteProps.dishTitle}
                         onCancel={deleteProps.onCancel}
                         deleteState={deleteProps.deleteState}
-                        serviceSlug={deleteProps.serviceSlug}
+                        dishSlug={deleteProps.dishSlug}
                     />
                 ) : null;
 

@@ -127,7 +127,7 @@ const CategoryCreateView = ({
             <div>
                 <h2 className="text-xl font-semibold">Новая категория</h2>
                 <p className="text-sm text-gray-600">
-                    Заполните данные, чтобы добавить новую категорию услуг.
+                    Заполните данные, чтобы добавить новую категорию блюд.
                 </p>
             </div>
 
@@ -149,7 +149,7 @@ const CategoryCreateView = ({
                             handleChange("name", event.target.value)
                         }
                         className="w-full rounded border border-gray-300 p-2 text-sm focus:border-blue-500 focus:outline-none"
-                        placeholder="Например, Клининговые услуги"
+                        placeholder="Например, Горячие блюда"
                         required
                     />
                 </label>

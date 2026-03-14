@@ -8,7 +8,7 @@ interface MenuViewProps {
 
 const MenuView = ({ onViewChange, isPending }: MenuViewProps) => (
     <div className="space-y-4">
-        <h2 className="text-xl font-bold">Редактор услуги</h2>
+        <h2 className="text-xl font-bold">Редактор блюда</h2>
         <p className="text-main text-gray-600">
             Выберите раздел для редактирования:
         </p>
@@ -33,7 +33,7 @@ const MenuView = ({ onViewChange, isPending }: MenuViewProps) => (
             />
 
             <NavigationButton
-                title="Список услуг"
+                title="Состав блюда"
                 onClick={() => onViewChange("whatIncluded")}
                 icon="✅"
             />

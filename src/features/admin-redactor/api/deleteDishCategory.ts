@@ -3,12 +3,12 @@
 import { Prisma } from "@prisma/client";
 
 import { logger } from "@/shared/lib/logger";
-import prisma from "@/shared/lib/prisma";
+import { prisma } from "@/shared/lib/prisma";
 import { CategoryDeleteResult } from "../model/adminRedactor.types";
-import { isAdminServerSide } from "@/core/auth";
+import { isAdminServerSide } from "@/app/auth";
 import { removePublicFile } from "@/shared/lib/file-storage";
 
-export const deleteServiceCategory = async (
+export const deleteDishCategory = async (
     categoryId: number,
 ): Promise<CategoryDeleteResult> => {
     try {
@@ -61,7 +61,7 @@ export const deleteServiceCategory = async (
             categoryId: id,
         } satisfies CategoryDeleteResult;
     } catch (error) {
-        logger.error("Ошибка при удалении категории услуги", {
+        logger.error("Ошибка при удалении категории блюда", {
             error,
             categoryId,
         });
@@ -73,7 +73,7 @@ export const deleteServiceCategory = async (
             return {
                 success: false,
                 message:
-                    "Сначала удалите или перенесите услуги, связанные с категорией",
+                    "Сначала удалите или перенесите блюда, связанные с категорией",
             } satisfies CategoryDeleteResult;
         }
 
