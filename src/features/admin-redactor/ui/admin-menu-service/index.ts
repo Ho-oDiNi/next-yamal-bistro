@@ -1,1 +1,1 @@
-export { default } from "./view/AdminRedactorForm";
+export { default as AdminRedactor } from "./view/AdminRedactorForm";

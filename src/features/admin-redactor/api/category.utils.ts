@@ -1,4 +1,4 @@
-import { Category } from "@/entities/category/model";
+import { ICategory } from "@/entities/category/model";
 
 interface CategoryWithDishSlugs {
     id: number;
@@ -11,7 +11,7 @@ interface CategoryWithDishSlugs {
 
 export const mapCategoryWithDishSlugs = (
     category: CategoryWithDishSlugs,
-): Category => ({
+): ICategory => ({
     id: category.id,
     slug: category.slug,
     name: category.name,

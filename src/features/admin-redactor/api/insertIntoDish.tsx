@@ -2,13 +2,13 @@
 
 import { Prisma } from "@prisma/client";
 
+import { isAdminServerSide } from "@/app/auth";
+import { revalidateDishPaths } from "@/entities/dish/lib/dishRevalidate";
 import { Dish } from "@/entities/dish/model";
 import { logger } from "@/shared/lib/logger";
 import { prisma } from "@/shared/lib/prisma";
 
-import { normalizeDishPayload, DishActionInput } from "../dishPayload.utils";
-import { revalidateDishPaths } from "../../../entities/dish/lib/dishRevalidate";
-import { isAdminServerSide } from "@/app/auth";
+import { DishActionInput, normalizeDishPayload } from "../dishPayload.utils";
 
 export async function insertIntoDish(dishData: Dish): Promise<{
     success: boolean;

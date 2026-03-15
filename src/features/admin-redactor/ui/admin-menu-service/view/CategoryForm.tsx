@@ -31,7 +31,8 @@ const CategoryForm = ({
         watch,
         formState: { errors },
     } = useForm<CategoryFormValues>({
-        resolver: zodResolver(categoryFormSchema),
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        resolver: zodResolver(categoryFormSchema as any),
         defaultValues: {
             name: "",
             slug: "",

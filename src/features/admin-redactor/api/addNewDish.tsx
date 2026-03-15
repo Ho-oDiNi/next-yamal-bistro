@@ -2,18 +2,20 @@
 
 import { Prisma } from "@prisma/client";
 
-import { Dish } from "@/entities/dish/model";
+import { isAdminServerSide } from "@/app/auth";
+import { revalidateDishPaths } from "@/entities/dish/lib/dishRevalidate";
+import { IDish } from "@/entities/dish/model";
 import { logger } from "@/shared/lib/logger";
 import { prisma } from "@/shared/lib/prisma";
 
-import { normalizeDishPayload, DishActionInput } from "../dishPayload.utils";
-import { revalidateDishPaths } from "../../../entities/dish/lib/dishRevalidate";
-import { isAdminServerSide } from "@/app/auth";
+import { normalizeDishPayload } from "../ui/admin-menu-service/lib/normalizeDishPayload";
 
-export async function addNewDish(dishData: Dish): Promise<{
+export const addNewDish = async (
+    dishData: IDish,
+): Promise<{
     success: boolean;
     message: string;
-}> {
+}> => {
     try {
         const isAdmin = await isAdminServerSide();
 
@@ -140,4 +142,4 @@ export async function addNewDish(dishData: Dish): Promise<{
             message: error instanceof Error ? error.message : "Ошибка сервера",
         };
     }
-}
+};

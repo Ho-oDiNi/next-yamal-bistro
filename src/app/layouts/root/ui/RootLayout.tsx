@@ -1,6 +1,9 @@
+import { SessionProvider } from "next-auth/react";
 import { ReactNode } from "react";
 
 import { YandexMetrika } from "@/app/analytics";
+import { AdminGate, AdminGate, auth } from "@/app/auth";
+import { AdminRedactor } from "@/features/admin-redactor";
 import { cn } from "@/shared/lib/cn";
 import { FontRoboto } from "@/shared/lib/font-roboto";
 import { FontSecession } from "@/shared/lib/fonts-secession";
@@ -13,6 +16,8 @@ export const RootLayout = async ({
 }: Readonly<{
     children: ReactNode;
 }>) => {
+    const session = await auth();
+
     return (
         <html lang="ru">
             <body
@@ -22,13 +27,18 @@ export const RootLayout = async ({
                     "font-secession bg-slate-200 antialiased",
                 )}
             >
-                <YandexMetrika />
-                <ModalProvider>
-                    <Header />
-                    <main className="text-brand-dark">{children}</main>
-                    <ModalRenderer />
-                    <Footer />
-                </ModalProvider>
+                <SessionProvider session={session}>
+                    <YandexMetrika />
+                    <ModalProvider>
+                        <Header />
+                        <main className="text-brand-dark">{children}</main>
+                        <ModalRenderer />
+                        <Footer />
+                        <AdminGate>
+                            <AdminRedactor />
+                        </AdminGate>
+                    </ModalProvider>
+                </SessionProvider>
             </body>
         </html>
     );
