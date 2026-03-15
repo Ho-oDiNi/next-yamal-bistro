@@ -3,12 +3,14 @@ import { StaticImageData } from "next/image";
 export interface IDish {
     id: number;
     name: string;
-    description: string;
     slug: string;
-    weightValue?: number;
-    weightUnit?: string;
-    price: number;
-    imageUrl?: string | StaticImageData;
-    categoryId?: number;
-    tagId?: number;
+    price: number | null;
+    description: string | null;
+    weightValue: number | null;
+    weightUnit: string | null;
+    imageUrl: string | StaticImageData | null;
+    categoryId: number | null;
+    tagId: number | null;
 }
+
+export type TDishData = Omit<IDish, "id">;

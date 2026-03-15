@@ -1,4 +1,4 @@
 import { DEFAULT_DISH } from "../config";
-import { IDish } from "../model";
+import { TDishData } from "../model";
 
-export const createEmptyDish = (): IDish => DEFAULT_DISH;
+export const createEmptyDish = (): TDishData => DEFAULT_DISH;

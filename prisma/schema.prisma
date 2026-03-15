@@ -98,16 +98,16 @@ model Category {
 model Dish {
   id          Int      @id @default(autoincrement())
   name        String
-  description String
   slug        String   @unique
-  weightValue Decimal? @map("weight_value") @db.Decimal(10, 2)
+  description String?
+  weightValue Int?     @map("weight_value")
   weightUnit  String?  @map("weight_unit")
-  price       Decimal  @db.Decimal(10, 2)
+  price       Int? 
   imageUrl    String?  @map("image_url")
-  categoryId  Int      @map("category_id")
+  categoryId  Int?      @map("category_id")
   tagId       Int?     @map("tag_id")
 
-  category    Category @relation(fields: [categoryId], references: [id], onDelete: Restrict)
+  category    Category? @relation(fields: [categoryId], references: [id], onDelete: Restrict)
   tag         Tag?     @relation(fields: [tagId], references: [id], onDelete: SetNull)
 
   @@index([categoryId, tagId])
@@ -117,7 +117,7 @@ model Dish {
 model Tag {
   id       Int      @id @default(autoincrement())
   name     String   @unique
-  imageUrl String?  @map("image_url")
+  imageUrl String?   @map("image_url")
 
   dishes   Dish[]
 

@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { IDish } from "@/entities/dish/model";
+import { TDishData } from "@/entities/dish";
 
 import mockImage from "@images/qr_code.png";
 
@@ -11,7 +11,7 @@ export const DishCard = ({
     weightValue,
     weightUnit,
     price,
-}: IDish) => {
+}: TDishData) => {
     return (
         <article className="flex h-105 w-full max-w-xl flex-col overflow-hidden rounded-3xl bg-white">
             <div className="h-7/12 shrink-0">

@@ -4,7 +4,7 @@ import { Pagenator, usePagination } from "@/shared/lib/pagenator";
 
 import { DishCard } from "./DishCard";
 
-type DishListProps = {
+type DishGridProps = {
     dishes: IDish[];
     categories: ICategory[];
     activeCategory: number | null;
@@ -13,14 +13,14 @@ type DishListProps = {
     onPageChange: (page: number) => void;
 };
 
-export const DishList = ({
+export const DishGrid = ({
     dishes,
     categories,
     activeCategory,
     page,
     perPage,
     onPageChange,
-}: DishListProps) => {
+}: DishGridProps) => {
     const activeCategoryData = categories.find(
         (category) => category.id === activeCategory,
     );
@@ -43,8 +43,8 @@ export const DishList = ({
             </h3>
 
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
-                {paginatedItems.map((dish) => (
-                    <DishCard key={dish.id} {...dish} />
+                {paginatedItems.map(({ id, ...dish }) => (
+                    <DishCard key={id} {...dish} />
                 ))}
             </div>
 

@@ -2,8 +2,8 @@ import { SessionProvider } from "next-auth/react";
 import { ReactNode } from "react";
 
 import { YandexMetrika } from "@/app/analytics";
-import { AdminGate, AdminGate, auth } from "@/app/auth";
-import { AdminRedactor } from "@/features/admin-redactor";
+import { AdminGate, auth } from "@/app/auth";
+import { AdminActions } from "@/features/admin-redactor";
 import { cn } from "@/shared/lib/cn";
 import { FontRoboto } from "@/shared/lib/font-roboto";
 import { FontSecession } from "@/shared/lib/fonts-secession";
@@ -35,7 +35,7 @@ export const RootLayout = async ({
                         <ModalRenderer />
                         <Footer />
                         <AdminGate>
-                            <AdminRedactor />
+                            <AdminActions />
                         </AdminGate>
                     </ModalProvider>
                 </SessionProvider>

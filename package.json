@@ -8,6 +8,7 @@
     "start": "dotenv -e ./config/.env.local -e ./config/.env.production -- next start",
     "prisma-migrate": "dotenv -e ./config/.env.local -e ./config/.env.production -- prisma migrate dev",
     "prisma-generate": "dotenv -e ./config/.env.local -e ./config/.env.production -- prisma generate",
+    "prisma-seed": "dotenv -e ./config/.env.local -e ./config/.env.production -- tsx prisma/seed.ts",
     "lint": "eslint .",
     "test": "jest",
     "storybook": "storybook dev -p 6006",

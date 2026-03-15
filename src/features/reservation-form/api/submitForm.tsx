@@ -1,6 +1,9 @@
 "use server";
 
-import { schema } from "../model";
+import { escapeHtml } from "@/shared/lib/html-react-parser/lib/escapeHtml";
+import { getFieldError } from "@/shared/lib/zod";
+
+import { reservationSchema } from "../model";
 
 export type ReservationSubmitState = {
     success: boolean;
@@ -8,30 +11,24 @@ export type ReservationSubmitState = {
     errors?: Record<string, string>;
 };
 
-const escapeHtml = (value: string) =>
-    value
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;");
-
 export const submitReservationForm = async (
     values: unknown,
 ): Promise<ReservationSubmitState> => {
-    const parsed = schema.safeParse(values);
+    const parsed = reservationSchema.safeParse(values);
 
     if (!parsed.success) {
-        const fieldErrors = parsed.error.flatten().fieldErrors;
+        const error = getFieldError(parsed.error);
 
         return {
             success: false,
             message: "Исправьте ошибки в форме",
             errors: {
-                name: fieldErrors.name?.[0] ?? "",
-                phone: fieldErrors.phone?.[0] ?? "",
-                guests: fieldErrors.guests?.[0] ?? "",
-                date: fieldErrors.date?.[0] ?? "",
-                time: fieldErrors.time?.[0] ?? "",
-                consent: fieldErrors.consent?.[0] ?? "",
+                name: error("name"),
+                phone: error("phone"),
+                guests: error("guests"),
+                date: error("date"),
+                time: error("time"),
+                consent: error("consent"),
             },
         };
     }
@@ -41,7 +38,7 @@ export const submitReservationForm = async (
     const submittedAt = new Intl.DateTimeFormat("ru-RU", {
         dateStyle: "short",
         timeStyle: "medium",
-        timeZone: "Europe/Moscow",
+        timeZone: "Europe/Yekaterinburg",
     }).format(new Date());
 
     const text = [
@@ -50,8 +47,8 @@ export const submitReservationForm = async (
         `<b>Имя:</b> ${escapeHtml(name)}`,
         `<b>Телефон:</b> ${escapeHtml(phone)}`,
         `<b>Количество гостей:</b> ${guests ?? "не указано"}`,
-        `<b>Дата:</b> ${date ? escapeHtml(date) : "не указана"}`,
-        `<b>Время:</b> ${time ? escapeHtml(time) : "не указано"}`,
+        `<b>Дата:</b> ${escapeHtml(date) ?? "не указана"}`,
+        `<b>Время:</b> ${escapeHtml(time) ?? "не указано"}`,
         `<b>Отправлено:</b> ${submittedAt}`,
     ].join("\n");
 

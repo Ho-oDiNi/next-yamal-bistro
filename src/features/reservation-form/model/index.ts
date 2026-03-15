@@ -5,7 +5,7 @@ import { isValidTime } from "@/shared/ui/StyledInput/lib/isValidTime";
 
 import { emptyToUndefined } from "../lib/emptyToUndefined";
 
-export const schema = z.object({
+export const reservationSchema = z.object({
     name: z
         .string()
         .trim()
@@ -51,4 +51,4 @@ export const schema = z.object({
     }),
 });
 
-export type ReservationFormValues = z.infer<typeof schema>;
+export type ReservationFormValues = z.infer<typeof reservationSchema>;

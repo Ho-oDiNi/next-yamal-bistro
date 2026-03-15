@@ -14,14 +14,14 @@ import { NameField } from "./NameField";
 import { PhoneField } from "./PhoneField";
 import { TimeField } from "./TimeField";
 import { submitReservationForm } from "../api/submitForm";
-import { ReservationFormValues, schema } from "../model";
+import { ReservationFormValues, reservationSchema } from "../model";
 
 export const ReservationForm = () => {
     const { openPopup, closeModal } = useModal();
 
     const methods = useForm<ReservationFormValues>({
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        resolver: zodResolver(schema as any),
+        resolver: zodResolver(reservationSchema as any),
         mode: "onChange",
         reValidateMode: "onChange",
         defaultValues: {
