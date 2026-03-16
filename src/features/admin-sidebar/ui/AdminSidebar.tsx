@@ -21,7 +21,7 @@ export const AdminSidebar = ({ mode, onClose }: AdminSidebarProps) => {
                     className="fixed top-5 right-5"
                 />
 
-                <RedactorWrapper mode={mode} onClose={onClose} />
+                <RedactorWrapper mode={mode} />
             </div>
         </aside>
     );
