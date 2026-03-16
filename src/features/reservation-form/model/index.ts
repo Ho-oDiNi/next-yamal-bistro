@@ -48,3 +48,5 @@ export const reservationSchema = z.object({
         message: "Нужно согласие на обработку данных",
     }),
 });
+
+export type ReservationFormValues = z.infer<typeof reservationSchema>;

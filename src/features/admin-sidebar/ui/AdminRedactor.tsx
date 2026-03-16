@@ -1,15 +1,12 @@
 "use client";
 
 import { ActionsMenu } from "./ActionsMenu";
-import { AdminSidebar } from "./AdminSidebar";
 import { useAdminActions } from "../lib/useAdminActions";
 
 export const AdminRedactor = () => {
-    const { activeAction, openAction, closeAction } = useAdminActions();
+    const { openAction } = useAdminActions();
 
-    return activeAction ? (
-        <AdminSidebar mode={activeAction} onClose={closeAction} />
-    ) : (
+    return (
         <ActionsMenu
             onCreate={() => openAction("create")}
             onEdit={() => openAction("edit")}

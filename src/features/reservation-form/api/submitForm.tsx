@@ -23,7 +23,7 @@ export const submitReservationForm = async (
     const submittedAt = new Intl.DateTimeFormat("ru-RU", {
         dateStyle: "short",
         timeStyle: "medium",
-        timeZone: "Europe/Yekaterinburg",
+        timeZone: "Asia/Yekaterinburg",
     }).format(new Date());
 
     const text = [

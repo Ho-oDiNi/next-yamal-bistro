@@ -10,6 +10,7 @@ import { getDataChanged } from "../api";
 import { AdminAction } from "../model";
 import { CategoryFormSection } from "./CategoryFormSection";
 import { DishFormSection } from "./DishFormSection";
+import { RedactorTab, TabsSwitcher } from "./TabsSwitcher";
 
 interface RedactorWrapperProps {
     mode: AdminAction;
@@ -17,9 +18,7 @@ interface RedactorWrapperProps {
 
 export const RedactorWrapper = ({ mode }: RedactorWrapperProps) => {
     const [loading, setLoading] = useState(true);
-    const [activeTab, setActiveTab] = useState<"dishes" | "categories">(
-        "dishes",
-    );
+    const [activeTab, setActiveTab] = useState<RedactorTab>("dishes");
 
     const [message, setMessage] = useState("");
     const [dishes, setDishes] = useState<IDish[]>([]);
@@ -64,31 +63,8 @@ export const RedactorWrapper = ({ mode }: RedactorWrapperProps) => {
     }
 
     return (
-        <section className="space-y-6 p-6 pt-16 lg:p-10 lg:pt-16">
-            <div className="bg-slate-100 inline-flex w-full gap-1 rounded-xl p-1">
-                <button
-                    type="button"
-                    onClick={() => setActiveTab("dishes")}
-                    className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
-                        activeTab === "dishes"
-                            ? "bg-white text-black"
-                            : "text-slate-600"
-                    }`}
-                >
-                    Блюда
-                </button>
-                <button
-                    type="button"
-                    onClick={() => setActiveTab("categories")}
-                    className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
-                        activeTab === "categories"
-                            ? "bg-white text-black"
-                            : "text-slate-600"
-                    }`}
-                >
-                    Категории
-                </button>
-            </div>
+        <section className="space-y-6 p-4 lg:p-8">
+            <TabsSwitcher activeTab={activeTab} onChange={setActiveTab} />
 
             {activeTab === "dishes" ? (
                 <DishFormSection

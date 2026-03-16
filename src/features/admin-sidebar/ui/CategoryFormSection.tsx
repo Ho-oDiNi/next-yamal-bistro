@@ -70,18 +70,6 @@ export const CategoryFormSection = ({
         setSelectedDishIds(dishIdsFromCategory);
     };
 
-    const toggleDishSelection = (dishId: number, isChecked: boolean) => {
-        setSelectedDishIds((currentDishIds) => {
-            if (isChecked) {
-                return [...currentDishIds, dishId];
-            }
-
-            return currentDishIds.filter(
-                (currentDishId) => currentDishId !== dishId,
-            );
-        });
-    };
-
     const onSubmitCategoryForm = handleSubmit(async () => {
         if (isDeleteMode) {
             if (!selectedCategoryId) {
@@ -202,38 +190,6 @@ export const CategoryFormSection = ({
                         error={categoryErrors.slug}
                         {...register("slug")}
                     />
-
-                    <div className="rounded-xl border border-slate-300 p-3">
-                        <p className="mb-2 text-sm font-medium">
-                            Блюда в категории
-                        </p>
-                        <div className="max-h-52 space-y-2 overflow-y-auto">
-                            {dishes.map((dish) => {
-                                const isChecked = selectedDishIds.includes(
-                                    dish.id,
-                                );
-
-                                return (
-                                    <label
-                                        key={dish.id}
-                                        className="flex items-center gap-2"
-                                    >
-                                        <input
-                                            type="checkbox"
-                                            checked={isChecked}
-                                            onChange={(event) =>
-                                                toggleDishSelection(
-                                                    dish.id,
-                                                    event.target.checked,
-                                                )
-                                            }
-                                        />
-                                        <span>{dish.name}</span>
-                                    </label>
-                                );
-                            })}
-                        </div>
-                    </div>
                 </>
             ) : null}
 
