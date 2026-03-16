@@ -1,5 +1,7 @@
 import z from "zod";
 
+import { nullableNumber, nullableString } from "@/shared/lib/zod";
+
 export const dishSchema = z
     .object({
         name: z
@@ -18,54 +20,64 @@ export const dishSchema = z
                 "Slug должен содержать только строчные латинские буквы, цифры и дефис",
             ),
 
-        price: z
-            .number({
-                error: "Цена должна быть числом",
-            })
-            .nullable()
-            .refine((value) => value === null || value >= 0, {
-                message: "Цена не может быть отрицательной",
-            }),
+        price: z.preprocess(
+            nullableNumber,
+            z
+                .number({
+                    error: "Цена должна быть числом",
+                })
+                .nullable()
+                .refine((value) => value === null || value >= 0, {
+                    message: "Цена не может быть отрицательной",
+                }),
+        ),
 
-        description: z
-            .string()
-            .trim()
-            .max(2000, "Описание слишком длинное")
-            .nullable(),
+        description: z.preprocess(
+            nullableString,
+            z.string().max(2000, "Описание слишком длинное").nullable(),
+        ),
 
-        weightValue: z
-            .number({
-                error: "Вес должен быть числом",
-            })
-            .nullable()
-            .refine((value) => value === null || value >= 0, {
-                message: "Вес не может быть отрицательным",
-            }),
+        weightValue: z.preprocess(
+            nullableNumber,
+            z
+                .number({
+                    error: "Вес должен быть числом",
+                })
+                .nullable()
+                .refine((value) => value === null || value >= 0, {
+                    message: "Вес не может быть отрицательным",
+                }),
+        ),
 
-        weightUnit: z
-            .string()
-            .trim()
-            .max(20, "Единица измерения слишком длинная")
-            .nullable(),
+        weightUnit: z.preprocess(
+            nullableString,
+            z.string().max(20, "Единица измерения слишком длинная").nullable(),
+        ),
 
-        imageUrl: z.union([
-            z.string().trim().min(1, "Некорректный imageUrl"),
-            z.null(),
-        ]),
+        imageUrl: z.preprocess(
+            nullableString,
+            z.union([z.string().min(1, "Некорректный imageUrl"), z.null()]),
+        ),
 
-        categoryId: z
-            .number({
-                error: "Категория должна быть числом",
-            })
-            .int("Некорректная категория")
-            .nullable(),
+        categoryId: z.preprocess(
+            nullableNumber,
+            z
+                .number({
+                    error: "Категория должна быть числом",
+                })
+                .int("Некорректная категория")
+                .nullable(),
+        ),
 
-        tagId: z
-            .number({
-                error: "Тег должен быть числом",
-            })
-            .int("Некорректный тег")
-            .nullable(),
+        tagId: z.preprocess(
+            nullableNumber,
+            z
+                .number({
+                    error: "Тег должен быть числом",
+                })
+                .int("Некорректный тег")
+                .nullable(),
+        ),
     })
     .superRefine((data, ctx) => {
         if (data.weightValue !== null && data.weightUnit === null) {

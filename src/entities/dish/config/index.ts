@@ -1,13 +1,13 @@
 import { TDishData } from "../model";
 
-export const DEFAULT_DISH: TDishData = {
-    slug: "",
+export const emptyDish: TDishData = {
     name: "",
-    description: null,
+    slug: "",
     price: null,
-    categoryId: null,
+    description: null,
     weightValue: null,
     weightUnit: null,
     imageUrl: null,
+    categoryId: null,
     tagId: null,
 };
