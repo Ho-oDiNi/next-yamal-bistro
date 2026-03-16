@@ -1,9 +1,7 @@
 import z from "zod";
 
-import { isValidDayMonth } from "@/shared/ui/StyledInput/lib/isValidDayMonth";
-import { isValidTime } from "@/shared/ui/StyledInput/lib/isValidTime";
-
-import { emptyToUndefined } from "../lib/emptyToUndefined";
+import { optionalNumber, optionalString } from "@/shared/lib/zod";
+import { isValidDayMonth, isValidTime } from "@/shared/ui/StyledInput";
 
 export const reservationSchema = z.object({
     name: z
@@ -19,8 +17,8 @@ export const reservationSchema = z.object({
         .regex(/^\+?[0-9\s\-()]{10,20}$/, "Введите корректный номер телефона"),
 
     guests: z.preprocess(
-        emptyToUndefined,
-        z.coerce
+        optionalNumber,
+        z
             .number()
             .int("Количество гостей должно быть целым числом")
             .min(1, "Минимум 1 гость")
@@ -29,7 +27,7 @@ export const reservationSchema = z.object({
     ),
 
     date: z.preprocess(
-        emptyToUndefined,
+        optionalString,
         z
             .string()
             .regex(/^\d{2}\.\d{2}$/, "Введите дату в формате ДД.ММ")
@@ -38,7 +36,7 @@ export const reservationSchema = z.object({
     ),
 
     time: z.preprocess(
-        emptyToUndefined,
+        optionalString,
         z
             .string()
             .regex(/^\d{2}:\d{2}$/, "Введите время в формате ЧЧ:ММ")
@@ -50,5 +48,3 @@ export const reservationSchema = z.object({
         message: "Нужно согласие на обработку данных",
     }),
 });
-
-export type ReservationFormValues = z.infer<typeof reservationSchema>;

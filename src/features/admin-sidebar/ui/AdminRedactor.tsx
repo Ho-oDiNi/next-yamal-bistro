@@ -1,7 +1,8 @@
 "use client";
 
-import { ActionsMenu, useAdminActions } from "../lib/actions-menu";
-import { AdminSidebar } from "../lib/redactor-sidebar";
+import { ActionsMenu } from "./ActionsMenu";
+import { AdminSidebar } from "./AdminSidebar";
+import { useAdminActions } from "../lib/useAdminActions";
 
 export const AdminRedactor = () => {
     const { activeAction, openAction, closeAction } = useAdminActions();

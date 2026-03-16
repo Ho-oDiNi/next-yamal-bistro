@@ -13,7 +13,7 @@ interface RedactorDataResponse {
     };
 }
 
-export const getAdminRedactorData = async (): Promise<RedactorDataResponse> => {
+export const getDataChanged = async (): Promise<RedactorDataResponse> => {
     const isAdmin = await isAdminServerSide();
 
     if (!isAdmin) {
@@ -27,11 +27,14 @@ export const getAdminRedactorData = async (): Promise<RedactorDataResponse> => {
         };
     }
 
-    const [dishes, categories] = await Promise.all([getDishes(), getCategories()]);
+    const [dishes, categories] = await Promise.all([
+        getDishes(),
+        getCategories(),
+    ]);
 
     return {
         success: true,
-        message: "Данные загружены",
+        message: "",
         data: {
             dishes,
             categories,
