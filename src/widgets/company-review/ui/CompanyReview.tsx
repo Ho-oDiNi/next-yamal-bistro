@@ -9,7 +9,9 @@ import { ReviewsContainer } from "./ReviewsContainer";
 export const CompanyReview = async () => {
     return (
         <ReviewsContainer>
-            <h2 className="text-h2">Отзывы гостей</h2>
+            <h2 className="text-h2 scroll-mt-36" id="reviews">
+                Отзывы гостей
+            </h2>
 
             <YandexReviews />
 

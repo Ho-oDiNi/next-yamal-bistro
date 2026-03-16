@@ -29,10 +29,3 @@ export const FOOTER_LEGAL_LINKS: FooterColumnLink[] = [
         ),
     },
 ];
-
-export const FOOTER_NAVIGATION_LINKS: FooterColumnLink[] = [
-    { href: "/#kitchen_menu", label: "Меню" },
-    { href: "/#reservations", label: "Резерв" },
-    { href: "/#reviews", label: "Отзывы" },
-    { href: "/#contacts", label: "Контакты" },
-];

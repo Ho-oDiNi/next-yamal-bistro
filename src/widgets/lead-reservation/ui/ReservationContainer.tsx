@@ -13,10 +13,7 @@ export const ReservationContainer = ({
     children,
 }: ReservationContainerProps) => {
     return (
-        <section
-            id="section-reservation"
-            className="flex-center relative bg-[url('/images/reservation.png')] bg-cover bg-center bg-no-repeat text-white md:bg-none"
-        >
+        <section className="flex-center relative bg-[url('/images/reservation.png')] bg-cover bg-center bg-no-repeat text-white md:bg-none">
             <Image
                 className="bottom-0 z-1 hidden h-full w-full object-cover md:block"
                 src={reservationImg}

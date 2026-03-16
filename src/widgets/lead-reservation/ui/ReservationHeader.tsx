@@ -1,7 +1,7 @@
 export const ReservationHeader = () => {
     return (
-        <div className="">
-            <h2 id="reservation-title" className="text-h2">
+        <div>
+            <h2 id="reservation" className="text-h2 scroll-mt-36">
                 Забронируйте стол
             </h2>
             <p className="font-roboto text-accent">

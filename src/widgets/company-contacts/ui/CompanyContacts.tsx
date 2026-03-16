@@ -11,7 +11,9 @@ import { YandexMapEmbed } from "./YandexMapEmbed";
 export const CompanyContacts = () => {
     return (
         <ContactsContainer>
-            <h2 className="text-h2">Наши контакты</h2>
+            <h2 className="text-h2 scroll-mt-36" id="contacts">
+                Наши контакты
+            </h2>
             <div className="xs:gap-8 flex flex-col gap-2 md:flex-row">
                 <div className="xs:flex-row xs:gap-8 flex w-full flex-col gap-2 md:w-2/3">
                     <ContactsInfoColumn>

@@ -1,4 +1,6 @@
-import { FOOTER_LEGAL_LINKS, FOOTER_NAVIGATION_LINKS } from "../config";
+import { SITE_NAVIGATION_LINKS } from "@/shared/lib/site-links";
+
+import { FOOTER_LEGAL_LINKS } from "../config";
 import { FooterColumn } from "./FooterColumn";
 import { FooterContactList } from "./FooterContactList";
 
@@ -8,7 +10,7 @@ export const FooterTop = () => {
             <FooterContactList />
             <FooterColumn items={FOOTER_LEGAL_LINKS} />
             <FooterColumn
-                items={FOOTER_NAVIGATION_LINKS}
+                items={SITE_NAVIGATION_LINKS}
                 className="hidden lg:flex"
             />
         </div>

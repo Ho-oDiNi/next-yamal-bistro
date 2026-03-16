@@ -11,9 +11,14 @@ export const KitchenMenu = async () => {
     ]);
 
     return (
-        <section className="bg-brand-bg" id="kitchen-menu">
+        <section className="bg-brand-bg">
             <div className="container mx-auto px-4 py-16">
-                <h2 className="text-h2 text-white">Наше меню</h2>
+                <h2
+                    className="text-h2 scroll-mt-36 text-white"
+                    id="kitchen-menu"
+                >
+                    Наше меню
+                </h2>
 
                 <MenuList
                     categories={categories}
