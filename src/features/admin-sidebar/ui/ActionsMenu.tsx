@@ -20,7 +20,7 @@ export const ActionsMenu = ({
     onDelete,
 }: ActionsMenuProps) => {
     const pathname = usePathname();
-    const isDishesRoot = pathname === "/dishes";
+    const isDishesRoot = pathname === "/dish";
 
     return (
         <menu className="fixed right-5 bottom-5 z-99 flex flex-col gap-4 rounded-3xl p-2 shadow-2xl backdrop-blur-xl">
