@@ -1,12 +1,8 @@
-import { ComponentType, RefObject } from "react";
+import { ReactElement, RefObject } from "react";
 
 export type ModalVariant = "dialog" | "popup";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export interface ModalPayload<P = any> {
-    component: ComponentType<P>;
-    props: P;
-}
+export type ModalPayload = ReactElement;
 
 export interface OpenModalOptions {
     className?: string;

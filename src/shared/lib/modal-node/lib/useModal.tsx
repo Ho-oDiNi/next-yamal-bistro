@@ -12,14 +12,14 @@ export const useModal = () => {
         throw new Error("useModal must be used within a ModalProvider");
     }
 
-    const openDialog = (content: ModalPayload, className?: string) => {
+    const openDialog = (content: ModalPayload) => (className?: string) => {
         context.openModal(content, {
             variant: "dialog",
             className,
         });
     };
 
-    const openPopup = (content: ModalPayload, className?: string) => {
+    const openPopup = (content: ModalPayload) => (className?: string) => {
         context.openModal(content, {
             variant: "popup",
             className,

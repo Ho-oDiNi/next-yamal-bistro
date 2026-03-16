@@ -10,15 +10,8 @@ export const useAdminActions = () => {
 
     const openAction = (action: AdminAction) => {
         openDialog(
-            {
-                component: RedactorDialogContent,
-                props: {
-                    mode: action,
-                    onClose: closeModal,
-                },
-            },
-            "no-scrollbar w-full",
-        );
+            <RedactorDialogContent mode={action} onClose={closeModal} />,
+        )("no-scrollbar w-full");
     };
 
     return {

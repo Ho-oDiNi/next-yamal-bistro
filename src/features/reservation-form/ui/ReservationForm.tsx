@@ -51,15 +51,14 @@ export const ReservationForm = () => {
         }
 
         if (result.message) {
-            openPopup({
-                component: MessagePopup,
-                props: {
-                    message: result.message,
-                    success: result.success,
-                    autoCloseMs: 3000,
-                    onClose: closeModal,
-                },
-            });
+            openPopup(
+                <MessagePopup
+                    message={result.message}
+                    success={result.success}
+                    autoCloseMs={3000}
+                    onClose={closeModal}
+                />,
+            );
         }
     };
 
