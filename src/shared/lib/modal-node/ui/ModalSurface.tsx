@@ -1,11 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import { forwardRef, MouseEvent, ReactNode } from "react";
 
 import { cn } from "@/shared/lib/cn";
-
-import closeIcon from "@icons/close-blue.svg";
 
 import { ModalVariant } from "../model";
 
@@ -31,23 +28,11 @@ export const ModalSurface = forwardRef<
             ref={ref}
             onClick={handleBackdropClick}
             className={cn(
-                "fixed bottom-8 z-999 mx-auto border-0 bg-transparent p-2 md:top-24 md:bottom-0",
                 variant === "dialog" && "backdrop:bg-black/50",
+                "fixed top-4 left-1/2 z-999 m-0 -translate-x-1/2 border-none bg-transparent p-2 outline-none",
                 className,
             )}
         >
-            <button
-                type="button"
-                className="absolute top-5 right-5"
-                onClick={onClose}
-            >
-                <Image
-                    src={closeIcon}
-                    alt="Закрыть"
-                    className="h-4 w-4 hover:opacity-70"
-                />
-            </button>
-
             {children}
         </dialog>
     );
