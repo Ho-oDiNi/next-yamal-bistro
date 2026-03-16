@@ -18,7 +18,7 @@ export const MenuNav = ({
 }: MenuNavProps) => {
     return (
         <nav className="flex-between font-roboto mb-8 gap-12 border-b-2 border-white">
-            <ul className="xs:grid-rows-6 grid w-full grid-flow-col grid-rows-9 gap-x-6 gap-y-2 pb-4 sm:grid-rows-4 md:grid-rows-3 lg:grid-rows-2">
+            <ul className="xs:grid-rows-7 grid w-full grid-flow-col grid-rows-9 gap-x-6 gap-y-2 pb-4 sm:grid-rows-6 md:grid-rows-4 lg:grid-rows-3">
                 <li>
                     <button
                         type="button"

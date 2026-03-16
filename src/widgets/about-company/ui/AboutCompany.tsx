@@ -12,7 +12,7 @@ export const AboutCompany = () => {
                 <h2 className="text-h2">Попробуй вкус Севера!</h2>
 
                 <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-                    <div className="flex-start font-roboto flex-col gap-6 text-justify text-xl font-light">
+                    <div className="flex-start font-roboto text-accent flex-col gap-6 text-justify">
                         <p>
                             Откройте для себя неповторимую атмосферу и богатую
                             палитру вкусов в кафе &quot;Ямал-Бистро&quot;, где
