@@ -2,6 +2,7 @@
 
 import closeIcon from "@icons/close-blue.svg";
 
+import { AdminRedactorForm } from "./AdminRedactorForm";
 import { AdminAction } from "../../actions-menu/model";
 import { ActionButton } from "../../actions-menu/ui/ActionButton";
 
@@ -20,7 +21,7 @@ export const AdminSidebar = ({ mode, onClose }: AdminSidebarProps) => {
                     className="absolute top-5 right-5"
                 />
 
-                {/* <AdminRedactorForm mode={mode} onClose={onClose} /> */}
+                <AdminRedactorForm mode={mode} onClose={onClose} />
             </div>
         </aside>
     );

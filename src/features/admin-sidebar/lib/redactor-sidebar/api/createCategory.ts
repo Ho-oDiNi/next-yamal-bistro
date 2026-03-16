@@ -1,3 +1,5 @@
+"use server";
+
 import { Prisma } from "@prisma/client";
 
 import { isAdminServerSide } from "@/app/auth";
@@ -7,6 +9,7 @@ import { SubmitState, toFieldErrors } from "@/shared/lib/zod";
 
 export const createCategory = async (
     categoryData: TCategoryData,
+    dishIds: number[] = [],
 ): Promise<SubmitState> => {
     const isAdmin = await isAdminServerSide();
 
@@ -28,9 +31,22 @@ export const createCategory = async (
     }
 
     try {
-        await prisma.category.create({
+        const category = await prisma.category.create({
             data: parsed.data,
         });
+
+        if (dishIds.length > 0) {
+            await prisma.dish.updateMany({
+                where: {
+                    id: {
+                        in: dishIds,
+                    },
+                },
+                data: {
+                    categoryId: category.id,
+                },
+            });
+        }
 
         return {
             success: true,
