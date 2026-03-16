@@ -3,7 +3,7 @@ import { ReactNode } from "react";
 
 import { YandexMetrika } from "@/app/analytics";
 import { AdminGate, auth } from "@/app/auth";
-import { AdminActions } from "@/features/admin-redactor";
+import { AdminRedactor } from "@/features/admin-sidebar";
 import { cn } from "@/shared/lib/cn";
 import { FontRoboto } from "@/shared/lib/font-roboto";
 import { FontSecession } from "@/shared/lib/fonts-secession";
@@ -35,7 +35,7 @@ export const RootLayout = async ({
                         <ModalRenderer />
                         <Footer />
                         <AdminGate>
-                            <AdminActions />
+                            <AdminRedactor />
                         </AdminGate>
                     </ModalProvider>
                 </SessionProvider>

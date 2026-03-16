@@ -1,2 +1,3 @@
 export { revalidateDishPaths } from "./lib/revalidateDishPaths";
-export { type TDishData, type IDish } from "./model";
+export { type IDish, type TDishData } from "./model";
+export { dishSchema } from "./model/dishSchema";

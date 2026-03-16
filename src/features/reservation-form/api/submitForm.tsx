@@ -1,35 +1,20 @@
 "use server";
 
 import { escapeHtml } from "@/shared/lib/html-react-parser/lib/escapeHtml";
-import { getFieldError } from "@/shared/lib/zod";
+import { SubmitState, toFieldErrors } from "@/shared/lib/zod";
 
 import { reservationSchema } from "../model";
 
-export type ReservationSubmitState = {
-    success: boolean;
-    message: string;
-    errors?: Record<string, string>;
-};
-
 export const submitReservationForm = async (
     values: unknown,
-): Promise<ReservationSubmitState> => {
+): Promise<SubmitState> => {
     const parsed = reservationSchema.safeParse(values);
 
     if (!parsed.success) {
-        const error = getFieldError(parsed.error);
-
         return {
             success: false,
             message: "Исправьте ошибки в форме",
-            errors: {
-                name: error("name"),
-                phone: error("phone"),
-                guests: error("guests"),
-                date: error("date"),
-                time: error("time"),
-                consent: error("consent"),
-            },
+            errors: toFieldErrors(parsed.error),
         };
     }
 
