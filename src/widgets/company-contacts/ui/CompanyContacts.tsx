@@ -15,7 +15,7 @@ export const CompanyContacts = () => {
                 Наши контакты
             </h2>
             <div className="xs:gap-8 flex flex-col gap-2 md:flex-row">
-                <div className="xs:flex-row xs:gap-8 flex w-full flex-col gap-2 md:w-2/3">
+                <div className="xs:flex-row xs:gap-8 flex w-full flex-col gap-4 md:w-2/3">
                     <ContactsInfoColumn>
                         <InfoGroup title="Часы работы">
                             <BusinessHoursList hours={BUSINESS_HOURS} />

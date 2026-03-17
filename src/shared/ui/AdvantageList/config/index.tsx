@@ -21,6 +21,6 @@ export const ADVANTAGES_COMPANY: AdvantageElementProps[] = [
         icon: starIcon,
         title: "Вкусно поесть",
         href: "https://eda.yandex.ru/r/fudkort_salekhard_vd",
-        description: "Рейтинг 4.8 баллов в Яндекс.Еде",
+        description: "Рейтинг 5 баллов в Яндекс.Еде",
     },
 ];

@@ -20,11 +20,11 @@
   }
 
   .text-h2 {
-    @apply mb-12.5 text-3xl font-semibold md:text-4xl;
+    @apply mb-8 text-3xl font-semibold md:mb-12.5 md:text-4xl;
   }
 
   .text-h3 {
-    @apply mb-10 text-2xl font-semibold md:text-3xl;
+    @apply mb-6 text-2xl font-semibold md:mb-10 md:text-3xl;
   }
 
   .text-h4 {

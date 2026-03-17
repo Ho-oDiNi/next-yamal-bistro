@@ -12,7 +12,7 @@ export const KitchenMenu = async () => {
 
     return (
         <section className="bg-brand-bg">
-            <div className="container mx-auto px-4 py-16">
+            <div className="container mx-auto px-4 py-6 xl:py-16">
                 <h2
                     className="text-h2 scroll-mt-36 text-white"
                     id="kitchen-menu"

@@ -19,7 +19,7 @@ export const ReservationContainer = ({
                 src={reservationImg}
                 alt=""
             />
-            <div className="md:absolute-center z-5 w-full px-2 py-16">
+            <div className="md:absolute-center z-5 w-full px-2 py-6 xl:py-16">
                 {children}
             </div>
         </section>

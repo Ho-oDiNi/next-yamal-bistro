@@ -14,7 +14,9 @@ export const StyledSection = ({
     children,
 }: StyledSectionProps) => {
     return (
-        <section className={cn(sectionClassName, "px-4 py-12 md:py-16")}>
+        <section
+            className={cn(sectionClassName, "px-4 py-12 md:py-6 xl:py-16")}
+        >
             <div className={cn(divClassName, "container mx-auto gap-10")}>
                 {children}
             </div>
