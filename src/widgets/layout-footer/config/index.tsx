@@ -2,7 +2,7 @@ import { type FooterColumnLink } from "../model";
 
 export const FOOTER_LEGAL_LINKS: FooterColumnLink[] = [
     {
-        href: "/feedback",
+        href: "https://vk.com/im/convo/-112791961?entrypoint=community_page&tab=all",
         label: (
             <>
                 Обратная связь и <br />
@@ -20,7 +20,7 @@ export const FOOTER_LEGAL_LINKS: FooterColumnLink[] = [
         ),
     },
     {
-        href: "/consent",
+        href: "/privacy",
         label: (
             <>
                 Согласие на обработку <br />

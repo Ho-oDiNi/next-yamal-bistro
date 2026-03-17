@@ -10,7 +10,10 @@ export const BUSINESS_HOURS: BusinessHour[] = [
     { dayLabel: "Вс", openTime: "9:00", closeTime: "21:00" },
 ];
 
-export const CONTACT_PHONES: string[] = ["+7 (904) 475-50-99"];
+export const CONTACT_PHONES: string[] = [
+    "+7 (904) 475-50-99",
+    "+7 (349) 227-00-99",
+];
 
 export const SOCIAL_LINKS: SocialLink[] = [
     {

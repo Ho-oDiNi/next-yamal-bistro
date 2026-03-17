@@ -25,7 +25,10 @@ export const ConsentField = () => {
                 <span className="font-roboto text-xs">
                     Заполняя форму, я даю согласие <br />
                     на{" "}
-                    <Link href="" className="text-zinc-300 hover:opacity-70">
+                    <Link
+                        href="/privacy"
+                        className="text-zinc-300 hover:opacity-70"
+                    >
                         обработку персональных данных
                     </Link>
                     <span className="text-red-500"> *</span>

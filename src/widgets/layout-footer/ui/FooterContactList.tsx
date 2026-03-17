@@ -22,8 +22,8 @@ export const FooterContactList = () => {
                     +7 (904) 475-50-99
                 </a>{" "}
                 <br />
-                <a href="tel:+79044755099" className="hover:opacity-70">
-                    +7 (904) 475-50-99
+                <a href="tel:+73492270099" className="hover:opacity-70">
+                    +7 (349) 227-00-99
                 </a>
             </FooterContactItem>
         </ul>
