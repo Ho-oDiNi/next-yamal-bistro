@@ -58,7 +58,7 @@ export const ReservationForm = () => {
                     autoCloseMs={3000}
                     onClose={closeModal}
                 />,
-            );
+            )();
         }
     };
 
