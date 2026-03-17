@@ -1,10 +1,14 @@
 @layer components {
   .text-accent {
-    @apply text-sm font-light md:text-xl;
+    @apply 2xs:text-base text-base font-light md:text-lg;
+  }
+
+  .text-accent-sm {
+    @apply 2xs:text-sm text-xs font-light md:text-lg;
   }
 
   .text-contrast {
-    @apply text-sm font-semibold sm:text-xl;
+    @apply text-lg font-semibold sm:text-xl;
   }
 
   .text-main {
@@ -28,6 +32,6 @@
   }
 
   .text-h4 {
-    @apply text-[1.375rem]/tight font-semibold;
+    @apply text-xl font-semibold;
   }
 }

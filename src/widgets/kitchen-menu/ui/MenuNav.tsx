@@ -17,14 +17,14 @@ export const MenuNav = ({
     onChange,
 }: MenuNavProps) => {
     return (
-        <nav className="flex-between font-roboto mb-8 gap-12 border-b-2 border-white">
-            <ul className="xs:grid-rows-7 grid w-full grid-flow-col grid-rows-9 gap-x-6 gap-y-2 pb-4 sm:grid-rows-6 md:grid-rows-4 lg:grid-rows-3">
+        <nav className="flex-between font-roboto text-accent mb-8 gap-4 border-b-2 border-white text-white md:gap-12">
+            <ul className="xs:grid-rows-7 grid w-full grid-flow-col grid-rows-9 gap-x-4 gap-y-2 pb-4 sm:grid-rows-6 md:grid-rows-4 md:gap-x-6 lg:grid-rows-3">
                 <li>
                     <button
                         type="button"
                         onClick={() => onChange(null)}
                         className={cn(
-                            "text-accent text-white transition",
+                            "transition",
                             activeCategory === null
                                 ? "font-semibold"
                                 : "hover:opacity-70",
@@ -43,7 +43,7 @@ export const MenuNav = ({
                                 type="button"
                                 onClick={() => onChange(category.id)}
                                 className={cn(
-                                    "text-accent text-nowrap text-white transition",
+                                    "text-nowrap transition",
                                     isActive
                                         ? "font-semibold"
                                         : "hover:opacity-70",

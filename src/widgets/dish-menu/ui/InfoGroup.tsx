@@ -9,9 +9,9 @@ type InfoGroupProps = {
 export const InfoGroup = ({ title, children, description }: InfoGroupProps) => {
     return (
         <div className="xs:gap-8 flex flex-1 flex-col gap-2 lg:max-w-1/2">
-            <div className="flex-between">
-                <h3 className="text-contrast">{title}</h3>
-                <p className="text-accent">{description}</p>
+            <div className="flex-between text-contrast">
+                <h3>{title}</h3>
+                <p className="font-light">{description}</p>
             </div>
             <div className="text-accent font-roboto">{children}</div>
         </div>

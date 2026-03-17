@@ -28,12 +28,12 @@ export const DishCard = ({
                 <div className="flex flex-1 flex-col p-6">
                     <div className="space-y-4">
                         <h4 className="text-h4">{name}</h4>
-                        <p className="font-roboto line-clamp-2 font-extralight">
+                        <p className="font-roboto text-accent line-clamp-2 font-extralight">
                             {description}
                         </p>
                     </div>
 
-                    <div className="flex-between text-accent mt-auto pt-4">
+                    <div className="flex-between text-contrast mt-auto pt-4">
                         <p className="font-extralight">
                             {weightValue} {weightUnit}
                         </p>

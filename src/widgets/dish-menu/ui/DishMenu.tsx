@@ -25,7 +25,7 @@ export const DishMenu = ({
             <h2 className="text-h2">{name}</h2>
             <div className="flex flex-col gap-8 lg:flex-row">
                 <div className="flex w-full flex-col gap-8 lg:w-2/3">
-                    <p className="text-accent">{description}</p>
+                    <p className="text-accent font-roboto">{description}</p>
                     <div className="flex w-full flex-col gap-8 lg:flex-row">
                         <InfoGroup
                             title="Состав"
