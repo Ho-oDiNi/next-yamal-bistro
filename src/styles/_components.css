@@ -1,6 +1,6 @@
 @layer components {
   .text-accent {
-    @apply text-sm font-light sm:text-xl;
+    @apply text-sm font-light md:text-xl;
   }
 
   .text-contrast {
