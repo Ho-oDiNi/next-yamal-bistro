@@ -95,14 +95,23 @@ model Category {
   @@map("categories")
 }
 
+enum WeightUnit {
+  KG
+  G
+  PCS
+  ML
+  L
+}
+
 model Dish {
   id          Int      @id @default(autoincrement())
   name        String
   slug        String   @unique
   description String?
   weightValue Int?     @map("weight_value")
-  weightUnit  String?  @map("weight_unit")
+  weightUnit  WeightUnit? @map("weight_unit")
   price       Int? 
+  composition String?
   imageUrl    String?  @map("image_url")
   categoryId  Int?      @map("category_id")
   tagId       Int?     @map("tag_id")
@@ -110,8 +119,22 @@ model Dish {
   category    Category? @relation(fields: [categoryId], references: [id], onDelete: Restrict)
   tag         Tag?     @relation(fields: [tagId], references: [id], onDelete: SetNull)
 
+  supplements Supplement[]
+
   @@index([categoryId, tagId])
   @@map("dishes")
+}
+
+model Supplement {
+  id      Int    @id @default(autoincrement())
+  name    String
+  price   Int
+  dishId  Int    @map("dish_id")
+
+  dish    Dish   @relation(fields: [dishId], references: [id], onDelete: Cascade)
+
+  @@index([dishId])
+  @@map("supplements")
 }
 
 model Tag {

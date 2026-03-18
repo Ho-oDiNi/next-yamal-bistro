@@ -13,16 +13,31 @@ export const DishCard = ({
     weightValue,
     weightUnit,
     price,
+    tag,
 }: TDishData) => {
     return (
         <Link href={`/dish/${slug}`}>
-            <article className="flex h-105 w-full max-w-xl flex-col overflow-hidden rounded-3xl bg-white">
-                <div className="h-7/12 shrink-0">
+            <article className="flex h-full w-full max-w-xl flex-col overflow-hidden rounded-3xl bg-white">
+                <div className="relative h-60 shrink-0">
                     <Image
                         src={imageUrl || mockImage}
                         alt={name}
-                        className="h-full w-full object-cover"
+                        fill
+                        className="object-cover"
+                        // TODO: удалить
+                        unoptimized
                     />
+
+                    {tag?.imageUrl && (
+                        <div className="absolute top-5 right-5 h-25 w-25">
+                            <Image
+                                src={tag.imageUrl}
+                                alt={tag.name}
+                                fill
+                                className="object-contain"
+                            />
+                        </div>
+                    )}
                 </div>
 
                 <div className="flex flex-1 flex-col p-6">

@@ -43,8 +43,8 @@ export const DishGrid = ({
             </h3>
 
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
-                {paginatedItems.map(({ id, ...dish }) => (
-                    <DishCard key={id} {...dish} />
+                {paginatedItems.map((dish) => (
+                    <DishCard key={dish.id} {...dish} />
                 ))}
             </div>
 

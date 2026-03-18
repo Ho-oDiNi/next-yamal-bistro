@@ -1,10 +1,8 @@
 import { prisma } from "@/shared/lib/prisma";
 
-import { TDishData } from "../model";
+import { IDish } from "../model";
 
-export const getDishBySlug = async (
-    slug: string,
-): Promise<TDishData | null> => {
+export const getDishBySlug = async (slug: string): Promise<IDish | null> => {
     const dish = await prisma.dish.findUnique({
         where: {
             slug,
