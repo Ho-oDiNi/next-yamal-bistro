@@ -57,7 +57,7 @@ export const MenuNav = ({
             </ul>
 
             <a
-                href="/documents/ya-menu.jpg"
+                href="/documents/ya-menu.pdf"
                 download
                 className="h-6 w-6 shrink-0"
             >
