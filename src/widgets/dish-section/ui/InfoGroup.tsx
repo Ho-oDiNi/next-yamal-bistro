@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 
 type InfoGroupProps = {
     title: string;
-    description: string;
+    description: ReactNode;
     children: ReactNode;
 };
 
@@ -11,7 +11,7 @@ export const InfoGroup = ({ title, children, description }: InfoGroupProps) => {
         <div className="xs:gap-8 flex flex-1 flex-col gap-2 lg:max-w-1/2">
             <div className="flex-between text-contrast">
                 <h3>{title}</h3>
-                <p className="font-light">{description}</p>
+                {description}
             </div>
             <div className="text-accent font-roboto">{children}</div>
         </div>

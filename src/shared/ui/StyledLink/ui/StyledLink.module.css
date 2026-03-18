@@ -25,3 +25,6 @@
 .variant-secondary {
   @apply active:bg-brand-light focus:border-brand-dark text-brand-dark bg-white font-medium hover:bg-slate-200;
 }
+.variant-gray {
+  @apply active:bg-brand-secondary focus:border-brand-dark text-brand-dark hover:bg-brand-light bg-slate-200 font-medium;
+}

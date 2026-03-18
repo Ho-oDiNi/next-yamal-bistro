@@ -1,6 +1,9 @@
 import Image from "next/image";
 
 import { getSupplements, IDish } from "@/entities/dish";
+import { getWeightUnitAbbr } from "@/entities/dish/lib/getWeightUnitAbbr";
+import { getWeightUnitLabel } from "@/entities/dish/lib/getWeightUnitLabel";
+import { StyledLink } from "@/shared/ui/StyledLink";
 
 import mockImage from "@images/qr_code.png";
 
@@ -29,12 +32,36 @@ export const DishSection = async ({
                     <div className="flex w-full flex-col gap-8 lg:flex-row">
                         <InfoGroup
                             title="Состав"
-                            description={`${weightValue} ${weightUnit}`}
+                            description={
+                                <p className="font-light">
+                                    {weightValue}{" "}
+                                    <abbr
+                                        title={getWeightUnitAbbr(weightUnit)}
+                                        className="no-underline"
+                                    >
+                                        {" "}
+                                        {getWeightUnitLabel(weightUnit)}
+                                    </abbr>
+                                </p>
+                            }
                         >
                             {composition}
                         </InfoGroup>
 
-                        <InfoGroup title="Цена" description={`${price} руб`}>
+                        <InfoGroup
+                            title="Цена"
+                            description={
+                                <p className="font-light">
+                                    {price}{" "}
+                                    <abbr
+                                        title="рубли"
+                                        className="no-underline"
+                                    >
+                                        руб
+                                    </abbr>
+                                </p>
+                            }
+                        >
                             <SupplementList supplements={supplements} />
                         </InfoGroup>
                     </div>
@@ -46,6 +73,14 @@ export const DishSection = async ({
                     width={400}
                     alt={name}
                 />
+            </div>
+            <div className="flex-between xs:flex-row flex flex-col gap-6 lg:flex-none">
+                <StyledLink href="tel:+79044755099" variant="gray" size="lg">
+                    Заказать доставку
+                </StyledLink>
+                <StyledLink href="/#reservation" variant="primary" size="lg">
+                    Забронировать стол
+                </StyledLink>
             </div>
         </DishSectionContainer>
     );

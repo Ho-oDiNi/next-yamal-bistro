@@ -12,7 +12,10 @@ export const SupplementList = ({ supplements }: SupplementListProps) => {
                     <p key={index} className="flex justify-between gap-4">
                         <span className="text-nowrap tabular-nums">{name}</span>
                         <span className="text-accent font-secession font-light text-nowrap tabular-nums">
-                            + {price} руб
+                            +{price}{" "}
+                            <abbr title="рубли" className="no-underline">
+                                руб
+                            </abbr>
                         </span>
                     </p>
                 );

@@ -18,14 +18,16 @@ export const HeaderNavbarLink = ({ link, onClose }: HeaderNavbarLinkProps) => {
     const isActive = currentPath === href;
 
     return (
-        <Link
-            href={href || ""}
-            className={cn(
-                isActive ? "font-bold text-blue-900" : "hover:opacity-70",
-            )}
-            onClick={onClose}
-        >
-            {label}
-        </Link>
+        <li>
+            <Link
+                href={href || ""}
+                className={cn(
+                    isActive ? "font-bold text-blue-900" : "hover:opacity-70",
+                )}
+                onClick={onClose}
+            >
+                {label}
+            </Link>
+        </li>
     );
 };

@@ -2,6 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { TDishData } from "@/entities/dish";
+import { getWeightUnitAbbr } from "@/entities/dish/lib/getWeightUnitAbbr";
+import { getWeightUnitLabel } from "@/entities/dish/lib/getWeightUnitLabel";
 
 import mockImage from "@images/qr_code.png";
 
@@ -24,8 +26,6 @@ export const DishCard = ({
                         alt={name}
                         fill
                         className="object-cover"
-                        // TODO: удалить
-                        unoptimized
                     />
 
                     {tag?.imageUrl && (
@@ -50,11 +50,18 @@ export const DishCard = ({
 
                     <div className="flex-between text-contrast mt-auto pt-4">
                         <p className="font-extralight">
-                            {weightValue} {weightUnit}
+                            {weightValue}{" "}
+                            <abbr
+                                title={getWeightUnitAbbr(weightUnit)}
+                                className="no-underline"
+                            >
+                                {" "}
+                                {getWeightUnitLabel(weightUnit)}
+                            </abbr>
                         </p>
                         <p className="font-medium">
                             {price}{" "}
-                            <abbr title="рублей" className="no-underline">
+                            <abbr title="рубли" className="no-underline">
                                 руб
                             </abbr>
                         </p>

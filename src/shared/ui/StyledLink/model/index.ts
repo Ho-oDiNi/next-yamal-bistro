@@ -3,7 +3,7 @@ import { AnchorHTMLAttributes, ReactNode } from "react";
 type StyledNodeVariant =
     | "primary"
     | "secondary"
-    | "whatsapp"
+    | "gray"
     | "dark"
     | "white"
     | "service-possible";
