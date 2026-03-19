@@ -7,20 +7,23 @@
 
 /* .size-sm {
   @apply rounded-lg px-4 py-2;
-}
-.size-md {
+} */
+/* .size-md {
   @apply 2xs:text-base h-10 w-55 rounded-xl lg:text-lg;
 } */
 .size-lg {
   @apply h-13 w-full rounded-xl text-lg md:w-60;
 }
-/* .size-max {
-  @apply 2xs:text-base h-12 w-full rounded-xl lg:text-lg xl:text-xl;
-} */
+.size-max {
+  @apply rounded-lg px-4 py-2;
+}
 
 .variant-primary {
   @apply bg-brand-secondary hover:bg-brand-primary focus:border-brand-dark active:bg-brand-dark font-bold text-white;
 }
 .variant-secondary {
   @apply active:bg-brand-light focus:border-brand-dark text-brand-dark bg-white font-bold hover:bg-slate-200;
+}
+.variant-gray {
+  @apply active:bg-brand-secondary focus:border-brand-dark text-brand-dark hover:bg-brand-light bg-slate-200 font-medium;
 }

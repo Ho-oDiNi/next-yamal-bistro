@@ -20,11 +20,11 @@ export const FOOTER_LEGAL_LINKS: FooterColumnLink[] = [
         ),
     },
     {
-        href: "/privacy",
+        href: "https://codecompode.tilda.ws/",
         label: (
             <>
-                Согласие на обработку <br />
-                персональных данных
+                Разработано студией <br />
+                &quot;Код Компод&quot;
             </>
         ),
     },

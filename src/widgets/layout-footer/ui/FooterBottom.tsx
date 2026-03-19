@@ -7,7 +7,7 @@ export const FooterBottom = () => {
     return (
         <div className="flex-between">
             <Image src={logoIcon} alt="Логотип «Ямал Бистро»" />
-            <span>© 2012 — {currentYear}</span>
+            <span>© 2025 — {currentYear}</span>
         </div>
     );
 };

@@ -8,6 +8,7 @@ import { cn } from "@/shared/lib/cn";
 import { FontRoboto } from "@/shared/lib/font-roboto";
 import { FontSecession } from "@/shared/lib/fonts-secession";
 import { ModalProvider, ModalRenderer } from "@/shared/lib/modal-node";
+import { CookieConsent } from "@/shared/ui/CookieConsent/ui/CookieConsent";
 import { Footer } from "@/widgets/layout-footer";
 import { Header } from "@/widgets/layout-header";
 
@@ -39,6 +40,7 @@ export const RootLayout = async ({
                         </AdminGate>
                     </ModalProvider>
                 </SessionProvider>
+                <CookieConsent />
             </body>
         </html>
     );
