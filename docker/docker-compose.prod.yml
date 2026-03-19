@@ -15,7 +15,7 @@ services:
       # Подключение к БД по внутреннему имени сервиса
       PG_HOST: db
       PG_PORT: 5432
-      DATABASE_URL: "postgresql://${PG_USER}:${PG_PASSWORD}@${PG_HOST}:${PG_PORT}/${PG_DB}?schema=public"
+      DATABASE_URL: "postgresql://${PG_USER}:${PG_PASSWORD}@db:5432/${PG_DB}?schema=public"
       CATEGORY_IMAGES_DIR: /app/storage/category-images
 
     expose:
@@ -39,6 +39,10 @@ services:
   db:
     # если базовый файл уже задаёт image/volumes — можно оставить тут только overrides
     image: postgres:18
+    environment:
+      POSTGRES_DB: ${PG_DB:-yamal}
+      POSTGRES_USER: ${PG_USER:-postgres}
+      POSTGRES_PASSWORD: ${PG_PASSWORD:-postgres}
     env_file:
       - ${HOME}/env/next-yamal-site/.env.production
       - ${HOME}/env/next-yamal-site/.env.local
@@ -51,10 +55,15 @@ services:
       - postgres-data:/var/lib/postgresql/data
 
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U $$PG_USER -d $$PG_DB -h localhost"]
+      test:
+        [
+          "CMD-SHELL",
+          "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB -h 127.0.0.1",
+        ]
       interval: 10s
       timeout: 5s
       retries: 10
+      start_period: 20s
 
     logging:
       driver: json-file
