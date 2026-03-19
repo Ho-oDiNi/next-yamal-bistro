@@ -1,7 +1,4 @@
-import Image from "next/image";
 import { ReactNode } from "react";
-
-import homeImg from "@images/home.png";
 
 type HeroContainerProps = {
     children: ReactNode;
@@ -10,12 +7,7 @@ type HeroContainerProps = {
 
 export const HeroContainer = ({ children, className }: HeroContainerProps) => {
     return (
-        <section className="h-screen">
-            <Image
-                src={homeImg}
-                alt=""
-                className="absolute -z-1 h-full w-full object-cover"
-            />
+        <section className="h-screen bg-[url(/images/home.png)] bg-cover bg-bottom bg-no-repeat">
             <div className={className}>{children}</div>
         </section>
     );
