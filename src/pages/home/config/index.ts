@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
     verification: {
-        yandex: "108153196",
+        yandex: "4e2e707416432fc3",
     },
     title: "Кафе северной кухни в Салехарде | Ямал Бистро",
     description:
