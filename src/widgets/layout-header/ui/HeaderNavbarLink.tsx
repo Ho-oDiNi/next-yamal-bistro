@@ -18,15 +18,20 @@ export const HeaderNavbarLink = ({ link, onClose }: HeaderNavbarLinkProps) => {
     const isActive = currentPath === href;
 
     return (
-        <li>
+        <li
+            itemProp="hasPart"
+            itemScope
+            itemType="https://schema.org/SiteNavigationElement"
+        >
             <Link
                 href={href || ""}
                 className={cn(
                     isActive ? "font-bold text-blue-900" : "hover:opacity-70",
                 )}
                 onClick={onClose}
+                itemProp="url"
             >
-                {label}
+                <span itemProp="name">{label}</span>
             </Link>
         </li>
     );

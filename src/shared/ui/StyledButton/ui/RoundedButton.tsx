@@ -13,14 +13,11 @@ interface RoundedButtonProps {
 export const RoundedButton = ({
     icon,
     callback,
-    className = "",
+    className = "bg-white",
 }: RoundedButtonProps) => {
     return (
         <button
-            className={cn(
-                "h-10 w-10 rounded-full bg-white hover:opacity-70",
-                className,
-            )}
+            className={cn("h-10 w-10 rounded-full hover:opacity-70", className)}
             onClick={callback}
         >
             <Image src={icon} className="w-full" alt="" />

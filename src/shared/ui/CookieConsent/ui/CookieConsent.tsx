@@ -12,9 +12,9 @@ export const CookieConsent = () => {
     useEffect(() => {
         const savedConsent = localStorage.getItem("cookie-consent");
 
-        // if (savedConsent) {
-        //     return;
-        // }
+        if (savedConsent) {
+            return;
+        }
 
         const timer = window.setTimeout(() => {
             setIsVisible(true);
@@ -35,7 +35,7 @@ export const CookieConsent = () => {
     }
 
     return (
-        <div className="fixed right-4 bottom-4 z-99 m-2 w-full max-w-md rounded-2xl border border-slate-200 bg-white p-4 shadow-2xl">
+        <div className="border-brand-dark xs:right-4 xs:left-auto xs:max-w-md fixed bottom-4 z-100 mx-2 overflow-hidden rounded-2xl border bg-white p-4 shadow-2xl">
             <div className="font-roboto text-brand-dark flex flex-col gap-4 text-sm leading-6">
                 <p>
                     Мы используем cookies, чтобы сделать использование сайта

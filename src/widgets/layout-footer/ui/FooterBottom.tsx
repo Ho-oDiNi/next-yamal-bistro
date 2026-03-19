@@ -1,13 +1,12 @@
-import Image from "next/image";
-
-import logoIcon from "@icons/logo-full.svg";
+import { Logo } from "@/shared/ui/Logo";
 
 export const FooterBottom = () => {
     const currentYear = new Date().getFullYear();
     return (
         <div className="flex-between">
-            <Image src={logoIcon} alt="Логотип «Ямал Бистро»" />
-            <span>© 2025 — {currentYear}</span>
+            <Logo isFull itemProp="image" />
+
+            <span itemProp="copyrightNotice">© 2025 — {currentYear}</span>
         </div>
     );
 };

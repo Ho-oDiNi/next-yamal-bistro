@@ -10,7 +10,7 @@ export const Header = () => {
     return (
         <HeaderContainer>
             <BurgerButton />
-            <Logo />
+            <Logo itemProp="image" />
             <HeaderNavbar />
             <HeaderContacts />
             <HeaderMobilePhone />

@@ -18,7 +18,7 @@ export const DishCard = ({
     tag,
 }: TDishData) => {
     return (
-        <Link href={`/dish/${slug}`}>
+        <Link href={`/menu/${slug}`}>
             <article className="flex h-full w-full max-w-xl flex-col overflow-hidden rounded-3xl bg-white">
                 <div className="relative h-60 shrink-0">
                     <Image

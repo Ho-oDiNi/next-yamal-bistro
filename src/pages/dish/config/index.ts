@@ -15,8 +15,48 @@ export const generateMetadata = async ({
 
     const dish = await getDishBySlug(slug);
 
+    if (!dish) {
+        return {
+            title: "Блюдо не найдено | Ямал Бистро",
+            description: "Страница блюда не найдена.",
+            alternates: {
+                canonical: `/menu/${slug}`,
+            },
+            robots: {
+                index: false,
+                follow: false,
+            },
+        };
+    }
+
+    const title = `${dish.name} в Салехарде | Ямал Бистро`;
+    const description =
+        dish.description ??
+        `${dish.name} в Ямал Бистро. Оформите заказ в Салехарде.`;
+
     return {
-        title: `${dish?.name} в Салехарде | Ямал Бистро`,
-        description: dish?.description,
+        metadataBase: new URL("https://yamal-bistro.ru"),
+        title,
+        description,
+        alternates: {
+            canonical: `/menu/${slug}`,
+        },
+        openGraph: {
+            type: "article",
+            locale: "ru_RU",
+            url: `/menu/${slug}`,
+            siteName: "Ямал Бистро",
+            title,
+            description,
+            images: [
+                {
+                    url:
+                        typeof dish.imageUrl === "string" && dish.imageUrl
+                            ? dish.imageUrl
+                            : "/images/og-image.jpg",
+                    alt: `${dish.name} — Ямал Бистро`,
+                },
+            ],
+        },
     };
 };
