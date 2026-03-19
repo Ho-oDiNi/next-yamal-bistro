@@ -11,11 +11,17 @@ export const KitchenMenu = async () => {
     ]);
 
     return (
-        <section className="bg-brand-bg">
+        <section
+            className="bg-brand-bg"
+            itemProp="hasMenu"
+            itemScope
+            itemType="https://schema.org/Menu"
+        >
             <div className="container mx-auto px-4 py-6 xl:py-16">
                 <h2
                     className="text-h2 scroll-mt-36 text-white"
                     id="kitchen-menu"
+                    itemProp="name"
                 >
                     Наше меню
                 </h2>

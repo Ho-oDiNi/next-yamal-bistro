@@ -37,8 +37,13 @@ export const DishGrid = ({
     });
 
     return (
-        <div className="space-y-6">
-            <h3 className="text-h3 text-white">
+        <div
+            className="space-y-6"
+            itemProp="hasMenuSection"
+            itemScope
+            itemType="https://schema.org/MenuSection"
+        >
+            <h3 className="text-h3 text-white" itemProp="name">
                 {activeCategoryData?.name || "Все блюда кухни"}
             </h3>
 
