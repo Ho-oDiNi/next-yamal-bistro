@@ -13,6 +13,8 @@ import { ScrollToTopButton } from "@/shared/ui/ScrollToTopButton";
 import { Footer } from "@/widgets/layout-footer";
 import { Header } from "@/widgets/layout-header";
 
+import { RootMeta } from "./RootMeta";
+
 export const RootLayout = async ({
     children,
 }: Readonly<{
@@ -38,6 +40,7 @@ export const RootLayout = async ({
                             itemScope
                             itemType="https://schema.org/Restaurant"
                         >
+                            <RootMeta />
                             {children}
                         </main>
                         <ModalRenderer />

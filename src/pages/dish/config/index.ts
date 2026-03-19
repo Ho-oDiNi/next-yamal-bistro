@@ -20,7 +20,7 @@ export const generateMetadata = async ({
             title: "Блюдо не найдено | Ямал Бистро",
             description: "Страница блюда не найдена.",
             alternates: {
-                canonical: `/menu/${slug}`,
+                canonical: `https://yamal-bistro.ru/menu/${slug}`,
             },
             robots: {
                 index: false,
@@ -39,7 +39,7 @@ export const generateMetadata = async ({
         title,
         description,
         alternates: {
-            canonical: `/menu/${slug}`,
+            canonical: `https://yamal-bistro.ru/menu/${slug}`,
         },
         openGraph: {
             type: "article",

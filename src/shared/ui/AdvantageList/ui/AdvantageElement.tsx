@@ -12,8 +12,9 @@ export const AdvantageElement = ({
     href,
 }: AdvantageElementProps) => {
     const isExternal = isExternalLink(href);
+
     return (
-        <div className="flex-start gap-6">
+        <li className="flex-start gap-6">
             <Image src={icon} alt="" />
 
             <Link
@@ -27,6 +28,6 @@ export const AdvantageElement = ({
                     {description}
                 </p>
             </Link>
-        </div>
+        </li>
     );
 };

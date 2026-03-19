@@ -36,6 +36,7 @@ export const ScrollToTopButton = () => {
             icon={arrowTopIcon}
             callback={scrollToTop}
             className="bg-brand-dark fixed bottom-4 left-2 z-99 p-2 shadow-2xl md:left-4"
+            alt="Скролл наверх"
         />
     );
 };

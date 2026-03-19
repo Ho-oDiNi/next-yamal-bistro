@@ -14,9 +14,9 @@ export const SocialLinkIcons = ({ links }: SocialLinkIconsProps) => {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label={link.label}
                     title={link.label}
                     className="hover:opacity-70"
+                    itemProp="sameAs"
                 >
                     <Image
                         src={link.icon}
