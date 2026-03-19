@@ -1,3 +1,4 @@
+import { WeightUnit } from "@prisma/client";
 import z from "zod";
 
 import { nullableNumber, nullableString } from "@/shared/lib/zod";
@@ -51,7 +52,7 @@ export const dishSchema = z
 
         weightUnit: z.preprocess(
             nullableString,
-            z.string().max(20, "Единица измерения слишком длинная").nullable(),
+            z.nativeEnum(WeightUnit).nullable(),
         ),
 
         imageUrl: z.preprocess(

@@ -1,21 +1,21 @@
-"use client";
+// "use client";
 
-import { useModal } from "@/shared/lib/modal-node";
+// import { useModal } from "@/shared/lib/modal-node";
 
-import { AdminAction } from "../model";
-import { RedactorDialogContent } from "../ui/RedactorDialogContent";
+// import { AdminAction } from "../model";
+// import { RedactorDialogContent } from "../ui/RedactorDialogContent";
 
-export const useAdminActions = () => {
-    const { openDialog, closeModal } = useModal();
+// export const useAdminActions = () => {
+//     const { openDialog, closeModal } = useModal();
 
-    const openAction = (action: AdminAction) => {
-        openDialog(
-            <RedactorDialogContent mode={action} onClose={closeModal} />,
-        )("no-scrollbar w-full");
-    };
+//     const openAction = (action: AdminAction) => {
+//         openDialog(
+//             <RedactorDialogContent mode={action} onClose={closeModal} />,
+//         )("no-scrollbar w-full");
+//     };
 
-    return {
-        openAction,
-        closeAction: closeModal,
-    };
-};
+//     return {
+//         openAction,
+//         closeAction: closeModal,
+//     };
+// };

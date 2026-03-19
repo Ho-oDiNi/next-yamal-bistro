@@ -1,94 +1,94 @@
-"use client";
+// "use client";
 
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 
-import { ICategory } from "@/entities/category";
-import { IDish } from "@/entities/dish";
-import { SpinningLoader } from "@/shared/ui/SpinningLoader";
+// import { ICategory } from "@/entities/category";
+// import { IDish } from "@/entities/dish";
+// import { SpinningLoader } from "@/shared/ui/SpinningLoader";
 
-import { getDataChanged } from "../api";
-import { AdminAction } from "../model";
-import { CategoryFormSection } from "./CategoryFormSection";
-import { DishFormSection } from "./DishFormSection";
-import { RedactorTab, TabsSwitcher } from "./TabsSwitcher";
+// import { getDataChanged } from "../api";
+// import { AdminAction } from "../model";
+// import { CategoryFormSection } from "./CategoryFormSection";
+// import { DishFormSection } from "./DishFormSection";
+// import { RedactorTab, TabsSwitcher } from "./TabsSwitcher";
 
-interface RedactorWrapperProps {
-    mode: AdminAction;
-}
+// interface RedactorWrapperProps {
+//     mode: AdminAction;
+// }
 
-export const RedactorWrapper = ({ mode }: RedactorWrapperProps) => {
-    const [loading, setLoading] = useState(true);
-    const [activeTab, setActiveTab] = useState<RedactorTab>("dishes");
+// export const RedactorWrapper = ({ mode }: RedactorWrapperProps) => {
+//     const [loading, setLoading] = useState(true);
+//     const [activeTab, setActiveTab] = useState<RedactorTab>("dishes");
 
-    const [message, setMessage] = useState("");
-    const [dishes, setDishes] = useState<IDish[]>([]);
-    const [categories, setCategories] = useState<ICategory[]>([]);
+//     const [message, setMessage] = useState("");
+//     const [dishes, setDishes] = useState<IDish[]>([]);
+//     const [categories, setCategories] = useState<ICategory[]>([]);
 
-    const handleDataChanged = async () => {
-        setLoading(true);
+//     const handleDataChanged = async () => {
+//         setLoading(true);
 
-        try {
-            const response = await getDataChanged();
+//         try {
+//             const response = await getDataChanged();
 
-            setDishes(response.data.dishes);
-            setCategories(response.data.categories);
-            setMessage(response.message);
-        } catch {
-            setMessage("Не удалось обновить данные");
-        } finally {
-            setLoading(false);
-        }
-    };
+//             setDishes(response.data.dishes);
+//             setCategories(response.data.categories);
+//             setMessage(response.message);
+//         } catch {
+//             setMessage("Не удалось обновить данные");
+//         } finally {
+//             setLoading(false);
+//         }
+//     };
 
-    useEffect(() => {
-        const loadData = async () => {
-            try {
-                const redactorData = await getDataChanged();
+//     useEffect(() => {
+//         const loadData = async () => {
+//             try {
+//                 const redactorData = await getDataChanged();
 
-                setDishes(redactorData.data.dishes);
-                setCategories(redactorData.data.categories);
-                setMessage(redactorData.message);
-            } catch {
-                setMessage("Не удалось загрузить данные");
-            } finally {
-                setLoading(false);
-            }
-        };
+//                 setDishes(redactorData.data.dishes);
+//                 setCategories(redactorData.data.categories);
+//                 setMessage(redactorData.message);
+//             } catch {
+//                 setMessage("Не удалось загрузить данные");
+//             } finally {
+//                 setLoading(false);
+//             }
+//         };
 
-        void loadData();
-    }, []);
+//         void loadData();
+//     }, []);
 
-    if (loading) {
-        return <SpinningLoader fullScreen />;
-    }
+//     if (loading) {
+//         return <SpinningLoader fullScreen />;
+//     }
 
-    return (
-        <section className="space-y-6 p-4 lg:p-8">
-            <TabsSwitcher activeTab={activeTab} onChange={setActiveTab} />
+//     return (
+//         <section className="space-y-6 p-4 lg:p-8">
+//             <TabsSwitcher activeTab={activeTab} onChange={setActiveTab} />
 
-            {activeTab === "dishes" ? (
-                <DishFormSection
-                    mode={mode}
-                    dishes={dishes}
-                    categories={categories}
-                    loading={loading}
-                    setLoading={setLoading}
-                    setMessage={setMessage}
-                    onDataChanged={handleDataChanged}
-                />
-            ) : (
-                <CategoryFormSection
-                    mode={mode}
-                    dishes={dishes}
-                    categories={categories}
-                    loading={loading}
-                    setLoading={setLoading}
-                    setMessage={setMessage}
-                    onDataChanged={handleDataChanged}
-                />
-            )}
+//             {activeTab === "dishes" ? (
+//                 <DishFormSection
+//                     mode={mode}
+//                     dishes={dishes}
+//                     categories={categories}
+//                     loading={loading}
+//                     setLoading={setLoading}
+//                     setMessage={setMessage}
+//                     onDataChanged={handleDataChanged}
+//                 />
+//             ) : (
+//                 <CategoryFormSection
+//                     mode={mode}
+//                     dishes={dishes}
+//                     categories={categories}
+//                     loading={loading}
+//                     setLoading={setLoading}
+//                     setMessage={setMessage}
+//                     onDataChanged={handleDataChanged}
+//                 />
+//             )}
 
-            {message ? <p className="text-sm">{message}</p> : null}
-        </section>
-    );
-};
+//             {message ? <p className="text-sm">{message}</p> : null}
+//         </section>
+//     );
+// };
