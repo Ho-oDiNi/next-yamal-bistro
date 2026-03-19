@@ -1,5 +1,4 @@
 User-agent: Yandex
-Disallow: /documents
 Disallow: /_not-found
 Disallow: /api
 Allow: /*.css
@@ -17,7 +16,6 @@ Clean-Param: utm_source&utm_medium&utm_campaign&utm_term&utm_content /
 Clean-Param: gclid&fbclid&yclid&ysclid /
 
 User-agent: Googlebot
-Disallow: /documents
 Disallow: /_not-found
 Disallow: /api
 Allow: /*.css
@@ -31,7 +29,6 @@ Allow: /*.webp
 Allow: /*.ico
 
 User-agent: *
-Disallow: /documents
 Disallow: /_not-found
 Disallow: /api
 

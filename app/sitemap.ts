@@ -1,6 +1,7 @@
 import { MetadataRoute } from "next";
 
 import { getBaseUrl } from "@/app/domains";
+import { getDishes } from "@/entities/dish";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const baseUrl = await getBaseUrl();
@@ -9,6 +10,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         {
             url: baseUrl,
         },
+
         {
             url: `${baseUrl}/privacy`,
         },
@@ -18,13 +20,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         return [...staticPages];
     }
 
-    // const dynamicPages = yamals.flatMap((yamal) =>
-    //     })),
-    // );
+    const dishes = await getDishes();
 
-    // return [...staticPages, ...dynamicPages];
+    const dynamicPages = dishes.flatMap((dish) => ({
+        url: `${baseUrl}/menu/${dish.slug}`,
+    }));
 
-    return [...staticPages];
+    return [...staticPages, ...dynamicPages];
 }
 
 export const dynamic = "force-dynamic";
