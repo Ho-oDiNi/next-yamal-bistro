@@ -63,7 +63,7 @@ export const DishSection = async ({
                                 </p>
                             }
                         >
-                            <p>{composition}</p>
+                            <p itemProp="recipeIngredient">{composition}</p>
                         </InfoGroup>
 
                         <InfoGroup

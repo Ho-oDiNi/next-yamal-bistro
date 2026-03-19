@@ -18,14 +18,20 @@ export const DishCard = ({
     tag,
 }: TDishData) => {
     return (
-        <Link href={`/menu/${slug}`}>
-            <article className="flex h-full w-full max-w-xl flex-col overflow-hidden rounded-3xl bg-white">
+        <article
+            className="flex h-full w-full max-w-xl flex-col overflow-hidden rounded-3xl bg-white"
+            itemProp="hasMenuItem"
+            itemScope
+            itemType="https://schema.org/MenuItem"
+        >
+            <Link href={`/menu/${slug}`} itemProp="url">
                 <div className="relative h-60 shrink-0">
                     <Image
                         src={imageUrl || mockImage}
                         alt={name}
                         fill
                         className="object-cover"
+                        itemProp="image"
                     />
 
                     {tag?.imageUrl && (
@@ -42,14 +48,28 @@ export const DishCard = ({
 
                 <div className="flex flex-1 flex-col p-6">
                     <div className="space-y-4">
-                        <h4 className="text-h4">{name}</h4>
-                        <p className="font-roboto text-accent line-clamp-2 font-extralight">
+                        <h4 className="text-h4" itemProp="name">
+                            {name}
+                        </h4>
+                        <p
+                            className="font-roboto text-accent line-clamp-2 font-extralight"
+                            itemProp="description"
+                        >
                             {description}
                         </p>
                     </div>
 
                     <div className="flex-between text-contrast mt-auto pt-4">
-                        <p className="font-extralight">
+                        <p
+                            className="font-extralight"
+                            itemProp="nutrition"
+                            itemScope
+                            itemType="https://schema.org/NutritionInformation"
+                        >
+                            <meta
+                                itemProp="servingSize"
+                                content={`${weightValue} ${getWeightUnitLabel(weightUnit)}`}
+                            />
                             {weightValue}{" "}
                             <abbr
                                 title={getWeightUnitAbbr(weightUnit)}
@@ -59,7 +79,14 @@ export const DishCard = ({
                                 {getWeightUnitLabel(weightUnit)}
                             </abbr>
                         </p>
-                        <p className="font-medium">
+                        <p
+                            className="font-medium"
+                            itemProp="offers"
+                            itemScope
+                            itemType="https://schema.org/Offer"
+                        >
+                            <meta itemProp="priceCurrency" content="RUB" />
+                            <meta itemProp="price" content={String(price)} />
                             {price}{" "}
                             <abbr title="рубли" className="no-underline">
                                 руб
@@ -67,7 +94,7 @@ export const DishCard = ({
                         </p>
                     </div>
                 </div>
-            </article>
-        </Link>
+            </Link>
+        </article>
     );
 };
