@@ -11,7 +11,6 @@ export const DishSectionContainer = ({
         <section
             id="section-contacts"
             className="relative px-2 py-6 xl:py-16"
-            itemProp="hasMenuItem"
             itemScope
             itemType="https://schema.org/MenuItem"
         >

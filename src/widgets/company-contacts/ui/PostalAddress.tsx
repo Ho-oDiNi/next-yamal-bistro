@@ -1,6 +1,6 @@
 export const PostalAddress = () => {
     return (
-        <address
+        <div
             className="not-italic"
             itemProp="address"
             itemScope
@@ -9,7 +9,9 @@ export const PostalAddress = () => {
             <meta itemProp="addressCountry" content="RU" />
             <span itemProp="addressLocality">г.&nbsp;Салехард</span>
             {", "}
-            <span itemProp="streetAddress">ул.&nbsp;Свердлова, д.&nbsp;34А</span>
-        </address>
+            <span itemProp="streetAddress">
+                ул.&nbsp;Свердлова, д.&nbsp;34А
+            </span>
+        </div>
     );
 };

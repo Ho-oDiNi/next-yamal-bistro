@@ -22,12 +22,16 @@ export const BusinessHoursList = ({ hours }: BusinessHoursListProps) => {
             {hours.map(({ dayLabel, openTime, closeTime }) => (
                 <div
                     key={dayLabel}
-                    itemProp="hoursAvailable"
+                    itemProp="openingHoursSpecification"
                     itemScope
                     itemType="https://schema.org/OpeningHoursSpecification"
                 >
                     {DAY_URL_BY_LABEL[dayLabel]?.map((dayUrl) => (
-                        <meta key={dayUrl} itemProp="dayOfWeek" content={dayUrl} />
+                        <meta
+                            key={dayUrl}
+                            itemProp="dayOfWeek"
+                            content={dayUrl}
+                        />
                     ))}
                     <meta itemProp="opens" content={openTime} />
                     <meta itemProp="closes" content={closeTime} />

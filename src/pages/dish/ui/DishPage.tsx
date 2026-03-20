@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 
 import { getDishBySlug } from "@/entities/dish";
+import { CompanyContacts } from "@/widgets/company-contacts/ui/CompanyContacts";
 import { DishSection } from "@/widgets/dish-section";
 
 import { DishPageParams } from "../model";
@@ -13,5 +14,10 @@ export const DishPage = async ({ params }: DishPageParams) => {
         notFound();
     }
 
-    return <DishSection {...dish} />;
+    return (
+        <>
+            <DishSection {...dish} />
+            <CompanyContacts />
+        </>
+    );
 };
