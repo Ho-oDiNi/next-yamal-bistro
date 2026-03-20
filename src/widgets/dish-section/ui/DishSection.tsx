@@ -30,7 +30,7 @@ export const DishSection = async ({
             <h2 className="text-h2" itemProp="name">
                 {name}
             </h2>
-            <div className="flex flex-col gap-8 lg:flex-row">
+            <div className="flex flex-col-reverse gap-8 lg:flex-row">
                 <div className="flex w-full flex-col gap-8 lg:w-2/3">
                     <p
                         className="text-accent font-roboto"
@@ -97,7 +97,7 @@ export const DishSection = async ({
                         </InfoGroup>
                     </div>
                 </div>
-                <div className="relative max-h-80 w-full max-w-80 overflow-hidden rounded-2xl sm:mx-auto">
+                <div className="relative max-h-80 min-h-80 w-full max-w-80 overflow-hidden rounded-2xl sm:mx-auto">
                     <Image
                         src={imageUrl ?? mockImage}
                         className="object-cover"

@@ -25,11 +25,11 @@ export const YandexMapEmbed = () => {
                         priority
                     />
 
-                    <div className="absolute inset-0 bg-black/10 transition-opacity group-hover:bg-black/20" />
+                    <div className="group-hover:bg-brand-dark/10 absolute inset-0 transition-opacity" />
 
                     <div className="absolute inset-0 flex items-center justify-center">
-                        <span className="rounded-full bg-white px-5 py-3 text-sm font-medium shadow">
-                            Открыть карту
+                        <span className="text-brand-dark rounded-xl bg-white px-4 py-2 text-sm font-bold shadow">
+                            Посмотреть на карте
                         </span>
                     </div>
                 </button>
