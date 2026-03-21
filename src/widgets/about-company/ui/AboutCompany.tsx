@@ -1,4 +1,4 @@
-import { AdvantageList } from "@/shared/ui/AdvantageList/ui/AdvantageList";
+import { AdvantageList } from "@/shared/ui/AdvantageList";
 
 import { AboutContainer } from "./AboutContainer";
 import { SpinningSun } from "./SpinningSun";

@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from "react";
 
-import arrowTopIcon from "@icons/arrow-top.svg";
+import { RoundedButton } from "@/shared/ui/StyledButton";
 
-import { RoundedButton } from "../StyledButton";
+import arrowTopIcon from "@icons/arrow-top.svg";
 
 export const ScrollToTopButton = () => {
     const [isVisible, setIsVisible] = useState(false);

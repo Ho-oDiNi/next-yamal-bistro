@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 
 import { getBaseUrl } from "@/app/domains";
-import { getDishes } from "@/entities/dish";
+import { getDishes, IDish } from "@/entities/dish";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const baseUrl = await getBaseUrl();
@@ -22,7 +22,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     const dishes = await getDishes();
 
-    const dynamicPages = dishes.flatMap((dish) => ({
+    const dynamicPages = dishes.flatMap((dish: IDish) => ({
         url: `${baseUrl}/menu/${dish.slug}`,
     }));
 

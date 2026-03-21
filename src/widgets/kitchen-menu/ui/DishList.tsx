@@ -1,5 +1,5 @@
-import { ICategory } from "@/entities/category/model";
-import { IDish } from "@/entities/dish/model";
+import { ICategory } from "@/entities/category";
+import { IDish } from "@/entities/dish";
 import { Pagenator, usePagination } from "@/shared/lib/pagenator";
 
 import { DishCard } from "./DishCard";

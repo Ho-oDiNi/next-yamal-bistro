@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 
-import { ICategory } from "@/entities/category/model";
-import { IDish } from "@/entities/dish/model";
+import { ICategory } from "@/entities/category";
+import { IDish } from "@/entities/dish";
 
 import { DishGrid } from "./DishList";
 import { MenuNav } from "./MenuNav";

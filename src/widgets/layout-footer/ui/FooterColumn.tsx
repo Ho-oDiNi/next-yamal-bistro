@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { cn } from "@/shared/lib/cn";
-import { isExternalLink } from "@/shared/lib/site-links/lib/isExternal";
+import { isExternalLink } from "@/shared/lib/site-links";
 
 import { type FooterColumnLink } from "../model";
 

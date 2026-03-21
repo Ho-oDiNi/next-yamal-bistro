@@ -1,6 +1,6 @@
 "use server";
 
-import { escapeHtml } from "@/shared/lib/html-react-parser/lib/escapeHtml";
+import { escapeHtml } from "@/shared/lib/html-react-parser";
 import { SubmitState, toFieldErrors } from "@/shared/lib/zod";
 
 import { reservationSchema } from "../model";

@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 
 import { getDishBySlug } from "@/entities/dish";
-import { CompanyContacts } from "@/widgets/company-contacts/ui/CompanyContacts";
+import { CompanyContacts } from "@/widgets/company-contacts";
 import { DishSection } from "@/widgets/dish-section";
 
 import { DishPageParams } from "../model";

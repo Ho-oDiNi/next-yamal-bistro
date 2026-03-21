@@ -1,4 +1,4 @@
-import { TSupplementData } from "@/entities/dish/model";
+import { TSupplementData } from "@/entities/dish";
 
 interface SupplementListProps {
     supplements: TSupplementData[];

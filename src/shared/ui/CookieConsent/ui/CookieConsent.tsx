@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-import { StyledButton } from "../../StyledButton";
+import { StyledButton } from "@/shared/ui/StyledButton";
+
 import { COOKIE_CONSENT_TIME } from "../config";
 
 export const CookieConsent = () => {

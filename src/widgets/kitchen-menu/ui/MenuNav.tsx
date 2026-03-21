@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { ICategory } from "@/entities/category/model";
+import { ICategory } from "@/entities/category";
 import { cn } from "@/shared/lib/cn";
 
 import downloadIcon from "@icons/download-white.svg";

@@ -1,8 +1,11 @@
 import Image from "next/image";
 
-import { getSupplements, IDish } from "@/entities/dish";
-import { getWeightUnitAbbr } from "@/entities/dish/lib/getWeightUnitAbbr";
-import { getWeightUnitLabel } from "@/entities/dish/lib/getWeightUnitLabel";
+import {
+    getSupplements,
+    getWeightUnitAbbr,
+    getWeightUnitLabel,
+    IDish,
+} from "@/entities/dish";
 import { StyledLink } from "@/shared/ui/StyledLink";
 
 import mockImage from "@images/qr_code.png";

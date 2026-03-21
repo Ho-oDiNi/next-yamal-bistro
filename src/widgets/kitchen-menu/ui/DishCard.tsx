@@ -1,9 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { TDishData } from "@/entities/dish";
-import { getWeightUnitAbbr } from "@/entities/dish/lib/getWeightUnitAbbr";
-import { getWeightUnitLabel } from "@/entities/dish/lib/getWeightUnitLabel";
+import {
+    getWeightUnitAbbr,
+    getWeightUnitLabel,
+    TDishData,
+} from "@/entities/dish";
 
 import mockImage from "@images/qr_code.png";
 

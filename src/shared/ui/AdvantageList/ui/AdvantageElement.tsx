@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { isExternalLink } from "@/shared/lib/site-links/lib/isExternal";
+import { isExternalLink } from "@/shared/lib/site-links";
 
 import { AdvantageElementProps } from "../model";
 

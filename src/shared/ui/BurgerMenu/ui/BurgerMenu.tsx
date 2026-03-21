@@ -3,10 +3,9 @@
 import Link from "next/link";
 
 import { SITE_NAVIGATION_LINKS } from "@/shared/lib/site-links";
+import { RoundedButton } from "@/shared/ui/StyledButton";
 
 import closeIcon from "@icons/close-blue.svg";
-
-import { RoundedButton } from "../../StyledButton";
 
 interface BurgerMenuProps {
     onClose: () => void;

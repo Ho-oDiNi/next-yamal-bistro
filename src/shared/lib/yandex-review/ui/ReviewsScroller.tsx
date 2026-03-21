@@ -2,11 +2,11 @@
 
 import { useRef, useState } from "react";
 
+import { cn } from "@/shared/lib/cn";
 import { StyledButton } from "@/shared/ui/StyledButton";
 
 import { Review } from "../model";
 import { ReviewsList } from "./ReviewsList";
-import { cn } from "../../cn";
 
 export const ReviewsScroller = ({ reviews }: { reviews: Review[] }) => {
     const [scrollEnabled, setScrollEnabled] = useState(false);

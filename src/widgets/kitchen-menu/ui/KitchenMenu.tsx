@@ -1,5 +1,5 @@
-import { getCategories } from "@/entities/category/api/getCategories";
-import { getDishes } from "@/entities/dish/api/getDishes";
+import { getCategories } from "@/entities/category";
+import { getDishes } from "@/entities/dish";
 
 import { MenuList } from "./MenuList";
 import { DISHES_PER_PAGE } from "../config";
