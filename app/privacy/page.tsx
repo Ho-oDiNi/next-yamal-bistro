@@ -1,1 +1,1 @@
-export { PrivacyPage as default } from "@/pages/privacy";
+export { metadata, PrivacyPage as default } from "@/pages/privacy";
