@@ -1,9 +1,7 @@
-import { getBaseUrl } from "@/app/domains";
-
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    metadataBase: new URL(await getBaseUrl()),
+    metadataBase: new URL("https://yamal-bistro.ru"),
     verification: {
         yandex: "4e2e707416432fc3",
     },
