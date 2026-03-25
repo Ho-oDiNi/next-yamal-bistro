@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 
+import { getBaseUrl } from "@/app/domains";
 import { getDishBySlug } from "@/entities/dish";
 
 import { DishPageParams } from "../model";
@@ -18,10 +19,6 @@ export const generateMetadata = async ({
     if (!dish) {
         return {
             title: "Блюдо не найдено | Ямал Бистро",
-            description: "Страница блюда не найдена.",
-            alternates: {
-                canonical: `https://yamal-bistro.ru/menu/${slug}`,
-            },
             robots: {
                 index: false,
                 follow: false,
@@ -35,11 +32,11 @@ export const generateMetadata = async ({
         `${dish.name} в Ямал Бистро. Оформите заказ в Салехарде.`;
 
     return {
-        metadataBase: new URL("https://yamal-bistro.ru"),
+        metadataBase: new URL(await getBaseUrl()),
         title,
         description,
         alternates: {
-            canonical: `https://yamal-bistro.ru/menu/${slug}`,
+            canonical: `/menu/${slug}`,
         },
         openGraph: {
             type: "article",

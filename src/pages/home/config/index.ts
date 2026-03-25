@@ -1,6 +1,9 @@
+import { getBaseUrl } from "@/app/domains";
+
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
+    metadataBase: new URL(await getBaseUrl()),
     verification: {
         yandex: "4e2e707416432fc3",
     },
@@ -8,16 +11,16 @@ export const metadata: Metadata = {
     description:
         "Уютное кафе, где можно вкусно поесть. Заказать горячие блюда с доставкой. Бронирование столиков онлайн. Завтрак, обед и ужин с собой.",
     alternates: {
-        canonical: "https://yamal-bistro.ru",
+        canonical: "/",
     },
     openGraph: {
         type: "website",
         locale: "ru_RU",
-        url: "https://yamal-bistro.ru",
+        url: "/",
         siteName: "Ямал Бистро",
         title: "Кафе северной кухни в Салехарде | Ямал Бистро",
         description:
             "Уютное кафе, где можно вкусно поесть. Заказать горячие блюда с доставкой. Бронирование столиков онлайн. Завтрак, обед и ужин с собой.",
-        images: ["/images/og-image.jpg"],
+        images: "/images/og-image.jpg",
     },
 };
