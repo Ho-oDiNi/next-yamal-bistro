@@ -34,6 +34,7 @@ export const DishCard = ({
                         fill
                         className="object-cover"
                         itemProp="image"
+                        loading="lazy"
                     />
 
                     {tag?.imageUrl && (

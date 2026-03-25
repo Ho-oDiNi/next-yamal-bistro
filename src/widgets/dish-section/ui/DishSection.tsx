@@ -107,6 +107,7 @@ export const DishSection = async ({
                         fill
                         alt={name}
                         itemProp="image"
+                        loading="lazy"
                     />
                 </div>
             </div>
