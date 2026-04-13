@@ -16,6 +16,7 @@ export const ReservationContainer = ({
         <section className="flex-center xs:bg-[url('/images/reservation_laptop.png')] relative bg-[url('/images/reservation_mobile.png')] bg-cover bg-center bg-no-repeat text-white md:bg-none">
             <Image
                 className="bottom-0 z-1 hidden h-full w-full object-cover md:block"
+                loading="lazy"
                 src={reservationImg}
                 alt=""
             />
