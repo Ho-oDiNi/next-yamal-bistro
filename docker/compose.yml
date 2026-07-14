@@ -66,6 +66,7 @@ services:
 
     networks:
       - yamal-internal
+      - db-admin
 
     logging:
       driver: json-file
@@ -83,6 +84,8 @@ volumes:
 networks:
   yamal-internal:
     internal: true
+
+  db-admin: {}
 
   caddy-network:
     external: true
