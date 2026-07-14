@@ -1,7 +1,7 @@
 name: yamal-production
 
 services:
-  yamal-web:
+  yamal-bistro-web:
     image: docker.io/hooodini/next-yamal-image:latest
     pull_policy: always
     entrypoint: ["/app/docker/entrypoint.sh"]
