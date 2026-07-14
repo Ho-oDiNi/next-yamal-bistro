@@ -1,163 +1,86 @@
-name: Build and deploy Yamal Bistro
+name: yamal-production
 
-on:
-  push:
-    branches:
-      - main
-  workflow_dispatch:
+services:
+  yamal-web:
+    image: docker.io/hooodini/next-yamal-image:latest
+    pull_policy: always
+    entrypoint: ["/app/docker/entrypoint.sh"]
+    command: ["node", "server.js"]
+    init: true
 
-permissions:
-  contents: read
+    env_file:
+      - ${HOME}/env/next-yamal-site/.env.production
 
-concurrency:
-  group: yamal-production
-  cancel-in-progress: true
+    environment:
+      HOSTNAME: "0.0.0.0"
+      PORT: "3000"
+      PG_HOST: db
+      PG_PORT: "5432"
+      CATEGORY_IMAGES_DIR: /app/storage/category-images
 
-env:
-  IMAGE_NAME: docker.io/hooodini/next-yamal-image
+    expose:
+      - "3000"
 
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    timeout-minutes: 30
+    depends_on:
+      db:
+        condition: service_healthy
 
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v7
+    networks:
+      - yamal-internal
+      - caddy-network
 
-      - name: Login to Docker Hub
-        uses: docker/login-action@v4
-        with:
-          registry: docker.io
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+    volumes:
+      - category-images:/app/storage/category-images
 
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v4
+    logging:
+      driver: json-file
+      options:
+        max-size: "50m"
+        max-file: "3"
 
-      - name: Build and push image
-        uses: docker/build-push-action@v7
-        with:
-          context: .
-          file: docker/Dockerfile
-          target: runner
-          push: true
-          platforms: linux/amd64
-          tags: |
-            ${{ env.IMAGE_NAME }}:latest
-            ${{ env.IMAGE_NAME }}:${{ github.sha }}
-          cache-from: type=gha,scope=yamal-production
-          cache-to: type=gha,mode=max,scope=yamal-production
+    restart: unless-stopped
+    stop_grace_period: 30s
 
-      - name: Configure SSH
-        shell: bash
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          SSH_HOST: ${{ secrets.SSH_HOST }}
-          SSH_PORT: ${{ secrets.SSH_PORT }}
-          SSH_USER: ${{ secrets.SSH_USER }}
-        run: |
-          set -Eeuo pipefail
+  db:
+    image: postgres:18
 
-          install -m 700 -d ~/.ssh
+    env_file:
+      - ${HOME}/env/next-yamal-site/.env.production
 
-          printf '%s\n' "$SSH_PRIVATE_KEY" > ~/.ssh/deploy_key
-          chmod 600 ~/.ssh/deploy_key
+    volumes:
+      - postgres-data:/var/lib/postgresql
 
-          cat > ~/.ssh/config <<EOF
-          Host yamal-server
-            HostName ${SSH_HOST}
-            User ${SSH_USER}
-            Port ${SSH_PORT}
-            IdentityFile ~/.ssh/deploy_key
-            IdentitiesOnly yes
-            BatchMode yes
-            StrictHostKeyChecking accept-new
-            UserKnownHostsFile ~/.ssh/known_hosts
-            ServerAliveInterval 30
-            ServerAliveCountMax 3
-          EOF
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          'pg_isready -U "$${POSTGRES_USER}" -d "$${POSTGRES_DB}" -h 127.0.0.1',
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
 
-          chmod 600 ~/.ssh/config
+    networks:
+      - yamal-internal
 
-      - name: Prepare directory and copy Compose file
-        shell: bash
-        run: |
-          set -Eeuo pipefail
+    logging:
+      driver: json-file
+      options:
+        max-size: "50m"
+        max-file: "3"
 
-          ssh yamal-server \
-            'mkdir -p "$HOME/www/next-yamal-site"'
+    restart: unless-stopped
+    stop_grace_period: 30s
 
-          rsync \
-            --archive \
-            --compress \
-            -e ssh \
-            docker/compose.yml \
-            yamal-server:~/www/next-yamal-site/compose.yml
+volumes:
+  postgres-data:
+  category-images:
 
-      - name: Login server to Docker Hub
-        shell: bash
-        env:
-          DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
-          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
-        run: |
-          set -Eeuo pipefail
+networks:
+  yamal-internal:
+    internal: true
 
-          printf '%s' "$DOCKERHUB_TOKEN" |
-            ssh yamal-server \
-              "docker login docker.io \
-                --username '$DOCKERHUB_USERNAME' \
-                --password-stdin"
-
-      - name: Deploy on server
-        shell: bash
-        run: |
-          ssh yamal-server 'bash -se' <<'REMOTE'
-          set -Eeuo pipefail
-
-          APP_DIR="$HOME/www/next-yamal-site"
-          ENV_FILE="$HOME/env/next-yamal-site/.env.production"
-
-          cd "$APP_DIR"
-
-          if [ ! -f "$ENV_FILE" ]; then
-            echo "Не найден файл окружения: $ENV_FILE"
-            exit 1
-          fi
-
-          docker network inspect caddy-network >/dev/null 2>&1 \
-            || docker network create caddy-network
-
-          docker compose \
-            --env-file "$ENV_FILE" \
-            -f compose.yml \
-            config \
-            --quiet
-
-          trap '
-            exit_code=$?
-            echo "Ошибка деплоя. Состояние контейнеров:"
-            docker compose --env-file "$ENV_FILE" -f compose.yml ps || true
-            echo "Последние логи:"
-            docker compose --env-file "$ENV_FILE" -f compose.yml logs --tail=200 || true
-            exit "$exit_code"
-          ' ERR
-
-          docker compose \
-            --env-file "$ENV_FILE" \
-            -f compose.yml \
-            up \
-            --detach \
-            --remove-orphans \
-            --wait \
-            --wait-timeout 180
-
-          docker compose \
-            --env-file "$ENV_FILE" \
-            -f compose.yml \
-            ps
-
-          docker image prune \
-            --force \
-            --filter "until=240h"
-          REMOTE
+  caddy-network:
+    external: true
+    name: caddy-network
