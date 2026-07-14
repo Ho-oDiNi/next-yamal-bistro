@@ -143,16 +143,16 @@ db-shell:
 
 .PHONY: db-psql-dev
 db-psql-dev:
-	U=$$(grep -E '^PG_USER=' $(ENV_DEV)  | cut -d= -f2-); \
-	DB=$$(grep -E '^PG_DB='   $(ENV_DEV)  | cut -d= -f2-); \
-	if [ -z "$$U" ] || [ -z "$$DB" ]; then echo "PG_USER/PG_DB not found in $(ENV_DEV)"; exit 1; fi; \
+	U=$$(grep -E '^POSTGRES_USER=' $(ENV_DEV)  | cut -d= -f2-); \
+	DB=$$(grep -E '^POSTGRES_DB='   $(ENV_DEV)  | cut -d= -f2-); \
+	if [ -z "$$U" ] || [ -z "$$DB" ]; then echo "POSTGRES_USER/POSTGRES_DB not found in $(ENV_DEV)"; exit 1; fi; \
 	$(DC_DEV) exec db psql -U $$U -d $$DB
 
 .PHONY: db-psql-prod
 db-psql-prod:
-	U=$$(grep -E '^PG_USER=' $(ENV_PROD) | cut -d= -f2-); \
-	DB=$$(grep -E '^PG_DB='   $(ENV_PROD) | cut -d= -f2-); \
-	if [ -z "$$U" ] || [ -z "$$DB" ]; then echo "PG_USER/PG_DB not found in $(ENV_PROD)"; exit 1; fi; \
+	U=$$(grep -E '^POSTGRES_USER=' $(ENV_PROD) | cut -d= -f2-); \
+	DB=$$(grep -E '^POSTGRES_DB='   $(ENV_PROD) | cut -d= -f2-); \
+	if [ -z "$$U" ] || [ -z "$$DB" ]; then echo "POSTGRES_USER/POSTGRES_DB not found in $(ENV_PROD)"; exit 1; fi; \
 	$(DC_PROD) exec db psql -U $$U -d $$DB
 
 .PHONY: web-sh
